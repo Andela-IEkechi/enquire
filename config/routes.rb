@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
+
+  root 'homes#show'
+
   resources :reviews
-
-  resources :answers
-
-  resources :questions
-
   resources :hospitals
+  resources :answers
+  resources :questions
 
   devise_for :doctors
   devise_for :users

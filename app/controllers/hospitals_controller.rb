@@ -1,5 +1,15 @@
 class HospitalsController < ApplicationController
   before_action :set_hospital, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :is_admin?, only: [:create, :edit, :update, :destroy]
+
+  def is_admin?
+    if current_user.admin?
+      true
+    else
+      redirect_to root_path
+    end
+  end
 
   # GET /hospitals
   # GET /hospitals.json

@@ -1,17 +1,17 @@
-<%= form_for(@question) do |f| %>
-  <% if @question.errors.any? %>
+<%= form_for(@answer) do |f| %>
+  <% if @answer.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+      <h2><%= pluralize(@answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
 
       <ul>
-      <% @question.errors.full_messages.each do |message| %>
+      <% @answer.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
   <div class="field">
-    <%= hidden_field(:question, :user_id, value: current_user.id)%>
+    <%= hidden_field(:answer, :user_id, value: current_user.id)%>
   </div>
   <div class="field">
     <%= f.label :caption %><br>

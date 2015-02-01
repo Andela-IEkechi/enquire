@@ -21,11 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :image %><br>
-    <%= f.text_field :image %>
-  </div>
-  <div class="field">
-    <%= f.label :verified %><br>
-    <%= f.check_box :verified %>
+    <%= f.file_field :image %>
   </div>
   <div class="field">
     <%= f.label :address %><br>
@@ -33,7 +29,7 @@
   </div>
   <div class="field">
     <%= f.label :type %><br>
-    <%= f.text_field :type %>
+    <%= f.select :type, options_for_select(Hospital::HOSPITAL_TYPE) %>
   </div>
   <div class="actions">
     <%= f.submit %>
