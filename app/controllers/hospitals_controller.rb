@@ -1,14 +1,10 @@
 class HospitalsController < ApplicationController
   before_action :set_hospital, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
   before_action :is_admin?, only: [:create, :edit, :update, :destroy]
 
   def is_admin?
-    if current_user.admin?
-      true
-    else
-      redirect_to root_path
-    end
+    redirect_to root_path unless current_user.admin?
   end
 
   # GET /hospitals
@@ -20,6 +16,8 @@ class HospitalsController < ApplicationController
   # GET /hospitals/1
   # GET /hospitals/1.json
   def show
+    @reviews = Review.where(hospital_id: params[:id])
+    @recommend = HospitalLike.where(hospital_id: params[:id])
   end
 
   # GET /hospitals/new
@@ -79,6 +77,6 @@ class HospitalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hospital_params
-      params.require(:hospital).permit(:name, :description, :image, :verified, :address, :type)
+      params.require(:hospital).permit(:name, :description, :image, :verified, :address, :classification)
     end
 end

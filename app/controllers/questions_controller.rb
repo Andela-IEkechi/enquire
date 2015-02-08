@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
 
   # GET /questions
   # GET /questions.json
@@ -11,6 +11,11 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
+    @answers =  Answer.where(question_id: params[:id]).order('created_at desc')
+
+    puts 'hello'
+    puts params
+    puts 'hello'
   end
 
   # GET /questions/new

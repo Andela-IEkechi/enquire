@@ -28,8 +28,8 @@
     <%= f.text_area :address %>
   </div>
   <div class="field">
-    <%= f.label :type %><br>
-    <%= f.select :type, options_for_select(Hospital::HOSPITAL_TYPE) %>
+    <%= f.label :classification %><br>
+    <%= f.select :classification, options_for_select(Hospital::HOSPITAL_TYPE) %>
   </div>
   <div class="actions">
     <%= f.submit %>

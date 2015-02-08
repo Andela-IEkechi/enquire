@@ -27,8 +27,24 @@
 
 <p>
   <strong>Type:</strong>
-  <%= @hospital.type %>
+  <%= @hospital.classification %>
+</p>
+
+<p>
+  <strong>Recommendations:</strong>
+  <%= @recommend.count %>
 </p>
 
 <%= link_to 'Edit', edit_hospital_path(@hospital) %> |
 <%= link_to 'Back', hospitals_path %>
+
+<%= render 'hospital_likes/new' %>
+<% @reviews.each do |review| %>
+    <%= review.content %><br>
+<% end %>
+
+
+<h4>What do you think of this hospital?</h4>
+<h3>Add your own review</h3>
+
+<%= render 'reviews/form' %>

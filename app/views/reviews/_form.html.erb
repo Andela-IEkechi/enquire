@@ -1,18 +1,6 @@
-<%= form_for(@review) do |f| %>
-  <% if @review.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
-
-      <ul>
-      <% @review.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= form_for Review.new do |f| %>
   <div class="field">
-    <%= hidden_field(:review, :hospital_id, value: params[:hospital_id])%>
+    <%= hidden_field(:review, :hospital_id, value: params["id"])%>
     <%= hidden_field(:review, :user_id, value: current_user.id)%>
   </div>
   <div class="field">

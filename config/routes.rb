@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   resources :hospitals
   resources :answers
   resources :questions
+  resource  :dashboard
+
+  resources :hospital_likes
+  resources :answer_likes
+  resources :doctor_likes
 
   devise_for :doctors
   devise_for :users

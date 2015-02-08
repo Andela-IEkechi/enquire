@@ -1,0 +1,8 @@
+<%= form_for DoctorLike.new do |f| %>
+    <%= hidden_field(:doctor_like, :doctor_id, value: params["id"])%>
+    <%= hidden_field(:doctor_like, :user_id, value: current_user.id)%>
+    <div class="row actions text-center">
+      <%= f.submit "Like", class: "btn btn-primary btn-resize" %>
+    </div>
+    <br>
+<% end %>

@@ -2,11 +2,11 @@ class CreateHospitals < ActiveRecord::Migration
   def change
     create_table :hospitals do |t|
       t.text :name
-      t.text :description
-      t.string :image
-      t.boolean :verified, default: false
+      t.text :decription
       t.text :address
-      t.string :type
+      t.string :classification
+      t.attachment :image
+      t.boolean :verified
 
       t.timestamps null: false
     end

@@ -6,7 +6,7 @@ class AnswersController < ApplicationController
     if current_doctor.verified?
       true
     else
-      redirect_to root_path
+      redirect_to root_path, notice: 'You must be a verified Doctor to create an Answer.'
     end
   end
 
@@ -37,8 +37,7 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
-        format.json { render :show, status: :created, location: @answer }
+        format.html { redirect_to :back, notice: 'Answer was successfully created.' }
       else
         format.html { render :new }
         format.json { render json: @answer.errors, status: :unprocessable_entity }
