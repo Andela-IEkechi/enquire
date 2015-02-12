@@ -1,6 +1,4 @@
 class Hospital < ActiveRecord::Base
-  require 'paperclip'
-  
   has_many :hospital_likes
   has_many :users, through: :hospital_likes, class_name: 'User'
 
