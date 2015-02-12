@@ -37,6 +37,9 @@ gem 'omniauth-openid'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+# Use paperclip for image upload
+gem 'paperclip'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -49,9 +52,6 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-
-  # Use paperclip for image upload
-  gem 'paperclip'
 
   # Use rspec for testing
   gem 'rspec'
