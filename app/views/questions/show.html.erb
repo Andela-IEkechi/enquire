@@ -23,7 +23,16 @@
 
 <% @answers.each do |answer| %>
     <%= answer.content %><br>
-    <%= render 'answer_likes/new' %>
+    <% if user_signed_in? %>
+        <%= form_for AnswerLike.new do |f| %>
+            <%= hidden_field(:answer_like, :answer_id, value: "#{answer.id}")%>
+            <%= hidden_field(:answer_like, :user_id, value: current_user.id)%>
+            <div class="row actions text-center">
+              <%= f.submit "Appreciate", class: "btn btn-primary btn-resize" %>
+            </div>
+            <br>
+        <% end %>
+    <% end %>
 <% end %>
 
 <h4>Are you a Doctor?</h4>
