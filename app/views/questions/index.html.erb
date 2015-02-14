@@ -1,33 +1,23 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Questions</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Caption</th>
-      <th>Body</th>
-      <th>User</th>
-      <th>Doctor</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @questions.each do |question| %>
-      <tr>
-        <td><%= question.caption %></td>
-        <td><%= question.body %></td>
-        <td><%= question.user %></td>
-        <td><%= question.doctor %></td>
-        <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<section class="views">
+  <p id="notice"><%= notice %></p>
+  <h1 class="page-header">Listing Questions</h1>
+    <ul class="">
+      <% @questions.each do |question| %>
+          <li>
+            <%= link_to (question), class: "list-group-item" do %>
+                <div class="details">
+                  <p class="user-image"><%= image_tag question.user.image %></p>
+                </div>
+                <div class="contestant-list-text">
+                  <p class="user-name"><%= question.user.name  %></p>
+                  <strong><%= question.caption %></strong>
+                    <p><%= question.body %></p>
+                </div>
+            <% end %>
+          </li>
+      <% end %>
+    </ul>
+    <% if current_user %>
+        <%= link_to 'Ask a Question', new_question_path, class: "btn btn-default" %>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Question', new_question_path %>
+</section>
