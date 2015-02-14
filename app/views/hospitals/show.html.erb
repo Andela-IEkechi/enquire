@@ -1,50 +1,40 @@
-<p id="notice"><%= notice %></p>
+<section class="views">
+  <div class="hospital-section">
+    <p id="notice"><%= notice %></p>
+    <h1 class="page-header">
+      <strong><%= @hospital.name %></strong>
+    </h1>
+    <p><%= image_tag @hospital.image.url(:large) %></p>
+    <p><%= @hospital.description %></p>
+    <p>
+      <strong>Address:</strong>
+      <%= @hospital.address %>
+    </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @hospital.name %>
-</p>
+    <p>
+      <strong>Type:</strong>
+      <%= @hospital.classification %>
+    </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @hospital.description %>
-</p>
+    <p>
+      <strong>Recommendations:</strong>
+      <%= @recommend.count %>
+    </p>
 
-<p>
-  <strong>Image:</strong>
-  <%= @hospital.image %>
-</p>
-
-<p>
-  <strong>Verified:</strong>
-  <%= @hospital.verified %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @hospital.address %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @hospital.classification %>
-</p>
-
-<p>
-  <strong>Recommendations:</strong>
-  <%= @recommend.count %>
-</p>
-
-<%= link_to 'Edit', edit_hospital_path(@hospital) %> |
-<%= link_to 'Back', hospitals_path %>
-
-<%= render 'hospital_likes/new' %>
-<% @reviews.each do |review| %>
-    <%= review.content %><br>
-<% end %>
-
-
-<h4>What do you think of this hospital?</h4>
-<h3>Add your own review</h3>
-
-<%= render 'reviews/form' %>
+    <%= link_to 'Edit', edit_hospital_path(@hospital) %> |
+    <%= link_to 'Back', hospitals_path %>
+    <br><br>
+    <%= render 'hospital_likes/new' %>
+  </div>
+  <h4>Reviews</h4>
+  <% @reviews.each do |review| %>
+      <div class="list-group-item">
+        <%= review.content %><br>
+        <strong><%= review.user.name %></strong>
+      </div>
+  <% end %><br>
+  <div class="jumbotron">
+    <h4>What do you think of this hospital? Add your own review;</h4>
+    <%= render 'reviews/form' %>
+  </div>
+</section>
