@@ -48,3 +48,14 @@ nav .dropdown-menu {
     opacity: 0.9;
     overflow: auto;
 }
+
+.devise {
+    background-color: whitesmoke;
+    box-shadow:  0 1px 1px #333;
+    margin: 2em;
+    padding: 0.5em 2em;
+    height: 65%;
+    width: 66%;
+    opacity: 0.9;
+    overflow: auto;
+}
