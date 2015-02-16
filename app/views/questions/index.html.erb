@@ -6,7 +6,7 @@
           <li>
             <%= link_to (question), class: "list-group-item" do %>
                 <div class="details">
-                  <p class="user-image"><%= image_tag question.user.image %></p>
+                  <p class="user-image"><%= image_tag question.user.image.url(:thumb) %></p>
                 </div>
                 <div class="contestant-list-text">
                   <p class="user-name"><%= question.user.name  %></p>

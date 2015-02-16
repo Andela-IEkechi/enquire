@@ -40,7 +40,7 @@ gem 'omniauth-openid'
 # Use paperclip for image upload
 gem 'paperclip'
 # Use s3 for storage
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
