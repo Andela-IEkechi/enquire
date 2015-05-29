@@ -13,29 +13,37 @@
  *= require_tree .
  *= require_self
  */
+
+@import "font-awesome";
+@import "bootstrap-sprockets";
+@import "bootswatch/paper/variables";
+@import "bootstrap";
+@import "bootswatch/paper/bootswatch";
+
 body li {
     margin: auto;
     list-style: none;
 }
-nav {
+.navbar {
     background-color: #64AAE4;
+    height: 6em;
+    margin: auto;
+    padding: auto;
 }
-nav a {
+.navbar a {
     color: #ffffff!important;
 }
-nav a:hover {
+.navbar a:hover {
     text-decoration: none;
     background-color: transparent;
     color: #000000!important;
 }
-nav .dropdown-menu {
-    background-color: #000000;
-}
-.navigate li {
-    display: inline-block;
+.logo {
+    position: absolute;
+    top: 0;
 }
 .views {
-    /*background: #eeeeee;*/
+    background: #eeeeee;
     margin-top: 6em;
 }
 .sect {
@@ -58,4 +66,27 @@ nav .dropdown-menu {
     width: 66%;
     opacity: 0.9;
     overflow: auto;
+}
+
+.content_wrapper {
+    overflow-y: scroll;
+    bottom: 0;
+    top: 30px;
+}
+
+body {
+    padding-top: 60px;
+}
+.sidebar li a:hover {
+  background-color: #64AAE4;
+}
+
+.login {
+    margin: 15% 35%;
+    width: 30%;
+    height: 40%;
+}
+
+.sidebar_toggle .sidebar {
+    display: none;
 }

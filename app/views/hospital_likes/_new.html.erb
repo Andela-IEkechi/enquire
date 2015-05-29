@@ -1,8 +1,0 @@
-<%= form_for HospitalLike.new do |f| %>
-    <%= hidden_field(:hospital_like, :hospital_id, value: params["id"])%>
-    <%= hidden_field(:hospital_like, :user_id, value: current_user.id)%>
-    <div>
-      <%= f.submit "Recommend", class: "btn btn-primary btn-resize" %>
-    </div>
-    <br>
-<% end %>

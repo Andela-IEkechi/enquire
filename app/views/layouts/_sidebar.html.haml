@@ -1,0 +1,22 @@
+%ul.nav.nav-stacked
+  %li
+    = link_to :hospitals do
+      %i.fa.fa-fw.fa-hospital-o
+      Hospitals
+  %li
+    = link_to :doctors do
+      %i.fa.fa-fw.fa-user-md
+      Doctors
+  %li
+    = link_to :questions do
+      %i.fa.fa-fw.fa-question-circle
+      Questions
+  - if user_signed_in?
+    %li
+      = link_to edit_user_registration_path do
+        %i.fa.fa-fw.fa-cogs
+        Settings
+    %li
+      = link_to destroy_user_session_path, method: :delete do
+        %i.fa.fa-fw.fa-sign-out
+        Log Out

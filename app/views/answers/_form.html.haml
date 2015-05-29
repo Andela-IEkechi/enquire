@@ -1,0 +1,9 @@
+= form_for Answer.new do |f|
+  .field
+    = hidden_field(:answer, :question_id, value: params["id"])
+  .field
+    = f.label :content
+    %br/
+    = f.text_area :content
+  .actions
+    = f.submit

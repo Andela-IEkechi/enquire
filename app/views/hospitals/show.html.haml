@@ -1,0 +1,32 @@
+%section.views
+  .hospital-section
+    %p#notice= notice
+    %h1.page-header
+      %strong= @hospital.name
+    %p= image_tag @hospital.image.url(:large)
+    %p= @hospital.description
+    %p
+      %strong Address:
+      = @hospital.address
+    %p
+      %strong Type:
+      = @hospital.classification
+    %p
+      %strong Recommendations:
+      = @recommend.count
+    = link_to 'Edit', edit_hospital_path(@hospital)
+    |
+    \#{link_to 'Back', hospitals_path}
+    %br/
+    %br/
+    = render 'hospital_likes/new'
+  %h4 Reviews
+  - @reviews.each do |review|
+    .list-group-item
+      = review.content
+      %br/
+      %strong= review.user.name
+  %br/
+  .jumbotron
+    %h4 What do you think of this hospital? Add your own review;
+    = render 'reviews/form'

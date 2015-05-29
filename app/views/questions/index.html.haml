@@ -1,0 +1,15 @@
+%section.views
+  %p#notice= notice
+  %h1.page-header Listing Questions
+  %ul
+    - @questions.each do |question|
+      %li
+        = link_to (question), class: "list-group-item" do
+          .details
+            %p.user-image= image_tag question.user.image.url(:thumb)
+          .contestant-list-text
+            %p.user-name= question.user.name
+            %strong= question.caption
+            %p= question.body
+  - if current_user
+    = link_to 'Ask a Question', new_question_path, class: "btn btn-default"

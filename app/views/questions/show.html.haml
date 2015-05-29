@@ -1,0 +1,26 @@
+%section.views
+  %p#notice= notice
+  %h1.page-header Answers from Verified Doctors
+  .sect
+    %h3 Question
+    %hr/
+    %strong= @question.caption
+    %p= @question.body
+    %h5= @question.user.name
+    = link_to 'Edit', edit_question_path(@question)
+    = link_to 'Back', questions_path
+  %h4 Answers
+  - @answers.each do |answer|
+    .list-group-item
+      = answer.content
+      - if user_signed_in?
+        = form_for AnswerLike.new do |f|
+          = hidden_field(:answer_like, :answer_id, value: "#{answer.id}")
+          = hidden_field(:answer_like, :user_id, value: current_user.id)
+          %div
+            = f.submit "Appreciate", class: "btn btn-primary"
+          %br/
+  %br/
+  .jumbotron
+    %h4.section-header Are you a Doctor? Answer this Question ;
+    = render 'answers/form'

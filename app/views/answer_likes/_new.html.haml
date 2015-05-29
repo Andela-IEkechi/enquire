@@ -1,0 +1,7 @@
+- if user_signed_in?
+  = form_for AnswerLike.new do |f|
+    = hidden_field(:answer_like, :answer_id, value: "#{answer.id}")
+    = hidden_field(:answer_like, :user_id, value: current_user.id)
+    .row.actions.text-center
+      = f.submit "Like", class: "btn btn-primary btn-resize"
+    %br/

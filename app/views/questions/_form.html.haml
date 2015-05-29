@@ -1,0 +1,26 @@
+= form_for(@question) do |f|
+  - if @question.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@question.errors.count, "error")
+        prohibited this question from being saved:
+      %ul
+        - @question.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = hidden_field(:question, :user_id, value: current_user.id)
+  .field
+    = f.label :caption
+    %br/
+    = f.text_area :caption
+  .field
+    = f.label :body
+    %br/
+    = f.text_area :body
+  .field
+    = f.label :doctor_id
+    %br/
+    = f.collection_select :doctor_id, Doctor.order(:id), :id, :name, |
+      :include_blank => false                                        |
+  .actions
+    = f.submit
