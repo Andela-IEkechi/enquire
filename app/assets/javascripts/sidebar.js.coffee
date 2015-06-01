@@ -1,6 +1,6 @@
 # Toggle sidebar
 $(document).ready ->
-  $('#button-toggle').click ->
+  $(document).on 'click', '#button-toggle', ->
     $('#sidebar').toggleClass 'sidebar_toggle'
     return
   return

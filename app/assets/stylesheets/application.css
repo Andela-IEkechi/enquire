@@ -19,6 +19,8 @@
 @import "bootswatch/paper/variables";
 @import "bootstrap";
 @import "bootswatch/paper/bootswatch";
+@import url("http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext");
+
 
 body li {
     margin: auto;
@@ -43,7 +45,6 @@ body li {
     top: 0;
 }
 .views {
-    background: #eeeeee;
     margin-top: 6em;
 }
 .sect {
@@ -74,10 +75,8 @@ body li {
     top: 30px;
 }
 
-body {
-    padding-top: 60px;
-}
 .sidebar li a:hover {
+  color: #ffffff;
   background-color: #64AAE4;
 }
 

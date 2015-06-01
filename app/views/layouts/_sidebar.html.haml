@@ -1,4 +1,13 @@
 %ul.nav.nav-stacked
+  - if user_signed_in?
+    %li
+      %ul.user-info
+        %li
+          -#= image_tag(current_user.image, class: 'user')
+          = current_user.image
+        %li
+          %strong
+            = current_user.name
   %li
     = link_to :hospitals do
       %i.fa.fa-fw.fa-hospital-o
@@ -18,5 +27,23 @@
         Settings
     %li
       = link_to destroy_user_session_path, method: :delete do
-        %i.fa.fa-fw.fa-sign-out
+        %i.fa.fa-fw.fa-power-off
         Log Out
+  - elsif doctor_signed_in?
+    %li
+      = link_to edit_doctor_registration_path do
+        %i.fa.fa-fw.fa-cogs
+        Settings
+    %li
+      = link_to destroy_doctor_session_path, method: :delete do
+        %i.fa.fa-fw.fa-power-off
+        Log Out
+  - else
+    %li
+      = link_to new_doctor_session_path do
+        %i.fa.fa-fw.fa-sign-in
+        Doctor Sign In
+    %li
+      = link_to new_user_session_path do
+        %i.fa.fa-fw.fa-sign-in
+        User Sign In

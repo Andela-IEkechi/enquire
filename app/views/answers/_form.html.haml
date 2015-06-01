@@ -2,8 +2,10 @@
   .field
     = hidden_field(:answer, :question_id, value: params["id"])
   .field
-    = f.label :content
     %br/
     = f.text_area :content
   .actions
-    = f.submit
+    %div
+      = button_tag type: "submit", class: "button-hollow-b" do
+        %i.fa.fa-medkit
+          Post Help

@@ -4,7 +4,7 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # config.secret_key = '5bc498d4c6a5d1456b0fcc4fa5ca5ce2d85f8afa94852f81075c267a408acd52f495c151861441cf0a883fdbaf471db8565c42d6e7302fa0d0f45c57e4b7352d'
+  config.secret_key = '5bc498d4c6a5d1456b0fcc4fa5ca5ce2d85f8afa94852f81075c267a408acd52f495c151861441cf0a883fdbaf471db8565c42d6e7302fa0d0f45c57e4b7352d'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -20,6 +20,8 @@ Devise.setup do |config|
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
   require 'devise/orm/active_record'
+  require 'openid/store/filesystem'
+  config.omniauth :facebook, "1593882420829311", "a604aea7884efe71714212ce1014ecdb"
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is

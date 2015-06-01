@@ -1,11 +1,26 @@
 body {
+  font-family: 'Lato', sans-serif;
+  font-style: italic;
   background-color: #fff;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
+h1 {
+  font-size: 2em;
+}
 
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.17em;
+}
+
+h4 {
+  font-size: 1.33em;
+}
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
@@ -24,8 +39,9 @@ a {
     color: #666;
   }
   &:hover {
-    color: #fff;
-    background-color: #000;
+    text-decoration: none;
+    color: #64AAE4;
+    background-color: transparent;
   }
 }
 
@@ -67,3 +83,12 @@ div {
     list-style: square;
   }
 }
+.form-wrapper {
+  max-width: 600px;
+}
+
+.form-wrapper input[type=number] {
+  outline: solid thin;
+  outline-color: #2E2F30;
+}
+

@@ -1,0 +1,29 @@
+::-webkit-input-placeholder {
+    font-size: 14px;
+    color: black;
+    text-transform: uppercase;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+}
+:-moz-placeholder { /* older Firefox*/
+    font-size:14px;
+    color: black;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+}
+::-moz-placeholder { /* Firefox 19+ */
+    font-size: 14px;
+    color: black;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+}
+:-ms-input-placeholder {
+    font-size: 14px;
+    color: black;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+}

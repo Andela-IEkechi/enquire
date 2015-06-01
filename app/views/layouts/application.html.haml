@@ -1,20 +1,20 @@
 !!!
 %html
   %head
-    %title Muscle
+    %title Doctopus
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = favicon_link_tag 'favicon.png'
     = csrf_meta_tags
   %body
+    = render 'layouts/header'
     - if notice
       %p.alert.alert-success= notice
     - if alert
       %p.alert.alert-danger= alert
-    = render 'layouts/header'
   .row
     .sidebar_toggle#sidebar
       .sidebar
         = render 'layouts/sidebar'
-    .content_wrapper
+    .content_wrapper.container-fluid
       = yield

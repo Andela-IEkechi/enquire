@@ -14,4 +14,4 @@
     .navbar-text.pull-right
       - unless !user_signed_in?
         = succeed "." do
-          %strong= current_user.name
+          = link_to "<i class=\"fa fa-2x fa-comment-o\"></i> Ask a Question".html_safe, new_question_path, class: ""

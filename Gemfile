@@ -31,7 +31,7 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'font-awesome-rails'
 # bootswatch for flat nice designs
 gem 'bootswatch-rails'
-
+gem 'pry'
 # Use devise for authentication
 gem 'devise'
 gem 'omniauth'
@@ -43,10 +43,10 @@ gem 'omniauth-openid'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
-# Use paperclip for image upload
-gem 'paperclip'
-# Use s3 for storage
-gem 'aws-sdk', '< 2.0'
+# Use carrierwave for image uploads
+gem 'carrierwave'
+gem 'mini_magick'
+gem "fog"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

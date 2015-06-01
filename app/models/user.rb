@@ -5,24 +5,44 @@ class User < ActiveRecord::Base
   has_many :hospital_likes
   has_many :reviews
   has_many :hospitals, through: :hospital_likes, class_name: 'Hospital'
+
+  mount_uploader :image, ImageUploader
+  validate :image_size_validation
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_attached_file :image, styles: { large: "650x700>",
-                                      medium: "300x300>",
-                                      thumb: "100x100>" },
-                    storage: :s3,
-                    bucket: 'andela-ratsi',
-                    s3_credentials: {
-                        access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-                        secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
-                    }
+  devise :omniauthable, :omniauth_providers => [:facebook]
 
-  validates_attachment_content_type :image, content_type: /^image\/(png|jpeg)/,
-                                    message: 'only (png/jpeg) images'
 
-  validates_attachment :image, size: { in: 0..5.megabytes }
+  private
+
+  def self.find_for_facebook(access_token, signed_in_resource=nil)
+    data = access_token.info
+    user = User.where(provider: access_token.provider, uid: access_token.uid).first
+    if user
+      return user
+    else
+      registered_user = User.where(:email => access_token.info.email).first
+      if registered_user
+        return registered_user
+      else
+        user = User.create(
+            name: data["name"],
+            provider: access_token.provider,
+            email: data["email"],
+            image: data["image"],
+            uid: access_token.uid,
+            password: Devise.friendly_token[0, 20],
+        )
+      end
+    end
+  end
+
+  def image_size_validation
+    errors[:image] << "should be less than 500KB" if image.size > 0.5.megabytes
+  end
 
 end

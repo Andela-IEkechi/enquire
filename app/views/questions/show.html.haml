@@ -1,26 +1,42 @@
 %section.views
+  %br/
   %p#notice= notice
   %h1.page-header Answers from Verified Doctors
-  .sect
-    %h3 Question
-    %hr/
+  %h3.fa.fa-2x.fa-question-circle
+    Question
+  %br/
+  %blockquote
     %strong= @question.caption
     %p= @question.body
-    %h5= @question.user.name
-    = link_to 'Edit', edit_question_path(@question)
-    = link_to 'Back', questions_path
+    %footer
+      %strong
+        = image_tag(current_user.image.url(:thumb), class: 'user')
+        = @question.user.name
+      %strong.pull-right.fa.fa-clock-o.likes
+        = @question.created_at.strftime("%d %b %y")
+  %br/
+  = link_to edit_question_path(@question) do
+    %button.button-hollow-b.fa.fa-pencil-square-o
+      Edit Question
+  = link_to questions_path do
+    %button.button-hollow-b.fa.fa-arrow-circle-left
+      Back to Questions
   %h4 Answers
   - @answers.each do |answer|
     .list-group-item
       = answer.content
+      -#= answer.doctor.name
       - if user_signed_in?
         = form_for AnswerLike.new do |f|
           = hidden_field(:answer_like, :answer_id, value: "#{answer.id}")
           = hidden_field(:answer_like, :user_id, value: current_user.id)
           %div
-            = f.submit "Appreciate", class: "btn btn-primary"
+            = button_tag type: "submit", class: "button-hollow-b" do
+              %i.fa.fa-heart.likes
+                #{answer.answer_likes.count}
           %br/
   %br/
-  .jumbotron
-    %h4.section-header Are you a Doctor? Answer this Question ;
-    = render 'answers/form'
+  -if doctor_signed_in?
+    .jumbotron
+      %h4.section-header Are you a Doctor? Answer this Question ;
+      = render 'answers/form'

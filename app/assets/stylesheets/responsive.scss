@@ -9,12 +9,13 @@
     position: absolute;
     top: 6em;
     padding-left: 2em;
-    z-index: 2;
+    z-index: 10;
     display: block;
   }
 
   .content_wrapper {
-    margin-left: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
 
@@ -32,6 +33,7 @@
 
   .content_wrapper {
     margin-left: 220px;
+    margin-right: 10px;
     overflow-y: scroll;
     bottom: 0;
   }
@@ -44,5 +46,6 @@
   }
   .content_wrapper {
     margin-left: 350px;
+    margin-right: 10px;
   }
 }

@@ -1,3 +1,84 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.button-hollow-a {
+  outline: none;
+  color: #ffffff !important;
+  background-color: #3b5998;
+  border: 1px solid #3b5998;
+  padding: .5em 1.5em;
+  border-radius: 5px;
+  &:hover {
+    border: 1px solid #64AAE4;
+    background: transparent;
+    color: #64AAE4 !important;
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+.button-hollow-b {
+  outline: none;
+  background: transparent;
+  border: 1px solid #64AAE4;
+  padding: .5em 1.5em;
+  border-radius: 0.5em;
+  color: #64AAE4;
+  &:hover {
+    border: 1px solid #670000;
+    color:#670000;
+    a {
+      color: #670000 !important;
+    }
+  }
+}
+.button-hollow-c {
+  outline: none;
+  background: transparent;
+  border: 1px solid #64AAE4;
+  padding: .5em 1.5em;
+  border-radius: 1.5em;
+  color: #64AAE4;
+  &:hover {
+    border: 1px solid #670000;
+    color:#670000;
+    a {
+      color: #670000 !important;
+    }
+  }
+}
+.likes {
+  color: #670000;
+}
+
+.or {
+ text-align: center;
+ position: relative;
+
+ span {
+   display: inline-block;
+ }
+ span:before,
+ span:after {
+   border-top: 1px solid black;
+   display: block;
+   height: 1px;
+   content: " ";
+   width: 40%;
+   position: absolute;
+   left: 0;
+   top: 1.2em;
+ }
+ span:after {
+   right: 0;
+   left: auto;
+ }
+}
+.user {
+  width: 50px;
+  height: 50px;
+}
+.user-info li {
+  display: inline-block;
+}
