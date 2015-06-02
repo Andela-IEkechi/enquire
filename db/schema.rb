@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150208081007) do
+ActiveRecord::Schema.define(version: 20150602174619) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,26 @@ ActiveRecord::Schema.define(version: 20150208081007) do
   add_index "doctor_likes", ["doctor_id"], name: "index_doctor_likes_on_doctor_id", using: :btree
   add_index "doctor_likes", ["user_id"], name: "index_doctor_likes_on_user_id", using: :btree
 
+  create_table "doctor_profiles", force: :cascade do |t|
+    t.integer  "doctor_id"
+    t.date     "date_of_birth"
+    t.string   "gender"
+    t.text     "address"
+    t.integer  "phone_number"
+    t.string   "ethnicity"
+    t.string   "occupation"
+    t.string   "religion"
+    t.string   "marital_status"
+    t.float    "weight"
+    t.float    "height"
+    t.string   "year_of_grad"
+    t.string   "specialization"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "doctor_profiles", ["doctor_id"], name: "index_doctor_profiles_on_doctor_id", using: :btree
+
   create_table "doctors", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -69,6 +89,16 @@ ActiveRecord::Schema.define(version: 20150208081007) do
 
   add_index "doctors", ["email"], name: "index_doctors_on_email", unique: true, using: :btree
   add_index "doctors", ["reset_password_token"], name: "index_doctors_on_reset_password_token", unique: true, using: :btree
+
+  create_table "follows", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "follows", ["question_id"], name: "index_follows_on_question_id", using: :btree
+  add_index "follows", ["user_id"], name: "index_follows_on_user_id", using: :btree
 
   create_table "hospital_likes", force: :cascade do |t|
     t.integer  "user_id"
@@ -117,6 +147,24 @@ ActiveRecord::Schema.define(version: 20150208081007) do
   add_index "reviews", ["hospital_id"], name: "index_reviews_on_hospital_id", using: :btree
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
+  create_table "user_profiles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.date     "date_of_birth"
+    t.string   "gender"
+    t.text     "address"
+    t.integer  "phone_number"
+    t.string   "ethnicity"
+    t.string   "occupation"
+    t.string   "religion"
+    t.string   "marital_status"
+    t.float    "weight"
+    t.float    "height"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "user_profiles", ["user_id"], name: "index_user_profiles_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -147,10 +195,14 @@ ActiveRecord::Schema.define(version: 20150208081007) do
   add_foreign_key "answers", "questions"
   add_foreign_key "doctor_likes", "doctors"
   add_foreign_key "doctor_likes", "users"
+  add_foreign_key "doctor_profiles", "doctors"
+  add_foreign_key "follows", "questions"
+  add_foreign_key "follows", "users"
   add_foreign_key "hospital_likes", "hospitals"
   add_foreign_key "hospital_likes", "users"
   add_foreign_key "questions", "doctors"
   add_foreign_key "questions", "users"
   add_foreign_key "reviews", "hospitals"
   add_foreign_key "reviews", "users"
+  add_foreign_key "user_profiles", "users"
 end

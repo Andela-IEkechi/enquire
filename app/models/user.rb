@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
   has_many :hospital_likes
   has_many :reviews
   has_many :hospitals, through: :hospital_likes, class_name: 'Hospital'
+  has_one :user_profile
+  has_many :follows
+  has_many :questions, through: :follows, class_name: 'Question'
 
   mount_uploader :image, ImageUploader
   validate :image_size_validation

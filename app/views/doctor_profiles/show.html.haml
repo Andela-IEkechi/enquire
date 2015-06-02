@@ -1,0 +1,45 @@
+%p#notice= notice
+
+%p
+  %b Doctor:
+  = @doctor_profile.doctor
+%p
+  %b Date of birth:
+  = @doctor_profile.date_of_birth
+%p
+  %b Gender:
+  = @doctor_profile.gender
+%p
+  %b Address:
+  = @doctor_profile.address
+%p
+  %b Phone number:
+  = @doctor_profile.phone_number
+%p
+  %b Ethnicity:
+  = @doctor_profile.ethnicity
+%p
+  %b Occupation:
+  = @doctor_profile.occupation
+%p
+  %b Religion:
+  = @doctor_profile.religion
+%p
+  %b Marital status:
+  = @doctor_profile.marital_status
+%p
+  %b Weight:
+  = @doctor_profile.weight
+%p
+  %b Height:
+  = @doctor_profile.height
+%p
+  %b Year of grad:
+  = @doctor_profile.year_of_grad
+%p
+  %b Specialization:
+  = @doctor_profile.specialization
+
+= link_to 'Edit', edit_doctor_profile_path(@doctor_profile)
+\|
+= link_to 'Back', doctor_profiles_path

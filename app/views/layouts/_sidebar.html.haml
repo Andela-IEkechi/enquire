@@ -3,8 +3,7 @@
     %li
       %ul.user-info
         %li
-          -#= image_tag(current_user.image, class: 'user')
-          = current_user.image
+          = image_tag(current_user.image, class: 'user')
         %li
           %strong
             = current_user.name

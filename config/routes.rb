@@ -8,10 +8,13 @@ Rails.application.routes.draw do
   resources :questions
   resource  :dashboard
   resources :doctors
+  resources :doctor_profiles
+  resources :user_profiles
 
   resources :hospital_likes
   resources :answer_likes
   resources :doctor_likes
+  resources :follows
 
   devise_for :doctors
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }

@@ -1,0 +1,45 @@
+%h1 Listing doctor_profiles
+
+%table
+  %thead
+    %tr
+      %th Doctor
+      %th Date of birth
+      %th Gender
+      %th Address
+      %th Phone number
+      %th Ethnicity
+      %th Occupation
+      %th Religion
+      %th Marital status
+      %th Weight
+      %th Height
+      %th Year of grad
+      %th Specialization
+      %th
+      %th
+      %th
+
+  %tbody
+    - @doctor_profiles.each do |doctor_profile|
+      %tr
+        %td= doctor_profile.doctor
+        %td= doctor_profile.date_of_birth
+        %td= doctor_profile.gender
+        %td= doctor_profile.address
+        %td= doctor_profile.phone_number
+        %td= doctor_profile.ethnicity
+        %td= doctor_profile.occupation
+        %td= doctor_profile.religion
+        %td= doctor_profile.marital_status
+        %td= doctor_profile.weight
+        %td= doctor_profile.height
+        %td= doctor_profile.year_of_grad
+        %td= doctor_profile.specialization
+        %td= link_to 'Show', doctor_profile
+        %td= link_to 'Edit', edit_doctor_profile_path(doctor_profile)
+        %td= link_to 'Destroy', doctor_profile, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Doctor profile', new_doctor_profile_path

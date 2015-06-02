@@ -14,5 +14,14 @@
       %i.fa.fa-comments.likes
         = question.answers.count
         Answers
-      %button.pull-right.fa.fa-comments.btn.btn-success
-        Follow
+      %i.fa.fa-user-plus.text-success
+        = question.follows.count
+        Follower(s)
+      - unless question.users.include?(current_user)
+        .pull-right
+          = form_for Follow.new do |f|
+            = hidden_field(:follow, :question_id, value: "#{question.id}")
+            %div
+              = button_tag type: "submit", class: "btn btn-success" do
+                %i.fa.fa-comments
+                  Follow
