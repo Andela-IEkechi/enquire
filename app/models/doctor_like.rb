@@ -1,6 +1,4 @@
 class DoctorLike < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :doctor
-
-  validates_uniqueness_of :user_id
+  belongs_to :user, -> { where(role: "user") }
+  belongs_to :user, -> { where(doctor: true) }
 end

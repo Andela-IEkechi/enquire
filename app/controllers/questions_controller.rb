@@ -1,11 +1,23 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /questions
   # GET /questions.json
   def index
     @questions = Question.all
+  end
+
+  def mine
+    @questions = Question.where(user: current_user)
+  end
+
+  def followed
+    @questions = User.find(current_user.id).questions
+  end
+
+  def interest
+
   end
 
   # GET /questions/1

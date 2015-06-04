@@ -5,9 +5,12 @@ class User < ActiveRecord::Base
   has_many :hospital_likes
   has_many :reviews
   has_many :hospitals, through: :hospital_likes, class_name: 'Hospital'
-  has_one :user_profile
+  has_one :profile
   has_many :follows
   has_many :questions, through: :follows, class_name: 'Question'
+
+  scope :is_doctor, -> { where(doctor: true) }
+  scope :client, -> { where(role: 'user') }
 
   mount_uploader :image, ImageUploader
   validate :image_size_validation
@@ -19,6 +22,17 @@ class User < ActiveRecord::Base
 
   devise :omniauthable, :omniauth_providers => [:facebook]
 
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+
+  SPECIALIZATION = ["Medicine", "Surgery", "Obstetrics & Gynaecology", "Paediatrics", "Pathology (Morbid Anatomy, Chemical Pathology, Haematology/Immunology and Microbiology)",
+                    "Otorhinolaryngology (ENT)", "Radiation Medicine", "Radiotherapy", "Ophthalmology", "Community Medicine", "Anaesthesia", "Psychiatry",
+                    "Dentistry (Restorative. Preventive, Dental Child Health and Maxiliofacial)"]
+
+  GENDER = ["Male", "Female"]
+  RELIGION = ["Christianity", "Islam", "Chrislam", "The Grail Movement", "The Reformed Ogboni Fraternity", "Non-Religious", "Other"]
+  TRIBE = ["Igbo", "Hausa/Fulani", "Yoruba"]
+  MARITAL = ["Single", "Married", "Widowed", "Divorced", "Cohabiting", "Civil Union", "Domestic Partnership", "Unmarried Partners" ]
 
   private
 

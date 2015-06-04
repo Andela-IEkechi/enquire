@@ -25,7 +25,7 @@
   - @answers.each do |answer|
     .list-group-item
       = answer.content
-      -#= answer.doctor.name
+      = answer.user.try(:name)
       - if user_signed_in?
         = form_for AnswerLike.new do |f|
           = hidden_field(:answer_like, :answer_id, value: "#{answer.id}")

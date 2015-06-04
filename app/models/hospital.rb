@@ -2,6 +2,7 @@ class Hospital < ActiveRecord::Base
   has_many :hospital_likes
   has_many :users, through: :hospital_likes, class_name: 'User'
   mount_uploader :image, ImageUploader
+  has_many :users, -> { where(doctor: true) }
 
   validates :image, presence: true
   validate :image_size_validation

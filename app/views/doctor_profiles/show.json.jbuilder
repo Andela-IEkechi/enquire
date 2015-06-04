@@ -1,1 +1,0 @@
-json.extract! @doctor_profile, :id, :doctor_id, :date_of_birth, :gender, :address, :phone_number, :ethnicity, :occupation, :religion, :marital_status, :weight, :height, :year_of_grad, :specialization, :created_at, :updated_at

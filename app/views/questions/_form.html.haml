@@ -20,7 +20,7 @@
   .field
     = f.label :doctor_id
     %br/
-    = f.collection_select :doctor_id, Doctor.order(:id), :id, :name, |
+    = f.collection_select :user_id, User.where(doctor: true).order(:id), :id, :name, |
       :include_blank => false                                        |
   .actions
     = f.submit

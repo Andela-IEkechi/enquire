@@ -1,5 +1,6 @@
 class AnswerLikesController < ApplicationController
   before_action :set_appreciate, only: [:destroy]
+  load_and_authorize_resource
 
   def new
     @appreciate = AnswerLike.new

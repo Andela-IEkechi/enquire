@@ -82,3 +82,18 @@
 .user-info li {
   display: inline-block;
 }
+#question_header {
+  li {
+    display: inline-block;
+    margin: 0 1em;
+    margin-top: 1em;
+    &hover {
+      margin-bottom: 1em!important;
+      border-bottom: solid 2px #64AAE4!important;
+    }
+    &active {
+      margin-bottom: 1em;
+      border-bottom: solid 2px #64AAE4;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 class DoctorLikesController < ApplicationController
   before_action :set_like_doctor, only: [:destroy]
-  before_action :authenticate_user!
+  load_and_authorize_resource
 
   def new
     @like_doctor = DoctorLike.new

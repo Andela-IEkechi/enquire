@@ -2,7 +2,7 @@ class DoctorsController < ApplicationController
   before_action :select_doctor, only: [:show]
 
   def index
-    @doctors = Doctor.all
+    @doctors = User.is_doctor
   end
 
   def show

@@ -28,21 +28,8 @@
       = link_to destroy_user_session_path, method: :delete do
         %i.fa.fa-fw.fa-power-off
         Log Out
-  - elsif doctor_signed_in?
-    %li
-      = link_to edit_doctor_registration_path do
-        %i.fa.fa-fw.fa-cogs
-        Settings
-    %li
-      = link_to destroy_doctor_session_path, method: :delete do
-        %i.fa.fa-fw.fa-power-off
-        Log Out
   - else
-    %li
-      = link_to new_doctor_session_path do
-        %i.fa.fa-fw.fa-sign-in
-        Doctor Sign In
     %li
       = link_to new_user_session_path do
         %i.fa.fa-fw.fa-sign-in
-        User Sign In
+        Sign In

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "user_profiles/new", :type => :view do
   before(:each) do
-    assign(:user_profile, UserProfile.new(
+    assign(:user_profile, Profile.new(
       :user => nil,
       :gender => "MyString",
       :address => "MyText",

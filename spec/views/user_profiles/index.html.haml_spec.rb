@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "user_profiles/index", :type => :view do
   before(:each) do
-    assign(:user_profiles, [
-      UserProfile.create!(
+    assign(:profiles, [
+      Profile.create!(
         :user => nil,
         :gender => "Gender",
         :address => "MyText",
@@ -15,7 +15,7 @@ RSpec.describe "user_profiles/index", :type => :view do
         :weight => 1.5,
         :height => 1.5
       ),
-      UserProfile.create!(
+      Profile.create!(
         :user => nil,
         :gender => "Gender",
         :address => "MyText",

@@ -1,6 +1,6 @@
 class HospitalLikesController < ApplicationController
   before_action :set_recommend, only: [:destroy]
-  before_action :authenticate_user!
+  load_and_authorize_resource
 
   def new
     @recommend = HospitalLike.new

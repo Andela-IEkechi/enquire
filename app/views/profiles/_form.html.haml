@@ -1,10 +1,10 @@
 %section.views
-  = form_for @doctor_profile do |f|
-    - if @doctor_profile.errors.any?
+  = form_for @profile do |f|
+    - if @profile.errors.any?
       #error_explanation
-        %h2= "#{pluralize(@doctor_profile.errors.count, "error")} prohibited this doctor_profile from being saved:"
+        %h2= "#{pluralize(@profile.errors.count, "error")} prohibited this profile from being saved:"
         %ul
-          - @doctor_profile.errors.full_messages.each do |msg|
+          - @profile.errors.full_messages.each do |msg|
             %li= msg
 
     .field
@@ -12,7 +12,7 @@
       = f.date_select :date_of_birth
     .field
       = f.label :gender
-      = f.select :gender, options_for_select(Doctor::GENDER), include_blank: true
+      = f.select :gender, options_for_select(User::GENDER), include_blank: true
     .field
       = f.label :address
       = f.text_area :address
@@ -21,16 +21,16 @@
       = f.number_field :phone_number
     .field
       = f.label :ethnicity
-      = f.select :ethnicity, options_for_select(Doctor::TRIBE), include_blank: true
+      = f.select :ethnicity, options_for_select(User::TRIBE), include_blank: true
     .field
       = f.label :occupation
       = f.text_field :occupation
     .field
       = f.label :religion
-      = f.select :religion, options_for_select(Doctor::RELIGION), include_blank: true
+      = f.select :religion, options_for_select(User::RELIGION), include_blank: true
     .field
       = f.label :marital_status
-      = f.select :marital_status, options_for_select(Doctor::MARITAL), include_blank: true
+      = f.select :marital_status, options_for_select(User::MARITAL), include_blank: true
     .field
       = f.label :weight
       = f.text_field :weight
@@ -42,6 +42,6 @@
       = f.select :year_of_grad, relevant_years, include_blank: true
     .field
       = f.label :specialization
-      = f.select :specialization, options_for_select(Doctor::SPECIALIZATION), include_blank: true
+      = f.select :specialization, options_for_select(User::SPECIALIZATION), include_blank: true
     .actions
       = f.submit 'Save'

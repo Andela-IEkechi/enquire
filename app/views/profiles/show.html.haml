@@ -1,0 +1,39 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @profile.user
+%p
+  %b Date of birth:
+  = @profile.date_of_birth
+%p
+  %b Gender:
+  = @profile.gender
+%p
+  %b Address:
+  = @profile.address
+%p
+  %b Phone number:
+  = @profile.phone_number
+%p
+  %b Ethnicity:
+  = @profile.ethnicity
+%p
+  %b Occupation:
+  = @profile.occupation
+%p
+  %b Religion:
+  = @profile.religion
+%p
+  %b Marital status:
+  = @profile.marital_status
+%p
+  %b Weight:
+  = @profile.weight
+%p
+  %b Height:
+  = @profile.height
+
+= link_to 'Edit', edit_profile_path(@profile)
+|
+= link_to 'Back', profiles_path

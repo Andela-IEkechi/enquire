@@ -6,17 +6,18 @@ Rails.application.routes.draw do
   resources :hospitals
   resources :answers
   resources :questions
+  get "/mine_questions", to: "questions#mine"
+  get "/followed_questions", to: "questions#followed"
+  get "/interest_questions", to: "questions#interest"
   resource  :dashboard
   resources :doctors
-  resources :doctor_profiles
-  resources :user_profiles
+  resources :profiles
 
   resources :hospital_likes
   resources :answer_likes
   resources :doctor_likes
   resources :follows
 
-  devise_for :doctors
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -39,7 +39,8 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-openid'
-
+# Use cancan for authorization
+gem 'cancancan', '~> 1.10.1'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

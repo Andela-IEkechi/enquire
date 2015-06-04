@@ -1,14 +1,5 @@
 class AnswersController < ApplicationController
-  before_action :authenticate_doctor!
-  before_action :is_verified?, only: [:create, :edit, :update, :destroy]
-
-  def is_verified?
-    if current_doctor.verified?
-      true
-    else
-      redirect_to root_path, notice: 'You must be a verified Doctor to create an Answer.'
-    end
-  end
+  load_and_authorize_resource
 
   # GET /answers
   # GET /answers.json

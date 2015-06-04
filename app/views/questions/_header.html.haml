@@ -1,0 +1,18 @@
+%section.views
+  %ul.container-fluid.text-center#question_header
+    %li
+      = link_to questions_path do
+        %i.fa.fa-clock-o
+          All
+    %li
+      = link_to followed_questions_path do
+        %i.fa.fa-clock-o
+          Following
+    %li
+      = link_to interest_questions_path do
+        %i.fa.fa-clock-o
+          Interests
+    %li
+      = link_to mine_questions_path do
+        %i.fa.fa-clock-o
+          Mine

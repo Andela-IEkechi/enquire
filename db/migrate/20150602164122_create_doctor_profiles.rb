@@ -1,7 +1,7 @@
 class CreateDoctorProfiles < ActiveRecord::Migration
   def change
     create_table :doctor_profiles do |t|
-      t.references :doctor, index: true
+      t.references :user, index: true
       t.date :date_of_birth
       t.string :gender
       t.text :address
@@ -17,6 +17,6 @@ class CreateDoctorProfiles < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_foreign_key :doctor_profiles, :doctors
+    add_foreign_key :doctor_profiles, :users
   end
 end

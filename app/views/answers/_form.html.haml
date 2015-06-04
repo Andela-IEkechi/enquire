@@ -1,11 +1,13 @@
-= form_for Answer.new do |f|
-  .field
-    = hidden_field(:answer, :question_id, value: params["id"])
-  .field
-    %br/
-    = f.text_area :content
-  .actions
-    %div
-      = button_tag type: "submit", class: "button-hollow-b" do
-        %i.fa.fa-stethoscope
-          Post Help
+- if user_signed_in?
+  - if can? :manage, Answer
+    = form_for Answer.new do |f|
+      .field
+        = hidden_field(:answer, :question_id, value: params["id"])
+      .field
+        %br/
+        = f.text_area :content
+      .actions
+        %div
+          = button_tag type: "submit", class: "button-hollow-b" do
+            %i.fa.fa-stethoscope
+              Post Help

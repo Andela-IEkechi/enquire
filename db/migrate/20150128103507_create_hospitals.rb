@@ -5,7 +5,7 @@ class CreateHospitals < ActiveRecord::Migration
       t.text :decription
       t.text :address
       t.string :classification
-      t.attachment :image
+      t.string :image
       t.boolean :verified
 
       t.timestamps null: false

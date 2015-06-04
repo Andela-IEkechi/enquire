@@ -1,11 +1,6 @@
 class HospitalsController < ApplicationController
   before_action :set_hospital, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:create, :edit, :update, :destroy]
-  before_action :is_admin?, only: [:create, :edit, :update, :destroy]
-
-  def is_admin?
-    redirect_to root_path unless current_user.admin?
-  end
+  load_and_authorize_resource
 
   # GET /hospitals
   # GET /hospitals.json
