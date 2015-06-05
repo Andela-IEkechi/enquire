@@ -87,10 +87,12 @@
     display: inline-block;
     margin: 0 1em;
     margin-top: 1em;
+    // Not yet working, don't know why yet
     &hover {
       margin-bottom: 1em!important;
       border-bottom: solid 2px #64AAE4!important;
     }
+    // Not yet working, don't know why yet
     &active {
       margin-bottom: 1em;
       border-bottom: solid 2px #64AAE4;

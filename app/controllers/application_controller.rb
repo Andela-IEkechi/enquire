@@ -5,17 +5,20 @@ class ApplicationController < ActionController::Base
   after_action :store_location
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
+  skip_before_filter :verify_authenticity_token
 
   # Define route on sign in
   def after_sign_in_path_for(resource)
-    # super(resource)
-    session[:previous_url] || questions_path(resource)
+    if @user.sign_in_count < 2
+      edit_user_registration_path(@user)
+    else
+      session[:previous_url] || questions_path
+    end
   end
 
   # Define route on sign up
   def after_sign_up_path_for(resource)
-    # super(resource)
-    questions_path(resource)
+    edit_user_registration_path(@user)
   end
 
   protected
@@ -37,7 +40,7 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :name, :image) }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :email, :password, :password_confirmation, :current_password, :bio, :image) }
   end
 
