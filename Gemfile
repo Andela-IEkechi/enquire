@@ -49,6 +49,9 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem "fog"
 
+# for storing sensitive stuffs
+gem "figaro"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
