@@ -52,6 +52,9 @@ gem "fog"
 # for storing sensitive stuffs
 gem "figaro"
 
+#awesome font and icons
+gem "font-awesome-rails"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
