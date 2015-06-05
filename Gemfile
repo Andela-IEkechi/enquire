@@ -66,8 +66,8 @@ group :development, :test do
   gem 'spring'
 
   # Use rspec for testing
-  gem 'rspec'
-  gem 'rspec-rails'
+  # gem 'rspec'
+  gem 'rspec-rails', '~> 3.2.1'
   gem 'rails_12factor'
 end
 
