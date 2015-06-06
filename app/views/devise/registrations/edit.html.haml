@@ -57,8 +57,65 @@
           %br/
           = f.file_field :image, class: "button-hollow-b"
           %br/
-        = render "profile", :f => f
-  
+        .field.form-group
+          %br/
+          = f.label :date_of_birth
+          %br/
+          = f.date_select :date_of_birth
+        .field.form-group
+          %br/
+          = f.label :gender
+          %br/
+          = f.select :gender, options_for_select(User::GENDER), include_blank: true
+        .field.form-group
+          %br/
+          = f.label :address
+          %br/
+          = f.text_area :address
+        .field.form-group
+          = f.label :phone_number
+          %br/
+          = f.number_field :phone_number
+        .field.form-group
+          %br/
+          = f.label :ethnicity
+          %br/
+          = f.select :ethnicity, options_for_select(User::TRIBE), include_blank: true
+        .field.form-group
+          %br/
+          = f.label :occupation
+          %br/
+          = f.text_field :occupation
+        .field.form-group
+          %br/
+          = f.label :religion
+          %br/
+          = f.select :religion, options_for_select(User::RELIGION), include_blank: true
+        .field.form-group
+          %br/
+          = f.label :marital_status
+          %br/
+          = f.select :marital_status, options_for_select(User::MARITAL), include_blank: true
+        .field.form-group
+          %br/
+          = f.label :weight
+          %br/
+          = f.text_field :weight
+        .field.form-group
+          %br/
+          = f.label :height
+          %br/
+          = f.text_field :height
+        .field.form-group
+          %br/
+          = f.label :year_of_grad
+          %br/
+          = f.select :year_of_grad, relevant_years, include_blank: true
+        .field.form-group
+          %br/
+          = f.label :specialization
+          %br/
+          = f.select :specialization, options_for_select(User::SPECIALIZATION), include_blank: true
         .actions
           = f.submit "Update", class: "btn btn-md button-hollow-c"
       %h3 Unhappy? Cancel my account
