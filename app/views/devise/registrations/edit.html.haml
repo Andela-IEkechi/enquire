@@ -61,7 +61,8 @@
           %br/
           = f.label :date_of_birth
           %br/
-          = f.date_select :date_of_birth
+          = f.date_select :date_of_birth, :order => [:day, :month, :year],
+            start_year: (Date.today.year - 96), :html=>{:class => "form-control"}
         .field.form-group
           %br/
           = f.label :gender

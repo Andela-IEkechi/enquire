@@ -1,39 +1,50 @@
-%p#notice= notice
+%section.views
+  %p#notice= notice
 
-%p
-  %b User:
-  = @profile.user
-%p
-  %b Date of birth:
-  = @profile.date_of_birth
-%p
-  %b Gender:
-  = @profile.gender
-%p
-  %b Address:
-  = @profile.address
-%p
-  %b Phone number:
-  = @profile.phone_number
-%p
-  %b Ethnicity:
-  = @profile.ethnicity
-%p
-  %b Occupation:
-  = @profile.occupation
-%p
-  %b Religion:
-  = @profile.religion
-%p
-  %b Marital status:
-  = @profile.marital_status
-%p
-  %b Weight:
-  = @profile.weight
-%p
-  %b Height:
-  = @profile.height
+  %p
+    %b User:
+    = @profile.name
+  %p
+    %b Bio:
+    = @profile.bio
+  %p
+    %b Date of birth:
+    = @profile.date_of_birth
+  %p
+    %b Gender:
+    = @profile.gender
+  %p
+    %b Address:
+    = @profile.address
+  %p
+    %b Phone number:
+    = @profile.phone_number
+  %p
+    %b Ethnicity:
+    = @profile.ethnicity
+  %p
+    %b Occupation:
+    = @profile.occupation
+  %p
+    %b Religion:
+    = @profile.religion
+  %p
+    %b Marital status:
+    = @profile.marital_status
+  %p
+    %b Weight:
+    = @profile.weight
+  %p
+    %b Height:
+    = @profile.height
 
-= link_to 'Edit', edit_profile_path(@profile)
-|
-= link_to 'Back', profiles_path
+  - if @profile.role == "doctor"
+    %p
+      %b Specialization:
+      = @profile.height
+    %p
+      %b Has been a Doctor for:
+      = (Date.today.year - @profile.year_of_grad.to_i)
+      years
+
+  = link_to "<i class=\"fa fa-chevron-left\"></i>  Back".html_safe, profiles_path
