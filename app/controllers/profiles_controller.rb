@@ -30,7 +30,7 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       if @profile.save
-        format.html { redirect_to @profile, notice: 'User profile was successfully created.' }
+        format.html { redirect_to dashboard_path, notice: 'User profile was successfully created.' }
         format.json { render :show, status: :created, location: @profile }
       else
         format.html { render :new }
@@ -42,9 +42,10 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1
   # PATCH/PUT /profiles/1.json
   def update
+    @profile = current_user.profile
     respond_to do |format|
-      if @profile.update(profile_params)
-        format.html { redirect_to @profile, notice: 'User profile was successfully updated.' }
+      if @profile.update_attributes(profile_params)
+        format.html { dashboard_path @profile, notice: 'User profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @profile }
       else
         format.html { render :edit }
@@ -58,7 +59,7 @@ class ProfilesController < ApplicationController
   def destroy
     @profile.destroy
     respond_to do |format|
-      format.html { redirect_to profiles_url, notice: 'User profile was successfully destroyed.' }
+      format.html { redirect_to dashboard_path, notice: 'User profile was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

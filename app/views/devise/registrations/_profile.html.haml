@@ -1,0 +1,37 @@
+= f.fields_for :profile_attributes do |profile|
+  .field
+    = profile.label :date_of_birth
+    = profile.date_select :date_of_birth, start_year: (Date.today.year - 96)
+  .field
+    = profile.label :gender
+    = profile.select :gender, options_for_select(User::GENDER), include_blank: true
+  .field
+    = profile.label :address
+    = profile.text_area :address
+  .field
+    = profile.label :phone_number
+    = profile.number_field :phone_number
+  .field
+    = profile.label :ethnicity
+    = profile.select :ethnicity, options_for_select(User::TRIBE), include_blank: true
+  .field
+    = profile.label :occupation
+    = profile.text_field :occupation
+  .field
+    = profile.label :religion
+    = profile.select :religion, options_for_select(User::RELIGION), include_blank: true
+  .field
+    = profile.label :marital_status
+    = profile.select :marital_status, options_for_select(User::MARITAL), include_blank: true
+  .field
+    = profile.label :weight
+    = profile.text_field :weight
+  .field
+    = profile.label :height
+    = profile.text_field :height
+  .field
+    = profile.label :year_of_grad
+    = profile.select :year_of_grad, relevant_years, include_blank: true
+  .field
+    = profile.label :specialization
+    = profile.select :specialization, options_for_select(User::SPECIALIZATION), include_blank: true

@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   has_many :follows
   has_many :questions, through: :follows, class_name: 'Question'
 
+  accepts_nested_attributes_for :profile
+
   scope :is_doctor, -> { where(doctor: true) }
   scope :client, -> { where(role: 'user') }
 
@@ -33,6 +35,7 @@ class User < ActiveRecord::Base
   RELIGION = ["Christianity", "Islam", "Chrislam", "The Grail Movement", "The Reformed Ogboni Fraternity", "Non-Religious", "Other"]
   TRIBE = ["Igbo", "Hausa/Fulani", "Yoruba"]
   MARITAL = ["Single", "Married", "Widowed", "Divorced", "Cohabiting", "Civil Union", "Domestic Partnership", "Unmarried Partners" ]
+  ROLE = ["user", "doctor", "manager"]
 
   private
 
