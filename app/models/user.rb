@@ -11,8 +11,9 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :profile
 
-  scope :is_doctor, -> { where(doctor: true) }
+  scope :is_doctor, -> { where(role: 'doctor') }
   scope :client, -> { where(role: 'user') }
+  scope :manager, -> { where(role: 'manager') }
 
   mount_uploader :image, ImageUploader
   validate :image_size_validation
