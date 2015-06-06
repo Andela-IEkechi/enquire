@@ -1,0 +1,13 @@
+.form-wrapper {
+  max-width: 600px;
+  padding-bottom: 30px;
+}
+
+input[type='file'], input[type='file']:focus {
+  width: 100%;
+  outline: none !important;
+}
+
+input[type='number'] {
+  background-color: #EAF5FF;
+}

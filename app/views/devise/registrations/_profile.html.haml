@@ -1,37 +1,50 @@
 = f.fields_for :profile_attributes do |profile|
-  .field
+  .field.form-group
+    %br/
     = profile.label :date_of_birth
-    = profile.date_select :date_of_birth, start_year: (Date.today.year - 96)
-  .field
+    = profile.date_select :date_of_birth, :order => [:day, :month, :year],
+    start_year: (Date.today.year - 96), :html=>{:class => "form-control"}
+  .field.form-group
+    %br/
     = profile.label :gender
-    = profile.select :gender, options_for_select(User::GENDER), include_blank: true
-  .field
+    = profile.select :gender, options_for_select(User::GENDER), {}, class: "form-control", include_blank: true
+  .field.form-group
+    %br/
     = profile.label :address
-    = profile.text_area :address
-  .field
+    = profile.text_area :address, class: "form-control"
+  .field.form-group
+    %br/
     = profile.label :phone_number
-    = profile.number_field :phone_number
-  .field
+    = profile.number_field :phone_number, class: "form-control"
+  .field.form-group
+    %br/
     = profile.label :ethnicity
-    = profile.select :ethnicity, options_for_select(User::TRIBE), include_blank: true
-  .field
+    = profile.select :ethnicity, options_for_select(User::TRIBE), {}, include_blank: true, class: "form-control"
+  .field.form-group
+    %br/
     = profile.label :occupation
-    = profile.text_field :occupation
-  .field
+    = profile.text_field :occupation, class: "form-control"
+  .field.form-group
+    %br/
     = profile.label :religion
-    = profile.select :religion, options_for_select(User::RELIGION), include_blank: true
-  .field
+    = profile.select :religion, options_for_select(User::RELIGION), {}, include_blank: true, class: "form-control"
+  .field.form-group
+    %br/
     = profile.label :marital_status
-    = profile.select :marital_status, options_for_select(User::MARITAL), include_blank: true
-  .field
+    = profile.select :marital_status, options_for_select(User::MARITAL), {}, include_blank: true, class: "form-control"
+  .field.form-group
+    %br/
     = profile.label :weight
-    = profile.text_field :weight
-  .field
+    = profile.text_field :weight, class: "form-control"
+  .field.form-group
+    %br/
     = profile.label :height
-    = profile.text_field :height
-  .field
+    = profile.text_field :height, class: "form-control"
+  .field.form-group
+    %br/
     = profile.label :year_of_grad
-    = profile.select :year_of_grad, relevant_years, include_blank: true
-  .field
+    = profile.select :year_of_grad, relevant_years, {}, include_blank: true, class: "form-control"
+  .field.form-group
+    %br/
     = profile.label :specialization
-    = profile.select :specialization, options_for_select(User::SPECIALIZATION), include_blank: true
+    = profile.select :specialization, options_for_select(User::SPECIALIZATION), {}, include_blank: true, class: "form-control"

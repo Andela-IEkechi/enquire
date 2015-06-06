@@ -37,7 +37,7 @@
 }
 
 .login_wrapper {
-  position: relative;
+  position: absolute;
   z-index: 20;
   background-repeat: no-repeat;
   background-size: cover;
@@ -53,9 +53,4 @@
       color: transparent;
     }
   }
-}
-
-input[type='file'], input[type='file']:focus {
-  width: 100%;
-  outline: none !important;
 }
