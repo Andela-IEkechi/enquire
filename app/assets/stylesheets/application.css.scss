@@ -21,6 +21,9 @@
 @import "bootswatch/paper/bootswatch";
 @import url("http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext");
 
+html, body {
+  height: 100%;
+}
 
 body li {
     margin: auto;
@@ -71,21 +74,8 @@ body li {
 
 .content_wrapper {
     overflow-y: scroll;
-    bottom: 0;
+    bottom: 0 !important;
     top: 30px;
 }
 
-.sidebar li a:hover {
-  color: #ffffff;
-  background-color: #64AAE4;
-}
-
-.login {
-    margin: 15% 35%;
-    width: 30%;
-    height: 40%;
-}
-
-.sidebar_toggle .sidebar {
-    display: none;
-}
+input, textarea, select, a { outline: none !important; }

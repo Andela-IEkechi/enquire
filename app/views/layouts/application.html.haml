@@ -12,9 +12,9 @@
       %p.alert.alert-success= notice
     - if alert
       %p.alert.alert-danger= alert
-  .row
-    .sidebar_toggle#sidebar
-      .sidebar
-        = render 'layouts/sidebar'
+    - unless request.path == new_user_session_path || request.path == new_user_registration_path || request.path == new_user_password_path
+      .sidebar_toggle#sidebar
+        .sidebar
+          = render 'layouts/sidebar'
     .content_wrapper.container-fluid
       = yield

@@ -1,18 +1,20 @@
 .form-signin {
   background-color: rgba(255, 255, 255, .7);
-  margin-top: 100px !important;
+  margin-top: 10px !important;
   max-width: 400px;
   padding: 15px;
   margin: 0 auto;
-  z-index: 5;
 }
+
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
   margin-bottom: 10px;
 }
+
 .form-signin .checkbox {
   font-weight: normal;
 }
+
 .form-signin .form-control {
   position: relative;
   height: auto;
@@ -22,9 +24,7 @@
   padding: 10px;
   font-size: 16px;
 }
-.form-signin .form-control:focus {
-  z-index: 7;
-}
+
 .form-signin input[type="email"] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
@@ -37,8 +37,8 @@
 }
 
 .login_wrapper {
-  position: fixed;
-  z-index: 3;
+  position: relative;
+  z-index: 20;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center 50%;
@@ -53,4 +53,9 @@
       color: transparent;
     }
   }
+}
+
+input[type='file'], input[type='file']:focus {
+  width: 100%;
+  outline: none !important;
 }
