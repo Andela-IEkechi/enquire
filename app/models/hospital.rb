@@ -6,6 +6,7 @@ class Hospital < ActiveRecord::Base
 
   validates :image, presence: true
   validate :image_size_validation
+  has_one :hospital_verification_request
 
   HOSPITAL_TYPE = ["General", "Specialist", "Psychiatric",
                    "Fertility", "Eye Clinic", "Dental Clinic" ,

@@ -1,0 +1,2 @@
+module HospitalVerificationRequestsHelper
+end

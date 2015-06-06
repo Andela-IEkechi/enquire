@@ -1,0 +1,25 @@
+%h1 Listing doctor_verification_requests
+
+%table
+  %thead
+    %tr
+      %th User
+      %th Hospital
+      %th Message
+      %th
+      %th
+      %th
+
+  %tbody
+    - @doctor_verification_requests.each do |doctor_verification_request|
+      %tr
+        %td= doctor_verification_request.user
+        %td= doctor_verification_request.hospital
+        %td= doctor_verification_request.message
+        %td= link_to 'Show', doctor_verification_request
+        %td= link_to 'Edit', edit_doctor_verification_request_path(doctor_verification_request)
+        %td= link_to 'Destroy', doctor_verification_request, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Doctor verification request', new_doctor_verification_request_path

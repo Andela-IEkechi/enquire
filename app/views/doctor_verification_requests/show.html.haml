@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @doctor_verification_request.user
+%p
+  %b Hospital:
+  = @doctor_verification_request.hospital
+%p
+  %b Message:
+  = @doctor_verification_request.message
+
+= link_to 'Edit', edit_doctor_verification_request_path(@doctor_verification_request)
+\|
+= link_to 'Back', doctor_verification_requests_path
