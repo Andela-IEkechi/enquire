@@ -18,7 +18,7 @@ class Ability
                      Review
                  ]
       can :read, :all
-    elsif user.doctor?
+    elsif user.role == "doctor"
       can :manage, [
                    Answer,
                    DoctorProfile
@@ -31,7 +31,7 @@ class Ability
         user.role == 'manager' && user == hospital.user
       end
       can :manage, Answer do |answer|
-        user.doctor? && user == answer.user && user.verified?
+        user.role == "doctor" && user == answer.user && user.verified?
       end
     end
 

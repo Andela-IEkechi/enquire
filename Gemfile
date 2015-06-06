@@ -49,6 +49,12 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem "fog"
 
+# for storing sensitive stuffs
+gem "figaro"
+
+#awesome font and icons
+gem "font-awesome-rails"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -63,8 +69,8 @@ group :development, :test do
   gem 'spring'
 
   # Use rspec for testing
-  gem 'rspec'
-  gem 'rspec-rails'
+  # gem 'rspec'
+  gem 'rspec-rails', '~> 3.2.1'
   gem 'rails_12factor'
 end
 

@@ -135,7 +135,6 @@ ActiveRecord::Schema.define(version: 20150606003708) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "verified",               default: false
-    t.boolean  "doctor",                 default: false
     t.string   "hospital"
     t.string   "role"
     t.text     "bio"
