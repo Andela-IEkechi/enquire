@@ -12,7 +12,7 @@ class Ability
                      Question,
                      AnswerLike,
                      DoctorLike,
-                     Profile,
+                     # Profile,
                      Follow,
                      HospitalLike,
                      Review
