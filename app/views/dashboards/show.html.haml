@@ -1,1 +1,13 @@
-%section.views
+-#Nav tabs
+%ul.nav.nav-tabs{role: "tablist"}
+  %li.active
+    = link_to(('<icon class="fa fa-bell"></icon> Notifications').html_safe, "#notifications", {role: "tab", "data-toggle" => "tab"})
+  %li
+    = link_to(('<icon class="fa fa-pie-chart"></icon> Activities').html_safe, "#activities", {role: "tab", "data-toggle" => "tab"})
+  %li
+    = link_to(('<icon class="fa fa-user"></icon> Bio').html_safe, "#bio", {role: "tab", "data-toggle" => "tab"})
+
+.tab-content
+  #notifications.tab-pane.active.fade.in notifiction
+  #activities.tab-pane.fade Activity
+  #bio.tab-pane.fade Bio
