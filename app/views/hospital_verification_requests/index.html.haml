@@ -17,8 +17,8 @@
         %td= hospital_verification_request.hospital
         %td= hospital_verification_request.message
         %td= link_to 'Show', hospital_verification_request
-        %td= link_to 'Edit', edit_hospital_verification_request_path(hospital_verification_request)
-        %td= link_to 'Destroy', hospital_verification_request, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        - if can? :destroy, hospital_verification_request
+          %td= link_to 'Verify', hospital_verification_request, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
