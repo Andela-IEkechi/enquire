@@ -5,11 +5,10 @@ class User < ActiveRecord::Base
   has_many :hospital_likes
   has_many :reviews
   has_many :hospitals, through: :hospital_likes, class_name: 'Hospital'
-  has_one :profile
   has_many :follows
+  has_one :doctor_verification_request
   has_many :questions, through: :follows, class_name: 'Question'
-
-  accepts_nested_attributes_for :profile
+  belongs_to :hospital, through: :doctor_lists, class_name: "Hospital"
 
   scope :is_doctor, -> { where(role: 'doctor') }
   scope :client, -> { where(role: 'user') }

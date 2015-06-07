@@ -7,6 +7,7 @@ class Ability
       can :manage, :all
     elsif user.role == 'manager'
       can :manage, Hospital
+      can :create, HospitalVerificationRequest
     elsif user.role == 'user'
       can :manage, [
                      Question,
@@ -18,9 +19,9 @@ class Ability
                  ]
       can :read, :all
     elsif user.role == "doctor"
+      can :create, DoctorVerificationRequest
       can :manage, [
                    Answer,
-                   DoctorProfile
                  ]
     else
       can :manage, Question do |question|
@@ -31,6 +32,9 @@ class Ability
       end
       can :manage, Answer do |answer|
         user.role == "doctor" && user == answer.user && user.verified?
+      end
+      can :read, :destroy, DoctorVerificationRequest do |request|
+        user.role == "manager" && user.hospitals.include?(request.hospital)
       end
     end
 
