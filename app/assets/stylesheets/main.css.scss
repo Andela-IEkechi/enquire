@@ -33,3 +33,11 @@ input[type='number'] {
 .clickable {
   cursor: pointer; cursor: hand;
 }
+
+table {
+  width: 100%;
+}
+
+td + tr {
+  font-weight: bold !important;
+}

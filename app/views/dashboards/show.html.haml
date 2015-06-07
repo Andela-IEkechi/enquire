@@ -10,4 +10,48 @@
 .tab-content
   #notifications.tab-pane.active.fade.in Notifications
   #activities.tab-pane.fade Activities
-  #bio.tab-pane.fade Bio
+  #bio.tab-pane.fade
+    %h5.text-center My Bio
+    .table-responsive
+      %table.table-striped.table-bordered
+        %thead
+        %tbody
+          %tr
+            %td Name
+            %td= current_user.name
+          %tr
+            %td Email
+            %td= current_user.email
+          %tr
+            %td Birth date
+            %td= current_user.date_of_birth
+          %tr
+            %td Gender
+            %td= current_user.gender
+          %tr
+            %td Role
+            %td= current_user.role
+          %tr
+            %td Address
+            %td= current_user.address
+          %tr
+            %td Phone Number
+            %td= current_user.phone_number
+          %tr
+            %td Occupation
+            %td= current_user.occupation
+          %tr
+            %td Religion
+            %td= current_user.religion
+          %tr
+            %td Marital Status
+            %td= current_user.marital_status
+          %tr
+            %td Weight
+            %td= current_user.weight
+          %tr
+            %td Height
+            %td= current_user.height
+          %tr
+            %td Specialization
+            %td= current_user.specialization

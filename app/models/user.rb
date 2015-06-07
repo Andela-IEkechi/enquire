@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :follows
   has_one :doctor_verification_request
   has_many :questions, through: :follows, class_name: 'Question'
-  belongs_to :hospital, through: :doctor_lists, class_name: "Hospital"
+  # belongs_to :hospital, through: :doctor_lists, class_name: "Hospital" todo CHECK
 
   scope :is_doctor, -> { where(role: 'doctor') }
   scope :client, -> { where(role: 'user') }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150606202627) do
+ActiveRecord::Schema.define(version: 20150606213153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,16 @@ ActiveRecord::Schema.define(version: 20150606202627) do
   end
 
   add_index "doctor_likes", ["user_id"], name: "index_doctor_likes_on_user_id", using: :btree
+
+  create_table "doctor_lists", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "hospital_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "doctor_lists", ["hospital_id"], name: "index_doctor_lists_on_hospital_id", using: :btree
+  add_index "doctor_lists", ["user_id"], name: "index_doctor_lists_on_user_id", using: :btree
 
   create_table "doctor_verification_requests", force: :cascade do |t|
     t.integer  "user_id"
@@ -183,6 +193,8 @@ ActiveRecord::Schema.define(version: 20150606202627) do
   add_foreign_key "answers", "users"
   add_foreign_key "doctor_likes", "users"
   add_foreign_key "doctor_likes", "users"
+  add_foreign_key "doctor_lists", "hospitals"
+  add_foreign_key "doctor_lists", "users"
   add_foreign_key "doctor_verification_requests", "hospitals"
   add_foreign_key "doctor_verification_requests", "users"
   add_foreign_key "follows", "questions"
