@@ -1,0 +1,17 @@
+%ul
+  - @my_follows.each do |question|
+    %li
+      %br/
+      = link_to (question), class: "list-group-item" do
+        %strong= question.caption
+        %blockquote
+          %p.lead= question.body
+          %footer
+            %strong= question.user.name
+    %br/
+    %i.fa.fa-comments.likes
+      = question.answers.count
+      Answers
+    %i.fa.fa-user-plus.text-success
+      = question.follows.count
+      Follower(s)

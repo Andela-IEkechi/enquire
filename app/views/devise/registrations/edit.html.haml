@@ -1,114 +1,113 @@
 .container-fluid
   .form-wrapper
-    %section.views
-      %h2.page-header
-        #{resource_name.to_s.humanize} Profile Settings
-      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-        -#= devise_error_messages!
+    %h2.page-header
+      #{resource_name.to_s.humanize} Profile Settings
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      -#= devise_error_messages!
+      .field.form-group
+        %br/
+        = f.label :name
+        %br/
+        = f.text_field :name, autofocus: true, class: "form-control"
+      .field.form-group
+        %br/
+        = f.label :email
+        %br/
+        = f.email_field :email, autofocus: true, class: "form-control"
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        %div
+          Currently waiting confirmation for: #{resource.unconfirmed_email}
+      .field.form-group
+        %br/
+        = f.label :password
+        %i (leave blank if you don't want to change it)
+        %br/
+        = f.password_field :password, autocomplete: "off", class: "form-control"
+      .field.form-group
+        %br/
+        = f.label :password_confirmation
+        %br/
+        = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
+      .field.form-group
+        %br/
+        = f.label :current_password
+        %i (we need your current password to confirm your changes)
+        %br/
+        = f.password_field :current_password, autocomplete: "off", class: "form-control"
+      .field.form-group
+        %br/
+        = f.label :bio
+        %i (Tell us a little about yourself...)
+        %br/
+        = f.text_area :bio, class: "form-control"
+      - if current_user.role.nil?
         .field.form-group
           %br/
-          = f.label :name
+          = f.label :role
+          %i (Select manager if you are a hospital administrator. Doctors will go through a verification process.)
           %br/
-          = f.text_field :name, autofocus: true, class: "form-control"
-        .field.form-group
-          %br/
-          = f.label :email
-          %br/
-          = f.email_field :email, autofocus: true, class: "form-control"
-        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-          %div
-            Currently waiting confirmation for: #{resource.unconfirmed_email}
-        .field.form-group
-          %br/
-          = f.label :password
-          %i (leave blank if you don't want to change it)
-          %br/
-          = f.password_field :password, autocomplete: "off", class: "form-control"
-        .field.form-group
-          %br/
-          = f.label :password_confirmation
-          %br/
-          = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
-        .field.form-group
-          %br/
-          = f.label :current_password
-          %i (we need your current password to confirm your changes)
-          %br/
-          = f.password_field :current_password, autocomplete: "off", class: "form-control"
-        .field.form-group
-          %br/
-          = f.label :bio
-          %i (Tell us a little about yourself...)
-          %br/
-          = f.text_area :bio, class: "form-control"
-        - if current_user.role.nil?
-          .field.form-group
-            %br/
-            = f.label :role
-            %i (Select manager if you are a hospital administrator. Doctors will go through a verification process.)
-            %br/
-            = f.select :role, options_for_select(User::ROLE), include_blank: true, class: "form-control"
-        .field.form-group
-          %br/
-          = f.label :image
-          %br/
-          = image_tag @user.image.url(:thumb)
-          %br/
-          %br/
-          = f.file_field :image, class: "button-hollow-b"
-          %br/
-        .field.form-group
-          %br/
-          = f.label :date_of_birth
-          = f.date_select :date_of_birth, :order => [:day, :month, :year],
-          start_year: (Date.today.year - 96), :html=>{:class => "form-control"}
-        .field.form-group
-          %br/
-          = f.label :gender
-          = f.select :gender, options_for_select(User::GENDER), {}, class: "form-control", include_blank: true
-        .field.form-group
-          %br/
-          = f.label :address
-          = f.text_area :address, class: "form-control"
-        .field.form-group
-          %br/
-          = f.label :phone_number
-          = f.number_field :phone_number, class: "form-control"
-        .field.form-group
-          %br/
-          = f.label :ethnicity
-          = f.select :ethnicity, options_for_select(User::TRIBE), {}, include_blank: true, class: "form-control"
-        .field.form-group
-          %br/
-          = f.label :occupation
-          = f.text_field :occupation, class: "form-control"
-        .field.form-group
-          %br/
-          = f.label :religion
-          = f.select :religion, options_for_select(User::RELIGION), {}, include_blank: true, class: "form-control"
-        .field.form-group
-          %br/
-          = f.label :marital_status
-          = f.select :marital_status, options_for_select(User::MARITAL), {}, include_blank: true, class: "form-control"
-        .field.form-group
-          %br/
-          = f.label :weight
-          = f.text_field :weight, class: "form-control"
-        .field.form-group
-          %br/
-          = f.label :height
-          = f.text_field :height, class: "form-control"
-        .field.form-group
-          %br/
-          = f.label :year_of_grad
-          = f.select :year_of_grad, relevant_years, {}, include_blank: true, class: "form-control"
-        .field.form-group
-          %br/
-          = f.label :specialization
-          = f.select :specialization, options_for_select(User::SPECIALIZATION), {}, include_blank: true, class: "form-control"
-        .actions
-          = f.submit "Update", class: "btn btn-md button-hollow-c"
-      %h3 Unhappy? Cancel my account
-      %p
-        #{button_to "Cancel my account", registration_path(resource_name), class: "btn button-hollow-c", data: { confirm: "Are you sure?" }, method: :delete}
-      = link_to "<i class=\"fa fa-chevron-left\"></i>  Back".html_safe, :back
+          = f.select :role, options_for_select(User::ROLE), include_blank: true, class: "form-control"
+      .field.form-group
+        %br/
+        = f.label :image
+        %br/
+        = image_tag @user.image.url(:thumb)
+        %br/
+        %br/
+        = f.file_field :image, class: "button-hollow-b"
+        %br/
+      .field.form-group
+        %br/
+        = f.label :date_of_birth
+        = f.date_select :date_of_birth, :order => [:day, :month, :year],
+        start_year: (Date.today.year - 96), :html=>{:class => "form-control"}
+      .field.form-group
+        %br/
+        = f.label :gender
+        = f.select :gender, options_for_select(User::GENDER), {}, class: "form-control", include_blank: true
+      .field.form-group
+        %br/
+        = f.label :address
+        = f.text_area :address, class: "form-control"
+      .field.form-group
+        %br/
+        = f.label :phone_number
+        = f.number_field :phone_number, class: "form-control"
+      .field.form-group
+        %br/
+        = f.label :ethnicity
+        = f.select :ethnicity, options_for_select(User::TRIBE), {}, include_blank: true, class: "form-control"
+      .field.form-group
+        %br/
+        = f.label :occupation
+        = f.text_field :occupation, class: "form-control"
+      .field.form-group
+        %br/
+        = f.label :religion
+        = f.select :religion, options_for_select(User::RELIGION), {}, include_blank: true, class: "form-control"
+      .field.form-group
+        %br/
+        = f.label :marital_status
+        = f.select :marital_status, options_for_select(User::MARITAL), {}, include_blank: true, class: "form-control"
+      .field.form-group
+        %br/
+        = f.label :weight
+        = f.text_field :weight, class: "form-control"
+      .field.form-group
+        %br/
+        = f.label :height
+        = f.text_field :height, class: "form-control"
+      .field.form-group
+        %br/
+        = f.label :year_of_grad
+        = f.select :year_of_grad, relevant_years, {}, include_blank: true, class: "form-control"
+      .field.form-group
+        %br/
+        = f.label :specialization
+        = f.select :specialization, options_for_select(User::SPECIALIZATION), {}, include_blank: true, class: "form-control"
+      .actions
+        = f.submit "Update", class: "btn btn-md button-hollow-c"
+    %h3 Unhappy? Cancel my account
+    %p
+      #{button_to "Cancel my account", registration_path(resource_name), class: "btn button-hollow-c", data: { confirm: "Are you sure?" }, method: :delete}
+    = link_to "<i class=\"fa fa-chevron-left\"></i>  Back".html_safe, :back

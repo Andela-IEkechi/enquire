@@ -1,7 +1,7 @@
 %section.views
   = render partial: 'questions/header'
   %ul
-    - @questions.each do |question|
+    - @my_questions.each do |question|
       %li
         %br/
         = link_to (question), class: "list-group-item" do

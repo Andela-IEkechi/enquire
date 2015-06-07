@@ -6,18 +6,8 @@ class QuestionsController < ApplicationController
   # GET /questions.json
   def index
     @questions = Question.all
-  end
-
-  def mine
-    @questions = Question.where(user: current_user)
-  end
-
-  def followed
-    @questions = User.find(current_user.id).questions
-  end
-
-  def interest
-
+    @my_questions = current_user.questions
+    @my_follows = current_user.follows.map{ |follow| follow.question}
   end
 
   # GET /questions/1

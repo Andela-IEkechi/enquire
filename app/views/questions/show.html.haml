@@ -1,26 +1,25 @@
-%section.views
-  %br/
-  %p#notice= notice
-  %h1.page-header Answers from Verified Doctors
-  %h3.fa.fa-2x.fa-question-circle
-    Question
-  %br/
-  %blockquote
-    %strong= @question.caption
-    %p= @question.body
-    %footer
-      %strong
-        = image_tag(current_user.image.url(:thumb), class: 'user')
-        = @question.user.name
-      %strong.pull-right.fa.fa-clock-o.likes
-        = @question.created_at.strftime("%d %b %y")
-  %br/
-  = link_to edit_question_path(@question) do
-    %button.button-hollow-b.fa.fa-pencil-square-o
-      Edit Question
-  = link_to questions_path do
-    %button.button-hollow-b.fa.fa-arrow-circle-left
-      Back to Questions
+%p#notice= notice
+%h1.page-header Answers from Verified Doctors
+%h3.fa.fa-2x.fa-question-circle
+  Question
+%br/
+%blockquote
+  %strong= @question.caption
+  %p= @question.body
+  %footer
+    %strong
+      = image_tag(current_user.image.url(:thumb), class: 'user')
+      = @question.user.name
+    %strong.pull-right.fa.fa-clock-o.likes
+      = @question.created_at.strftime("%d %b %y")
+%br/
+= link_to edit_question_path(@question) do
+  %button.button-hollow-b.fa.fa-pencil-square-o
+    Edit Question
+= link_to questions_path do
+  %button.button-hollow-b.fa.fa-arrow-circle-left
+    Back to Questions
+- unless @answers.empty?
   %h4 Answers
   - @answers.each do |answer|
     .list-group-item
@@ -36,7 +35,7 @@
                 #{answer.answer_likes.count}
           %br/
   %br/
-  -if doctor_signed_in?
+  -if doctor?
     .jumbotron
       %h4.section-header Are you a Doctor? Answer this Question ;
       = render 'answers/form'

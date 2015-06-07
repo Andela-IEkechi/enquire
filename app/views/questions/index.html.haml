@@ -1,27 +1,11 @@
-%section.views
-  = render partial: 'questions/header'
-  %ul
-    - @questions.each do |question|
-      %li
-        %br/
-        = link_to (question), class: "list-group-item" do
-          %strong= question.caption
-          %blockquote
-            %p.lead= question.body
-            %footer
-              %strong= question.user.name
-      %br/
-      %i.fa.fa-comments.likes
-        = question.answers.count
-        Answers
-      %i.fa.fa-user-plus.text-success
-        = question.follows.count
-        Follower(s)
-      - unless question.users.include?(current_user)
-        .pull-right
-          = form_for Follow.new do |f|
-            = hidden_field(:follow, :question_id, value: "#{question.id}")
-            %div
-              = button_tag type: "submit", class: "btn btn-success" do
-                %i.fa.fa-comments
-                  Follow
+= render partial: 'questions/header'
+
+.tab-content
+  #all.tab-pane.active.fade.in
+    = render 'all'
+  #following.tab-pane.active.fade.in
+    = render 'followed'
+  #interests.tab-pane.active.fade.in
+    = render 'interest'
+  #mine.tab-pane.active.fade.in
+    = render 'mine'

@@ -10,9 +10,6 @@ Rails.application.routes.draw do
   resources :hospitals
   resources :answers
   resources :questions
-  get "/mine_questions", to: "questions#mine"
-  get "/followed_questions", to: "questions#followed"
-  get "/interest_questions", to: "questions#interest"
   resource  :dashboard
   resources :doctors
   resources :hospital_likes
