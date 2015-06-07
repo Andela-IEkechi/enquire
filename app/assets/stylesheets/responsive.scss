@@ -4,36 +4,22 @@
 @media only screen and (max-width : 768px) {
   .sidebar {
     width: 50%;
-    height: 100%;
-    background-color: #f5f5f5;
-    position: absolute;
-    top: 6em;
-    padding-left: 2em;
     z-index: 10;
-    display: block;
   }
 
   .content_wrapper {
     margin-left: 10px;
-    margin-right: 10px;
   }
 }
 
 @media only screen and (min-width : 768px) {
   .sidebar {
-    position: fixed;
-    top: 6em;
-    bottom: 0;
-    left: 0;
-    padding-left: 2em;
     width: 200px;
-    background-color: #f5f5f5;
     display: block !important;
   }
 
   .content_wrapper {
     margin-left: 220px;
-    margin-right: 10px;
     overflow-y: scroll;
   }
 }
@@ -45,6 +31,5 @@
   }
   .content_wrapper {
     margin-left: 350px;
-    margin-right: 10px;
   }
 }

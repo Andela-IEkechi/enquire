@@ -1,5 +1,11 @@
 .sidebar {
   padding-top: 2em;
+  position: fixed;
+  left: 0;
+  top: 6em;
+  bottom: 0;
+  padding-left: 2em;
+  background-color: #f5f5f5;
 }
 
 .sidebar li a:hover {

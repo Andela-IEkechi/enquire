@@ -7,13 +7,11 @@
         %li
           %strong
             = current_user.name
-            -#.dropdown
+            %i.dropdown.clickable
               %i#dropdownMenu1.fa.fa-chevron-circle-down.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown"}
               %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1", :role => "menu"}
                 %li{:role => "presentation"}
-                  %a{:href => "#", :role => "menuitem", :tabindex => "-1"} Action
-                %li{:role => "presentation"}
-                  %a{:href => "#", :role => "menuitem", :tabindex => "-1"} Another action
+                  = link_to "My Dashboard", dashboard_path
 
   %li
     = link_to :hospitals do

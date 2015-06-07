@@ -7,23 +7,11 @@ body li {
   list-style: none;
 }
 
-
-//.devise {
-//  background-color: whitesmoke;
-//  box-shadow:  0 1px 1px #333;
-//  margin: 2em;
-//  padding: 0.5em 2em;
-//  height: 65%;
-//  width: 66%;
-//  opacity: 0.9;
-//  overflow: auto;
-//}
-
 .content_wrapper {
   overflow-y: scroll;
   bottom: 0 !important;
   margin-top: 6em;
-
+  margin-right: 10px;
 }
 
 input, textarea, select, a { outline: none !important; }
@@ -40,4 +28,8 @@ input[type='file'], input[type='file']:focus {
 
 input[type='number'] {
   background-color: #EAF5FF;
+}
+
+.clickable {
+  cursor: pointer; cursor: hand;
 }
