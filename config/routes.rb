@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :hospital_verification_requests
   resources :doctor_verification_requests
 
-  root 'questions#index'
+  root 'homes#show'
 
   resources :reviews
   resources :hospitals

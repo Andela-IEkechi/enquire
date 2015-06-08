@@ -6,10 +6,10 @@
         - @doctor_verification_request.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
+  .field.form-group
     = f.label :hospital
     = f.collection_select :hospital_id, Hospital.order(:name), :id, :name, include_blank: true, class: "form-control"
-  .field
+  .field.form-group
     = f.label :message
     = f.text_area :message
   .actions

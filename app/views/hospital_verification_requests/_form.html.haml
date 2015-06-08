@@ -1,16 +1,17 @@
-= form_for @hospital_verification_request do |f|
-  - if @hospital_verification_request.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@hospital_verification_request.errors.count, "error")} prohibited this hospital_verification_request from being saved:"
-      %ul
-        - @hospital_verification_request.errors.full_messages.each do |msg|
-          %li= msg
+.form-wrapper
+  = form_for @hospital_verification_request do |f|
+    - if @hospital_verification_request.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@hospital_verification_request.errors.count, "error")} prohibited this hospital_verification_request from being saved:"
+        %ul
+          - @hospital_verification_request.errors.full_messages.each do |msg|
+            %li= msg
 
-  .field
-    = f.label :hospital
-    = f.collection_select :hospital_id, Hospital.order(:name), :id, :name, include_blank: true, class: "form-control"
-  .field
-    = f.label :message
-    = f.text_area :message
-  .actions
-    = f.submit 'Save'
+    .field.form-group
+      = f.label :hospital
+      = f.collection_select :hospital_id, Hospital.order(:name), :id, :name, include_blank: true, class: "form-control"
+    .field.form-group
+      = f.label :message
+      = f.text_area :message
+    .actions
+      = f.submit 'Save'
