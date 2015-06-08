@@ -13,4 +13,6 @@
     = f.label :message
     = f.text_area :message
   .actions
-    = f.submit 'Save'
+    = button_tag type: "submit", class: "button-hollow-c btn-block" do
+      %i.fa.fa-user-plus
+        Submit

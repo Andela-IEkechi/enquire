@@ -1,25 +1,27 @@
 %h1 Doctor Verification Requests
-
-%table
-  %thead
-    %tr
-      %th User
-      %th Hospital
-      %th Message
-      %th
-      %th
-      %th
-
-  %tbody
-    - @doctor_verification_requests.each do |doctor_verification_request|
+- unless @doctor_verification_requests.empty?
+  %table
+    %thead
       %tr
-        %td= doctor_verification_request.user
-        %td= doctor_verification_request.hospital
-        %td= doctor_verification_request.message
-        %td= link_to 'Show', doctor_verification_request
-        - if can? :destroy, doctor_verification_request
-          %td= link_to 'Verify', doctor_verification_request, :method => :delete, :data => { :confirm => 'Are you satisfied that you know this Doctor enough and want him/her associated with your Hospital?' }
+        %th User
+        %th Hospital
+        %th Message
+        %th
+        %th
+        %th
 
-%br
+    %tbody
+      - @doctor_verification_requests.each do |doctor_verification_request|
+        %tr
+          %td= doctor_verification_request.user
+          %td= doctor_verification_request.hospital
+          %td= doctor_verification_request.message
+          %td= link_to 'Show', doctor_verification_request
+          - if can? :destroy, doctor_verification_request
+            %td= link_to '<i class=\"fa fa-check-square-o\"></i> Verify'.html_safe, doctor_verification_request, :method => :delete, :data => { :confirm => 'Are you satisfied that you know this Doctor enough and want him/her associated with your Hospital?' }
+
+  %br
 - unless verified_doctor?
-  = link_to 'Get Verified!', new_doctor_verification_request_path
+  %i.fa.fa-sign-in.button-hollow-b.btn-block.text-center
+    = link_to new_doctor_verification_request_path do
+      Get Verified!

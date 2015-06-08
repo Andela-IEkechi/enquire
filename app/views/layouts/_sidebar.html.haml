@@ -18,7 +18,9 @@
                 - if admin?
                   %li{:role => "presentation"}
                     = link_to "Hospitals List", hospital_lists_path
-
+                - if unverified_doctor?
+                  %li{:role => "presentation"}
+                    = link_to "Get Verified", doctor_verification_requests_path
   %li
     = link_to :hospitals do
       %i.fa.fa-fw.fa-hospital-o

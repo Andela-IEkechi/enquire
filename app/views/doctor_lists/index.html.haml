@@ -1,23 +1,12 @@
-%h1 Listing doctor_lists
-
-%table
-  %thead
-    %tr
-      %th User
-      %th Hospital
-      %th
-      %th
-      %th
-
-  %tbody
-    - @doctor_lists.each do |doctor_list|
-      %tr
-        %td= doctor_list.user
-        %td= doctor_list.hospital
-        %td= link_to 'Show', doctor_list
-        %td= link_to 'Edit', edit_doctor_list_path(doctor_list)
-        %td= link_to 'Destroy', doctor_list, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Doctor list', new_doctor_list_path
+%h5.text-center Doctors List
+.table-responsive
+  %table.table-striped.table-bordered
+    %thead
+    %tbody
+      - @doctor_lists.each do |doctor_list|
+        %tr
+          %td Name
+          %td= doctor_list.user.name
+          %td= doctor_list.hospital.name
+          %td= link_to '<i class=\"fa fa-user-times\"></i> UnVerify'.html_safe, doctor_list, :method => :delete, :data => { :confirm => "Are you sure you no longer want this Doctor associated with #{doctor_list.hospital.name} hospital?" }
+        %tr

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150606213153) do
+ActiveRecord::Schema.define(version: 20150608201347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,16 @@ ActiveRecord::Schema.define(version: 20150606213153) do
 
   add_index "hospital_likes", ["hospital_id"], name: "index_hospital_likes_on_hospital_id", using: :btree
   add_index "hospital_likes", ["user_id"], name: "index_hospital_likes_on_user_id", using: :btree
+
+  create_table "hospital_lists", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "hospital_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "hospital_lists", ["hospital_id"], name: "index_hospital_lists_on_hospital_id", using: :btree
+  add_index "hospital_lists", ["user_id"], name: "index_hospital_lists_on_user_id", using: :btree
 
   create_table "hospital_verification_requests", force: :cascade do |t|
     t.integer  "user_id"
@@ -201,6 +211,8 @@ ActiveRecord::Schema.define(version: 20150606213153) do
   add_foreign_key "follows", "users"
   add_foreign_key "hospital_likes", "hospitals"
   add_foreign_key "hospital_likes", "users"
+  add_foreign_key "hospital_lists", "hospitals"
+  add_foreign_key "hospital_lists", "users"
   add_foreign_key "hospital_verification_requests", "hospitals"
   add_foreign_key "hospital_verification_requests", "users"
   add_foreign_key "profiles", "users"
