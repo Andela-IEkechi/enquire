@@ -1,11 +1,11 @@
-= render partial: 'questions/header'
+= render 'header'
 
 .tab-content
   #all.tab-pane.active.fade.in
     = render 'all'
-  #following.tab-pane.active.fade.in
+  #following.tab-pane.fade
     = render 'followed'
-  #interests.tab-pane.active.fade.in
+  #interests.tab-pane.fade
     = render 'interest'
-  #mine.tab-pane.active.fade.in
+  #mine.tab-pane.fade
     = render 'mine'

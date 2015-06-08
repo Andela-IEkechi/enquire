@@ -19,12 +19,5 @@
         = f.label :body
         %br/
         = f.text_area :body, class: "form-control"
-      .field.form-group
-        = f.label :doctor_id
-        %br/
-        = f.collection_select :user_id, User.where(role: "doctor").order(:id), :id, :name,
-          {}, :include_blank => false, class: "form-control"
       .actions
         = f.submit "Ask the Doc", class: "btn btn-md button-hollow-c"
-
--#        todo move the doctor select to a separate page to list doctors, showing their profiles, and complete with search

@@ -17,7 +17,7 @@ class CreateDefaultUsers < ActiveRecord::Migration
     User.create!(
       name: 'SUPERADMIN',
       email: 'admin@example.com',
-      role: "admin",
+      role: "manager",
       password: 'password1'
     )
   end

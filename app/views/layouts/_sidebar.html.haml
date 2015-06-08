@@ -12,6 +12,12 @@
               %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1", :role => "menu"}
                 %li{:role => "presentation"}
                   = link_to "My Dashboard", dashboard_path
+                - if doctor? && !current_user.verified?
+                  %li{:role => "presentation"}
+                    = link_to "Get Verified", doctor_verification_requests_path
+                - if has_hospital?
+                  %li{:role => "presentation"}
+                    = link_to "Verify Hospital", hospital_verification_requests_path
 
   %li
     = link_to :hospitals do

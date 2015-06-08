@@ -1,44 +1,43 @@
-%section.views
-  - if doctor? || hospital_manager? || admin?
-    %ul Clients
-      - @clients.each do |client|
-        %li
-          %br/
-          = link_to (client), class: "list-group-item" do
-            %p.profile-image = image_tag(client.image)
-            %strong= client.name
-            %blockquote
-              %p.lead= client.bio
-              %footer
-                %strong= client.gender
-                %p= client.last_sign_in_at
-        %br/
-
-  %ul Doctors
-    - @doctors.each do |doctor|
+- if doctor? || hospital_manager? || admin?
+  %ul Clients
+    - @clients.each do |client|
       %li
         %br/
-        = link_to (doctor), class: "list-group-item" do
-          %p.profile-image = image_tag(doctor.image)
-          %strong= doctor.name
+        = link_to (client), class: "list-group-item" do
+          %p.profile-image = image_tag(client.image)
+          %strong= client.name
           %blockquote
-            %p.lead= doctor.bio
+            %p.lead= client.bio
             %footer
-              %strong= doctor.gender
-              %p= doctor.last_sign_in_at
+              %strong= client.gender
+              %p= client.last_sign_in_at
       %br/
 
-  - if hospital_manager? || admin?
-    %ul Hospital Managers
-      - @managers.each do |manager|
-        %li
-          %br/
-          = link_to (manager), class: "list-group-item" do
-            %p.profile-image = image_tag(manager.image)
-            %strong= manager.name
-            %blockquote
-              %p.lead= manager.bio
-              %footer
-                %strong= manager.gender
-                %p= manager.last_sign_in_at
+%ul Doctors
+  - @doctors.each do |doctor|
+    %li
+      %br/
+      = link_to (doctor), class: "list-group-item" do
+        %p.profile-image = image_tag(doctor.image)
+        %strong= doctor.name
+        %blockquote
+          %p.lead= doctor.bio
+          %footer
+            %strong= doctor.gender
+            %p= doctor.last_sign_in_at
+    %br/
+
+- if hospital_manager? || admin?
+  %ul Hospital Managers
+    - @managers.each do |manager|
+      %li
         %br/
+        = link_to (manager), class: "list-group-item" do
+          %p.profile-image = image_tag(manager.image)
+          %strong= manager.name
+          %blockquote
+            %p.lead= manager.bio
+            %footer
+              %strong= manager.gender
+              %p= manager.last_sign_in_at
+      %br/
