@@ -9,6 +9,8 @@ class Hospital < ActiveRecord::Base
   validate :image_size_validation
   has_one :hospital_verification_request
 
+  scope :verified, -> { where(verified: true) }
+
   HOSPITAL_TYPE = ["General", "Specialist", "Psychiatric",
                    "Fertility", "Eye Clinic", "Dental Clinic" ,
                    "Nursing Homes", "Rehabs",  "Ambulance care center"]
