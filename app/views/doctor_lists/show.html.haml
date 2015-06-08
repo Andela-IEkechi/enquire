@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @doctor_list.user
+%p
+  %b Hospital:
+  = @doctor_list.hospital
+
+= link_to 'Edit', edit_doctor_list_path(@doctor_list)
+\|
+= link_to 'Back', doctor_lists_path

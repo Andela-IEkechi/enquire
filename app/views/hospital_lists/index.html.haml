@@ -1,0 +1,15 @@
+%h1 Hospitals
+.table-responsive
+  %table.table-striped.table-bordered
+    %thead
+      %tr
+        %th User
+        %th Hospital
+        %th Action
+
+    %tbody
+      - @hospital_lists.each do |hospital_list|
+        %tr
+          %td= hospital_list.user.name
+          %td= hospital_list.hospital.name
+          %td= link_to 'Un-verify', hospital_list, :method => :delete, :data => { :confirm => 'Are you sure?' }

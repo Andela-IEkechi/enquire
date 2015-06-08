@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :hospital_lists
+  resources :doctor_lists
   resources :hospital_verification_requests
-
   resources :doctor_verification_requests
 
   root 'homes#show'
@@ -16,7 +17,6 @@ Rails.application.routes.draw do
   resources :answer_likes
   resources :doctor_likes
   resources :follows
-  resources :profiles, only: [:show, :index]
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => :registrations }
   # The priority is based upon order of creation: first created -> highest priority.

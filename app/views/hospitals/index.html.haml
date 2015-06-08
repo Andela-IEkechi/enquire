@@ -13,5 +13,5 @@
           - if current_user.try(:admin?)
             = link_to 'Edit', edit_hospital_path(hospital), class: "btn btn-default"
             = link_to 'Destroy', hospital, class: "btn btn-default", method: :delete, data: { confirm: 'Are you sure?' }
-  - if current_user.try(:admin?)
+  - if hospital_manager?
     = link_to 'Add New Hospital', new_hospital_path, class: "btn btn-default"

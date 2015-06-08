@@ -24,6 +24,10 @@ module ApplicationHelper
     current_user.role == "doctor" && current_user.verified?
   end
 
+  def unverified_doctor?
+    current_user.role == "doctor" && !current_user.verified?
+  end
+
   def has_hospital?
     current_user.role == "manager" && !current_user.hospitals.empty?
   end

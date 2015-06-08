@@ -16,9 +16,6 @@
         %td Gender
         %td= current_user.gender
       %tr
-        %td Role
-        %td= current_user.role
-      %tr
         %td Address
         %td= current_user.address
       %tr
@@ -39,6 +36,10 @@
       %tr
         %td Height
         %td= current_user.height
-      %tr
-        %td Specialization
-        %td= current_user.specialization
+      - if doctor?
+        %tr
+          %td Specialization
+          %td= current_user.specialization
+        %tr
+          %td Graduated
+          %td= current_user.year_of_grad

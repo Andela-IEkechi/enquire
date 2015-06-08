@@ -1,5 +1,5 @@
 class CreateDefaultUsers < ActiveRecord::Migration
-  def self.up
+  def change
     User.create!(
       name: 'User1',
       email: 'user1@example.com',
@@ -15,9 +15,16 @@ class CreateDefaultUsers < ActiveRecord::Migration
     )
 
     User.create!(
+      name: 'Hospital manager',
+      email: 'manager@example.com',
+      role: "manager",
+      password: 'password1'
+    )
+
+    User.create!(
       name: 'SUPERADMIN',
       email: 'admin@example.com',
-      role: "manager",
+      role: "admin",
       password: 'password1'
     )
   end
