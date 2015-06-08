@@ -1,0 +1,16 @@
+= form_for @hospital_list do |f|
+  - if @hospital_list.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@hospital_list.errors.count, "error")} prohibited this hospital_list from being saved:"
+      %ul
+        - @hospital_list.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :user
+    = f.text_field :user
+  .field
+    = f.label :hospital
+    = f.text_field :hospital
+  .actions
+    = f.submit 'Save'
