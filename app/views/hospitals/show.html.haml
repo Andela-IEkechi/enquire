@@ -14,9 +14,7 @@
     %p
       %strong Recommendations:
       = @recommend.count
-    = link_to 'Edit', edit_hospital_path(@hospital)
-    |
-    \#{link_to 'Back', hospitals_path}
+    = link_to 'Back', hospitals_path
     %br/
     %br/
     = render 'hospital_likes/new'

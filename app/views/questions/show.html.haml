@@ -25,10 +25,9 @@
     .list-group-item
       = answer.content
       = answer.user.try(:name)
-      - if user_signed_in?
-        = form_for AnswerLike.new do |f|
+      - if client? && !answer.users.include?(current_user)
+        = form_for AnswerLike.new do
           = hidden_field(:answer_like, :answer_id, value: "#{answer.id}")
-          = hidden_field(:answer_like, :user_id, value: current_user.id)
           %div
             = button_tag type: "submit", class: "button-hollow-b" do
               %i.fa.fa-heart.likes

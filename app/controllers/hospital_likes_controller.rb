@@ -8,6 +8,7 @@ class HospitalLikesController < ApplicationController
 
   def create
     @recommend = HospitalLike.new(hospital_like_params)
+    @recommend.user = current_user
     @recommend.save
     redirect_to :back
   end

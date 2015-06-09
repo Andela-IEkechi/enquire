@@ -41,10 +41,11 @@
   - if @profile.role == "doctor"
     %p
       %b Specialization:
-      = @profile.height
+      = @profile.specialization
     %p
       %b Has been a Doctor for:
-      = (Date.today.year - @profile.year_of_grad.to_i)
-      years
+      - if @profile.year_of_grad
+        = (Date.today.year - @profile.year_of_grad.to_i)
+        years
 
   = link_to "<i class=\"fa fa-chevron-left\"></i>  Back".html_safe, profiles_path

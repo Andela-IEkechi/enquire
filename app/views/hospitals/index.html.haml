@@ -10,7 +10,7 @@
             .hospital-list-text
               %strong.name= hospital.name
               %p= hospital.description
-          - if current_user.try(:admin?)
+          - if hospital.user == current_user
             = link_to 'Edit', edit_hospital_path(hospital), class: "btn btn-default"
             = link_to 'Destroy', hospital, class: "btn btn-default", method: :delete, data: { confirm: 'Are you sure?' }
   - if hospital_manager?

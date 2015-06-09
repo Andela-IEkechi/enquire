@@ -8,6 +8,7 @@ class AnswerLikesController < ApplicationController
 
   def create
     @appreciate = AnswerLike.new(answer_like_params)
+    @appreciate.user = current_user
     @appreciate.save
     redirect_to :back
   end
