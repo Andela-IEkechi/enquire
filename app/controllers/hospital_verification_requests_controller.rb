@@ -29,7 +29,7 @@ class HospitalVerificationRequestsController < ApplicationController
 
     respond_to do |format|
       if @hospital_verification_request.save
-        format.html { redirect_to @hospital_verification_request, notice: 'Hospital verification request was successfully created.' }
+        format.html { redirect_to dashboard_path, notice: 'Hospital verification request was successfully created.' }
         format.json { render :show, status: :created, location: @hospital_verification_request }
       else
         format.html { render :new }
@@ -57,7 +57,7 @@ class HospitalVerificationRequestsController < ApplicationController
   def destroy
     @hospital_verification_request.destroy
     respond_to do |format|
-      format.html { redirect_to hospital_verification_requests_url, notice: 'Hospital verification was successful.' }
+      format.html { redirect_to :back, notice: 'Hospital verification was successful.' }
       format.json { head :no_content }
     end
   end

@@ -28,6 +28,7 @@ class HospitalsController < ApplicationController
   # POST /hospitals.json
   def create
     @hospital = Hospital.new(hospital_params)
+    @hospital.user = current_user
 
     respond_to do |format|
       if @hospital.save
@@ -72,6 +73,6 @@ class HospitalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hospital_params
-      params.require(:hospital).permit(:name, :description, :image, :verified, :address, :classification)
+      params.require(:hospital).permit(:user_id, :name, :description, :image, :verified, :address, :classification)
     end
 end

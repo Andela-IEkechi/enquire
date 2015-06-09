@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :reviews
   resources :hospitals
   resources :answers
+  resources :profiles, only: [:show, :index]
   resources :questions
   resource  :dashboard
   resources :doctors

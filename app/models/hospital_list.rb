@@ -1,6 +1,9 @@
 class HospitalList < ActiveRecord::Base
-  has_many :users
-  has_many :hospitals
+  belongs_to :user
+  belongs_to :hospital
+
+  validates :hospital_id, uniqueness: { message: "You have already been verified!" }
+
 
   after_commit :remove_hospital, on: :destroy
 

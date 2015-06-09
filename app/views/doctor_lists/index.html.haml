@@ -2,11 +2,14 @@
 - @doctor_lists.each do |doctor|
   %li
     %br/
-    %p.profile-image = image_tag(doctor.image)
-    %strong= doctor.name
     %blockquote
-      %p.lead= doctor.bio
+      %p.profile-image= image_tag(doctor.user.image)
+      %strong= doctor.user.name
+      %p.lead= doctor.user.bio
       %footer
-        %strong= doctor.gender
-        %p= doctor.last_sign_in_at
-        %p= link_to '<i class=\"fa fa-user-times\"></i> UnVerify'.html_safe, doctor, :method => :delete, :data => { :confirm => "Are you sure you no longer want this Doctor associated with #{doctor.hospital.name} hospital?" }
+        %strong= doctor.user.gender
+        %p= doctor.user.last_sign_in_at
+        %button.button-hollow-c
+          = link_to doctor, :method => :delete, :data => { :confirm => "Are you sure you no longer want this Doctor associated with #{doctor.hospital.name} hospital?" } do
+            %i.text-danger.fa.fa-user-times
+            UnVerify

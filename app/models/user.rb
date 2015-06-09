@@ -3,12 +3,14 @@ class User < ActiveRecord::Base
   has_many :answer_likes
   has_many :doctor_likes
   has_many :hospital_likes
+  has_many :hospitals
   has_many :reviews
-  has_many :hospitals, through: :hospital_likes, class_name: 'Hospital'
+  has_many :likes, through: :hospital_likes, class_name: 'Hospital'
   has_many :follows
   has_one :doctor_verification_request
   has_many :questions, through: :follows, class_name: 'Question'
   # belongs_to :hospital, through: :doctor_lists, class_name: "Hospital" todo CHECK
+  belongs_to :hospital
 
   scope :is_doctor, -> { where(role: 'doctor') }
   scope :client, -> { where(role: 'user') }

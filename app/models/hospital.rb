@@ -2,8 +2,9 @@ class Hospital < ActiveRecord::Base
   has_many :hospital_likes
   has_many :users, through: :hospital_likes, class_name: 'User'
   mount_uploader :image, ImageUploader
-  has_many :users, -> { where(doctor: true) }
-  # belongs_to :user, through: :doctor_lists, class_name: "User" todo CHECK
+  # has_many :users, -> { where(role: "doctor") }
+  has_many :doctors, through: :doctor_lists, class_name: "User"
+  belongs_to :user, -> { where(role: "manager") }
 
   validates :image, presence: true
   validate :image_size_validation
