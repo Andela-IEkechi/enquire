@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :follows
   has_one :doctor_verification_request
   has_many :questions, through: :follows, class_name: 'Question'
+  has_many :answers
   # belongs_to :hospital, through: :doctor_lists, class_name: "Hospital" todo CHECK
   belongs_to :hospital
 
