@@ -1,8 +1,11 @@
 %hmtl
-  %body.container-fluid
+  %head
+    %link{href:"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css", rel:"stylesheet"}
+    %link{href:'http://fonts.googleapis.com/css?family=Lato', rel:'stylesheet', type:'text/css'}
+  %body.container-fluid{style:"font-family: 'Lato', sans-serif; font-style: italic"}
     %p= image_tag attachments['logo.png'].url, width: "150", class: "logo", alt: 'The Doctopus Logo'
-    .container-fluid
+    .container-fluid.text-info
       = yield
-    %p
+    %p.container-fluid.text-info
       Thank you for using Doctopus.
-    %p= image_tag attachments['signature.png'].url, alt: 'The Doctopus Team'
+      %p= image_tag attachments['signature.png'].url, alt: 'The Doctopus Team'

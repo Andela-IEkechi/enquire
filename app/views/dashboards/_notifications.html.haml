@@ -1,26 +1,31 @@
+.list-group
+  .list-group-item.active.text-center
+    Notifications
 %ul
   - if admin?
     - @admin_notifications.each do |notification|
-      %li
-        %i.text-danger.fa.fa-exclamation-circle
-        %strong
-          = link_to notification.user.name, profile_path(notification.user)
-        = "Requests Verification for"
-        %strong= notification.hospital.name
-        Hospital.
-        = link_to hospital_verification_request_path(notification.hospital), :method => :delete, :data => { :confirm => 'Are you sure?' } do
-          %i.fa.fa-check-circle.text-success
-            Verify
+      %li.panel.panel-default
+        .panel-body
+          %i.text-danger.fa.fa-exclamation-circle
+          %strong
+            = link_to notification.user.name, profile_path(notification.user)
+          = "Requests Verification for"
+          %strong= notification.hospital.name
+          Hospital.
+          = link_to hospital_verification_request_path(notification.hospital), :method => :delete, :data => { :confirm => 'Are you sure?' } do
+            %i.button-hollow-b.fa.fa-check-circle.text-success
+              Verify
   - if has_hospital?
     - @doctor_notifications.each do |notification|
-      %li
-        %i.text-danger.fa.fa-exclamation-circle
-        %strong
-          = link_to notification.user.name, profile_path(notification.user)
-        = "Wants to be associated with"
-        %strong= notification.hospital.name
-        Hospital.
-        - if notification.hospital.user == current_user
-          = link_to doctor_verification_request_path(notification), :method => :delete, :data => { :confirm => 'Are you satisfied that you know this Doctor enough and want him/her associated with your Hospital?' } do
-            %i.fa.fa-check-circle.text-success
-              Verify
+      %li.panel.panel-default
+        .panel-body
+          %i.text-danger.fa.fa-exclamation-circle
+          %strong
+            = link_to notification.user.name, profile_path(notification.user)
+          = "Wants to be associated with"
+          %strong= notification.hospital.name
+          Hospital.
+          - if notification.hospital.user == current_user
+            = link_to doctor_verification_request_path(notification), :method => :delete, :data => { :confirm => 'Are you satisfied that you know this Doctor enough and want him/her associated with your Hospital?' } do
+              %i.button-hollow-b.fa.fa-check-circle.text-success
+                Verify
