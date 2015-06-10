@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   scope :is_doctor, -> { where(role: 'doctor') }
   scope :client, -> { where(role: 'user') }
   scope :manager, -> { where(role: 'manager') }
+  scope :admin, -> { where(role: 'admin') }
 
   mount_uploader :image, ImageUploader
   validate :image_size_validation

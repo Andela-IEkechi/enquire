@@ -1,0 +1,16 @@
+%p
+  Dear
+  %strong
+    #{@manager.name},
+%p
+  Your request for verification of
+  %strong
+    #{@hospital.name}
+  was reviewed, and verification has been granted.
+
+%p
+  %strong
+    #{@hospital.name}
+  will now appear on The Doctopus Platform for Doctors and Users. Login to continue using Doctopus.
+%p
+  = link_to "Go to Doctopus", @url

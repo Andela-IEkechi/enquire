@@ -1,0 +1,14 @@
+%p
+  Dear
+  %strong
+    #{@doctor.name},
+%p
+  Your verification under
+  %strong
+    #{@hospital.name}
+  hospital, has been cancelled by the Hospital management.
+  Please login to Doctopus to request verification again, or contact the management of
+  %strong
+    #{@hospital.name} hospital.
+%p
+  = link_to "Go to Doctopus", @url

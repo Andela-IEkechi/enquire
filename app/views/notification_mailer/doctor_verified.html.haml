@@ -1,0 +1,15 @@
+%p
+  Dear
+  %strong
+    #{@doctor.name},
+%p
+  Your request for verification under
+  %strong
+    #{@hospital.name}
+  was reviewed, and verification has been granted.
+
+%p
+  Your Profile will now appear on The Doctopus Platform for Doctors and Users. You will now be able to
+  answer questions from clients. Login to begin using Doctopus.
+%p
+  = link_to "Go to Doctopus", @url

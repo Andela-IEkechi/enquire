@@ -55,6 +55,7 @@ class DoctorListsController < ApplicationController
   # DELETE /doctor_lists/1.json
   def destroy
     @doctor_list.destroy
+    NotificationMailer.doctor_removed(@doctor_list.user, @doctor_list.hospital).deliver_now
     respond_to do |format|
       format.html { redirect_to doctor_lists_url, notice: 'Doctor list was successfully destroyed.' }
       format.json { head :no_content }

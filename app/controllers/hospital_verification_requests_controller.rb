@@ -29,6 +29,7 @@ class HospitalVerificationRequestsController < ApplicationController
 
     respond_to do |format|
       if @hospital_verification_request.save
+        NotificationMailer.hospital_verification_email(current_user, @hospital_verification_request.hospital).deliver_now
         format.html { redirect_to dashboard_path, notice: 'Hospital verification request was successfully created.' }
         format.json { render :show, status: :created, location: @hospital_verification_request }
       else
@@ -56,6 +57,7 @@ class HospitalVerificationRequestsController < ApplicationController
   # DELETE /hospital_verification_requests/1.json
   def destroy
     @hospital_verification_request.destroy
+    NotificationMailer.hospital_verified(@hospital_verification_request.user, @hospital_verification_request.hospital).deliver_now
     respond_to do |format|
       format.html { redirect_to :back, notice: 'Hospital verification was successful.' }
       format.json { head :no_content }

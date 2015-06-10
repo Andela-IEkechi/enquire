@@ -1,0 +1,8 @@
+%hmtl
+  %body.container-fluid
+    %p= image_tag attachments['logo.png'].url, width: "150", class: "logo", alt: 'The Doctopus Logo'
+    .container-fluid
+      = yield
+    %p
+      Thank you for using Doctopus.
+    %p= image_tag attachments['signature.png'].url, alt: 'The Doctopus Team'
