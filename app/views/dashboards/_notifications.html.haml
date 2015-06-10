@@ -5,7 +5,7 @@
   - if admin?
     - @admin_notifications.each do |notification|
       %li.panel.panel-default
-        .panel-body
+        .panel-heading
           %i.text-danger.fa.fa-exclamation-circle
           %strong
             = link_to notification.user.name, profile_path(notification.user)
@@ -18,7 +18,7 @@
   - if has_hospital?
     - @doctor_notifications.each do |notification|
       %li.panel.panel-default
-        .panel-body
+        .panel-heading
           %i.text-danger.fa.fa-exclamation-circle
           %strong
             = link_to notification.user.name, profile_path(notification.user)

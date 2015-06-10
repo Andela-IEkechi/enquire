@@ -92,11 +92,19 @@
       .field.form-group
         %br/
         = f.label :weight
-        = f.text_field :weight, class: "form-control"
+        .input-group
+          %span.input-group-btn
+            %i.btn.btn-default
+              Kg
+          = f.text_field :weight, class: "form-control"
       .field.form-group
         %br/
         = f.label :height
-        = f.text_field :height, class: "form-control"
+        .input-group
+          %span.input-group-btn
+            %i.btn.btn-default
+              Ft
+          = f.text_field :height, class: "form-control"
       .field.form-group
         %br/
         = f.label :year_of_grad
