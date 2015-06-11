@@ -49,8 +49,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem "fog"
 # charts
-gem "chartkick"
-gem 'groupdate'
+gem 'chartkick', '~> 1.3.2'
 # for storing sensitive stuffs
 gem "figaro"
 
