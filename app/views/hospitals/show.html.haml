@@ -1,30 +1,41 @@
-%section.views
-  .hospital-section
-    %p#notice= notice
-    %h1.page-header
-      %strong= @hospital.name
-    %p= image_tag @hospital.image.url(:large)
-    %p= @hospital.description
-    %p
-      %strong Address:
-      = @hospital.address
-    %p
-      %strong Type:
-      = @hospital.classification
-    %p
-      %strong Recommendations:
-      = @recommend.count
-    = link_to 'Back', hospitals_path
+.text-center
+  = image_tag @hospital.image, class: 'img-circle', width: 300
+  %h1.page-header
+    %strong= @hospital.name
+
+  %p.text-left
+    %b= @hospital.classification
+    %br
+  %p= @hospital.description
+  %br
+
+%h5
+  %b Details
+  %br
+
+%p.page-header
+  %b Address
+= @hospital.address
+
+%p.page-header
+  %b Recommendations:
+= @recommend.count
+%br
+
+= render 'hospital_likes/new'
+
+%h4 Reviews
+- @reviews.each do |review|
+  .list-group-item
+    = review.content
     %br/
-    %br/
-    = render 'hospital_likes/new'
-  %h4 Reviews
-  - @reviews.each do |review|
-    .list-group-item
-      = review.content
-      %br/
-      %strong= review.user.name
-  %br/
-  .jumbotron
-    %h4 What do you think of this hospital? Add your own review;
-    = render 'reviews/form'
+    %strong= review.user.name
+%br/
+- if can? :manage, Review
+  %h4 What do you think of this hospital? Add your own review;
+  = render 'reviews/form'
+
+
+%button.btn.button-hollow-b
+  = link_to 'Back', hospitals_path
+

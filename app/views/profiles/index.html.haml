@@ -4,8 +4,8 @@
     - @clients.each do |client|
       %li
         = link_to profile_path(client), class: "list-group-item" do
-          = image_tag client.image, class: 'img-circle', width: 100
           %blockquote
+            = image_tag client.image, class: 'img-circle', width: 100
             %strong= client.name
             %footer
               = client.occupation
@@ -15,8 +15,8 @@
   - @doctors.each do |doctor|
     %li
       = link_to profile_path(doctor), class: "list-group-item" do
-        = image_tag doctor.image, class: 'img-circle', width: 100
         %blockquote
+          = image_tag doctor.image, class: 'img-circle', width: 100
           %strong= doctor.name
           %p.lead= doctor.bio
           %footer
@@ -29,8 +29,8 @@
     - @managers.each do |manager|
       %li
         = link_to profile_path(manager), class: "list-group-item" do
-          = image_tag manager.image, class: 'img-circle', width: 100
           %blockquote
+            = image_tag manager.image, class: 'img-circle', width: 100
             %strong= manager.name
             %p.lead= manager.bio
             %footer
