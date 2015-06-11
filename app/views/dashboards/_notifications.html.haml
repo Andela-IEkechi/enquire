@@ -20,7 +20,7 @@
         = "Wants to be associated with"
         %strong= notification.hospital.name
         Hospital.
-        - if notification.hospital.user == current_user
+        - if notification.hospital.manager == current_user
           = link_to doctor_verification_request_path(notification), :method => :delete, :data => { :confirm => 'Are you satisfied that you know this Doctor enough and want him/her associated with your Hospital?' } do
             %i.fa.fa-check-circle.text-success
               Verify

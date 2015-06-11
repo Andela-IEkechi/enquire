@@ -28,7 +28,7 @@ class HospitalsController < ApplicationController
   # POST /hospitals.json
   def create
     @hospital = Hospital.new(hospital_params)
-    @hospital.user = current_user
+    @hospital.manager = current_user
 
     respond_to do |format|
       if @hospital.save

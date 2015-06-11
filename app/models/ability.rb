@@ -29,7 +29,7 @@ class Ability
         user == question.user
       end
       can :manage, Hospital do |hospital|
-        user.role == 'manager' && user == hospital.user
+        user.role == 'manager' && user == hospital.manager
       end
       can :manage, Answer do |answer|
         user.role == "doctor" && user == answer.user && user.verified?
