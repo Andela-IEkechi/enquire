@@ -1,25 +1,26 @@
-%h1 Listing hospital verification requests
+- if admin?
+  %h1 Listing hospital verification requests
 
-%table
-  %thead
-    %tr
-      %th User
-      %th Hospital
-      %th Message
-      %th
-      %th
-      %th
-
-  %tbody
-    - @hospital_verification_requests.each do |hospital_verification_request|
+  %table
+    %thead
       %tr
-        %td= hospital_verification_request.user
-        %td= hospital_verification_request.hospital
-        %td= hospital_verification_request.message
-        %td= link_to 'Show', hospital_verification_request
-        - if can? :destroy, hospital_verification_request
-          %td= link_to 'Verify', hospital_verification_request, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %th User
+        %th Hospital
+        %th Message
+        %th
+        %th
+        %th
 
-%br
+    %tbody
+      - @hospital_verification_requests.each do |hospital_verification_request|
+        %tr
+          %td= hospital_verification_request.user
+          %td= hospital_verification_request.hospital
+          %td= hospital_verification_request.message
+          %td= link_to 'Show', hospital_verification_request
+          - if can? :destroy, hospital_verification_request
+            %td= link_to 'Verify', hospital_verification_request, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+  %br
 
 = link_to 'New Hospital verification request', new_hospital_verification_request_path

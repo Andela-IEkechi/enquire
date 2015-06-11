@@ -16,13 +16,9 @@
     %strong PROFILE
 
   %p.page-header
-    %b Email
-  = @profile.email
-
-  %p.page-header
     %b Born
-  = @profile.date_of_birth
-
+  =time_ago_in_words(@profile.date_of_birth)
+  ago
   %p.page-header
     %b Gender
   = @profile.gender
