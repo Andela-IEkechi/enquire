@@ -1,34 +1,35 @@
-.form-wrapper
-  = form_for(@hospital) do |f|
-    - if @hospital.errors.any?
-      #error_explanation
-        %h2
-          = pluralize(@hospital.errors.count, "error")
-          prohibited this hospital from being saved:
-        %ul
-          - @hospital.errors.full_messages.each do |message|
-            %li= message
-    .field.form-group
-      = f.label :name
-      %br/
-      = f.text_area :name
-    .field.form-group
-      = f.label :description
-      %br/
-      = f.text_area :description
-    .field.form-group
-      = f.label :image
-      %br/
-      = f.file_field :image
-    .field.form-group
-      = f.label :address
-      %br/
-      = f.text_area :address
-    .field.form-group
-      = f.label :classification
-      %br/
-      = f.select :classification, options_for_select(Hospital::HOSPITAL_TYPE)
-    .actions
-      = button_tag type: "submit", class: "button-hollow-c btn-block" do
-        %i.fa.fa-plus
-          Create Hospital
+.login_wrapper
+  .form-signin
+    = form_for(@hospital) do |f|
+      - if @hospital.errors.any?
+        #error_explanation
+          %h2
+            = pluralize(@hospital.errors.count, "error")
+            prohibited this hospital from being saved:
+          %ul
+            - @hospital.errors.full_messages.each do |message|
+              %li= message
+      .field.form-group
+        = f.label :name
+        %br/
+        = f.text_field :name, class: "form-control"
+      .field.form-group
+        = f.label :description
+        %br/
+        = f.text_area :description, class: "form-control"
+      .field.form-group
+        = f.label :image
+        %br/
+        = f.file_field :image, class: "button-hollow-b"
+      .field.form-group
+        = f.label :address
+        %br/
+        = f.text_area :address, class: "form-control"
+      .field.form-group
+        = f.label :classification
+        %br/
+        = f.select :classification, options_for_select(Hospital::HOSPITAL_TYPE), {}, class: "form-control"
+      .actions
+        = button_tag type: "submit", class: "button-hollow-c btn-block" do
+          %i.fa.fa-plus
+            Create Hospital
