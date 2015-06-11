@@ -4,7 +4,6 @@ class Hospital < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   # has_many :users, -> { where(role: "doctor") }
   has_many :doctors, through: :doctor_lists, class_name: "User"
-  # belongs_to :user, -> { where(role: "manager") }
   belongs_to :manager, -> { where(role: "manager") }, class_name: "User", foreign_key: 'user_id'
 
              validates :image, presence: true

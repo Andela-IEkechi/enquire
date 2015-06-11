@@ -1,12 +1,17 @@
-.everyone li {
+.everyone li, .hospital-list li {
   float: left;
   margin: 20px;
-  top: 0;
 }
 
 .everyone li a {
   width: 200px;
   height: 250px;
+  overflow-y: scroll;
+}
+
+.hospital-list li+a {
+  width: 300px;
+  height: 350px;
   overflow-y: scroll;
 }
 
