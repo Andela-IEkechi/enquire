@@ -2,6 +2,7 @@
 
 /* Custom, iPhone Retina */
 @media only screen and (max-width : 768px) {
+  .btn { font-size: 0.9em !important; }
   .sidebar {
     width: 50%;
     z-index: 10;
