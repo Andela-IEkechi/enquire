@@ -10,8 +10,13 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//
+// SO FUCKED!!! JQUERY BELOW BOOTSTRAP, AND HAVE TO REMOVE
+// THE REQUIRE TREE LINE TO MAKE THE SHIT WORK
+// SO FUCKED!!!
+//
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require_tree .
+//= require jquery
+

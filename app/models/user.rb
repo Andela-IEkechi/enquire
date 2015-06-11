@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   belongs_to :hospital
 
   scope :is_doctor, -> { where(role: 'doctor') }
-  scope :client, -> { where(role: 'user') }
+  scope :client, -> { where(role: 'user') }  #todo use is_client and is_manager?
   scope :manager, -> { where(role: 'manager') }
 
   mount_uploader :image, ImageUploader
