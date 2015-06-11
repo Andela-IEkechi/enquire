@@ -8,12 +8,15 @@
     = favicon_link_tag 'favicon.png'
     = csrf_meta_tags
   %body
+    #flash
+      - if notice
+        %p.alert.alert-success= notice
+      - if alert
+        %p.alert.alert-danger= alert
+
     = yield :charts_js
     = render 'layouts/header'
-    - if notice
-      %p.alert.alert-success= notice
-    - if alert
-      %p.alert.alert-danger= alert
+
     .container-fluid
       - unless request.path == new_user_session_path || request.path == new_user_registration_path || request.path == new_user_password_path
         .sidebar_toggle#sidebar
