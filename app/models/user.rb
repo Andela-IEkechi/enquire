@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   # belongs_to :hospital, through: :doctor_lists, class_name: "Hospital" todo CHECK
   belongs_to :hospital
 
+  validates :date_of_birth, presence: true, on: :update
+
   scope :is_doctor, -> { where(role: 'doctor') }
   scope :client, -> { where(role: 'user') }  #todo use is_client and is_manager?
   scope :manager, -> { where(role: 'manager') }
