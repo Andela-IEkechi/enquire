@@ -11,7 +11,8 @@
             %p.lead= client.bio
             %footer
               %strong= client.gender
-              %p= client.last_sign_in_at
+              %p
+                = seen_last(client.current_sign_in_at)
       %br/
 
 %ul
@@ -26,7 +27,8 @@
           %p.lead= doctor.bio
           %footer
             %strong= doctor.gender
-            %p= doctor.last_sign_in_at
+            %p
+              = seen_last(doctor.current_sign_in_at)
     %br/
 
 - if hospital_manager? || admin?
@@ -42,5 +44,6 @@
             %p.lead= manager.bio
             %footer
               %strong= manager.gender
-              %p= manager.last_sign_in_at
+              %p
+                = seen_last(manager.current_sign_in_at)
       %br/
