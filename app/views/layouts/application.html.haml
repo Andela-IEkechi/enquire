@@ -8,7 +8,7 @@
     = favicon_link_tag 'favicon.png'
     = csrf_meta_tags
   %body
-    #flash
+    #flash.text-center.container
       - if notice
         %p.alert.alert-success= notice
       - if alert

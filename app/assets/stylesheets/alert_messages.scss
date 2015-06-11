@@ -2,8 +2,12 @@
   position: absolute;
   top: 7em;
   left: 0;
-  width: 100%;
+  width: 90%;
   z-index: 5000;
-  box-shadow: 10px 10px 5px #888888;
-  background-color: #DADADA;
+  margin: 0 5%;
+}
+
+#error_explanation {
+  color: red;
+  position: static;
 }

@@ -37,5 +37,5 @@
         #{current_user.follows.count}
       Follows
 
-= pie_chart [["Football", 10], ["Basketball", 5]], content_for: :charts_js
--#= pie_chart User.group(:role).count, id: "users-chart", height: "500px"
+-#= pie_chart [["Football", 10], ["Basketball", 5]], content_for: :charts_js
+= pie_chart User.group(:role).count, content_for: :charts_js
