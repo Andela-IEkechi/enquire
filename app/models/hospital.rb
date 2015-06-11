@@ -5,7 +5,7 @@ class Hospital < ActiveRecord::Base
   # has_many :users, -> { where(role: "doctor") }
   has_many :doctors, through: :doctor_lists, class_name: "User"
   belongs_to :user, -> { where(role: "manager") }
-  belongs_to :manager, -> { where(role: "manager") }, class_name: "User", foreign_key: 'user_id'
+  # belongs_to :manager, -> { where(role: "manager") }, class_name: "User", foreign_key: 'user_id' #working well like this
 
              validates :image, presence: true
   validate :image_size_validation

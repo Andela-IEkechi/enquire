@@ -1,51 +1,56 @@
-%section.views
-  %p#notice= notice
+.profile-show
+  .text-center= image_tag @profile.image, class: 'img-circle', width: 200
 
-  %p
-    %b User:
-    = @profile.name
-  %p
-    %b Bio:
-    = @profile.bio
-  %p
-    %b Date of birth:
-    = @profile.date_of_birth
-  %p
-    %b Gender:
-    = @profile.gender
-  %p
-    %b Address:
-    = @profile.address
-  %p
-    %b Phone number:
-    = @profile.phone_number
-  %p
-    %b Ethnicity:
-    = @profile.ethnicity
-  %p
-    %b Occupation:
-    = @profile.occupation
-  %p
-    %b Religion:
-    = @profile.religion
-  %p
-    %b Marital status:
-    = @profile.marital_status
-  %p
-    %b Weight:
-    = @profile.weight
-  %p
-    %b Height:
-    = @profile.height
+  .text-center
+    %h5.page-header
+      Hi, I'm
+      %strong= @profile.name
+
+    %p= @profile.occupation
+    %br
+
+    %p= @profile.bio
+
+  %h3
+    %strong PROFILE
+
+  %p.page-header
+    %b Email
+  = @profile.email
+
+  %p.page-header
+    %b Born
+  = @profile.date_of_birth
+
+  %p.page-header
+    %b Gender
+  = @profile.gender
+
+  %p.page-header
+    %b Marital status
+  = @profile.marital_status
+
+  %p.page-header
+    %b Weight
+  = @profile.weight
+
+  %p.page-header
+    %b Height
+  = @profile.height
 
   - if @profile.role == "doctor"
-    %p
-      %b Specialization:
-      = @profile.specialization
-    %p
-      %b Has been a Doctor for:
-      - if @profile.year_of_grad
-        = (Date.today.year - @profile.year_of_grad.to_i)
-        years
 
-  = link_to "<i class=\"fa fa-chevron-left\"></i>  Back".html_safe, profiles_path
+    %p.page-header
+      %b Specialization
+    = @profile.specialization
+
+    %p.page-header
+      %b Has been a Doctor for
+    - if @profile.year_of_grad
+      = (Date.today.year - @profile.year_of_grad.to_i)
+      years
+
+  %br
+  %br
+  %button.btn.button-hollow-b
+    = link_to "<i class=\"fa fa-chevron-left\"></i>  Back".html_safe, profiles_path

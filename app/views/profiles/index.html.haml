@@ -1,5 +1,5 @@
 - if doctor? || hospital_manager? || admin?
-  %h2.profile_head Clients
+  %h2.profile-head Clients
   %ul.everyone
     - @clients.each do |client|
       %li
@@ -10,7 +10,7 @@
             %footer
               = client.occupation
 
-%h2.profile_head Doctors
+%h2.profile-head Doctors
 %ul.everyone
   - @doctors.each do |doctor|
     %li
@@ -24,7 +24,7 @@
 
 
 - if hospital_manager? || admin?
-  %h2.profile_head Hospital Managers
+  %h2.profile-head Hospital Managers
   %ul.everyone
     - @managers.each do |manager|
       %li
