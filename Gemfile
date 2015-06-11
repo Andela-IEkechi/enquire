@@ -48,7 +48,8 @@ gem 'cancancan', '~> 1.10.1'
 gem 'carrierwave'
 gem 'mini_magick'
 gem "fog"
-
+# charts
+gem 'chartkick', '~> 1.3.2'
 # for storing sensitive stuffs
 gem "figaro"
 

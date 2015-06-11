@@ -1,1 +1,41 @@
-Activities
+.list-group
+  .list-group-item.active.text-center
+    Activities
+.btn-group
+  .btn-group-justified
+    %i.btn.btn-info.btn-lg
+      %span.badge
+        #{current_user.questions.count}
+      Questions
+
+    %i.btn.btn-warning.btn-lg
+      %span.badge
+        #{current_user.answers.count}
+      Answers
+  %br/
+.btn-group
+  .btn-group-justified
+    %i.btn.btn-primary.btn-lg
+      %span.badge
+        #{current_user.hospital_likes.count}
+      Recommendations
+
+    %i.btn.btn-danger.btn-lg
+      %span.badge
+        #{current_user.answer_likes.count}
+      Appreciations
+  %br/
+.btn-group
+  .btn-group-justified
+    %i.btn.btn-success.btn-lg
+      %span.badge
+        #{current_user.reviews.count}
+      Reviews
+
+    %i.btn.btn-info.btn-lg
+      %span.badge
+        #{current_user.follows.count}
+      Follows
+
+= pie_chart [["Football", 10], ["Basketball", 5]], content_for: :charts_js
+-#= pie_chart User.group(:role).count, id: "users-chart", height: "500px"

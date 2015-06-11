@@ -15,8 +15,9 @@
 // THE REQUIRE TREE LINE TO MAKE THE SHIT WORK
 // SO FUCKED!!!
 //
+//= require jsapi
+//= require chartkick
+//= require jquery
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require jquery
-

@@ -4,9 +4,11 @@
     %title Doctopus
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = javascript_include_tag "jsapi.js", "chartkick"
     = favicon_link_tag 'favicon.png'
     = csrf_meta_tags
   %body
+    = yield :charts_js
     = render 'layouts/header'
     - if notice
       %p.alert.alert-success= notice

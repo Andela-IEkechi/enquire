@@ -9,12 +9,14 @@ class User < ActiveRecord::Base
   has_many :follows
   has_one :doctor_verification_request
   has_many :questions, through: :follows, class_name: 'Question'
+  has_many :answers
   # belongs_to :hospital, through: :doctor_lists, class_name: "Hospital" todo CHECK
   belongs_to :hospital
 
   scope :is_doctor, -> { where(role: 'doctor') }
   scope :client, -> { where(role: 'user') }  #todo use is_client and is_manager?
   scope :manager, -> { where(role: 'manager') }
+  scope :admin, -> { where(role: 'admin') }
 
   mount_uploader :image, ImageUploader
   validate :image_size_validation

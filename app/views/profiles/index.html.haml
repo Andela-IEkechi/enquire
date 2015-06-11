@@ -9,6 +9,9 @@
             %strong= client.name
             %footer
               = client.occupation
+              %strong= client.gender
+              %p
+                = seen_last(client.current_sign_in_at)
 
 %h2.profile-head Doctors
 %ul.everyone
@@ -21,7 +24,8 @@
           %p.lead= doctor.bio
           %footer
             %strong= doctor.hospital
-
+            %p
+              = seen_last(doctor.current_sign_in_at)
 
 - if hospital_manager? || admin?
   %h2.profile-head Hospital Managers
@@ -35,3 +39,5 @@
             %p.lead= manager.bio
             %footer
               %p= manager.last_sign_in_at
+              %p
+                = seen_last(manager.current_sign_in_at)

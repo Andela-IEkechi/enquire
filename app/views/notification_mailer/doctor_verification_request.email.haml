@@ -1,0 +1,11 @@
+%p
+  Dear
+  %strong
+    #{@manager.name},
+%p
+  You have received a request for verification from
+  %strong
+    #{@doctor.name}.
+  Please login to Doctopus to review this request, make a decision, and take action.
+%p
+  = link_to "Go to Doctopus", @url
