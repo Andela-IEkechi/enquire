@@ -1,30 +1,30 @@
 %ul.nav.nav-stacked
   - if user_signed_in?
     %li
-      %ul.user-info
-        %li
-          = image_tag(current_user.image, class: 'user')
-        %li
-          %strong
-            = current_user.name
-            %i.dropdown.clickable
-              %i#dropdownMenu1.fa.fa-chevron-circle-down.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown"}
-              %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1", :role => "menu"}
-                %li{:role => "presentation"}
-                  = link_to "My Dashboard", dashboard_path
-                - if has_hospital? || admin?
-                  %li{:role => "presentation"}
-                    = link_to "Verify Hospital", hospital_verification_requests_path
-                - if has_hospital? || admin?
-                  %li{:role => "presentation"}
-                    = link_to "Doctors List", doctor_lists_path
-                - if admin?
-                  %li{:role => "presentation"}
-                    = link_to "Hospitals List", hospital_lists_path
-                - if unverified_doctor?
-                  %li{:role => "presentation"}
-                    = link_to "Get Verified", doctor_verification_requests_path
-
+      %i.dropdown.clickable
+        %i#dropdownMenu1.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown"}
+          %ul.user-info
+            %li
+              = image_tag(current_user.image, class: 'user')
+            %li
+              %strong
+                = current_user.name
+                %i.fa.fa-chevron-circle-down
+        %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1", :role => "menu"}
+          %li{:role => "presentation"}
+            = link_to "My Dashboard", dashboard_path
+          - if has_hospital? || admin?
+            %li{:role => "presentation"}
+              = link_to "Verify Hospital", hospital_verification_requests_path
+          - if has_hospital? || admin?
+            %li{:role => "presentation"}
+              = link_to "Doctors List", doctor_lists_path
+          - if admin?
+            %li{:role => "presentation"}
+              = link_to "Hospitals List", hospital_lists_path
+          - if unverified_doctor?
+            %li{:role => "presentation"}
+              = link_to "Get Verified", doctor_verification_requests_path
   %li
     = link_to :hospitals do
       %i.fa.fa-fw.fa-hospital-o

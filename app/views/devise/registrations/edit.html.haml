@@ -30,12 +30,6 @@
         = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
       .field.form-group
         %br/
-        = f.label :current_password
-        %i (we need your current password to confirm your changes)
-        %br/
-        = f.password_field :current_password, autocomplete: "off", class: "form-control"
-      .field.form-group
-        %br/
         = f.label :bio
         %i (Tell us a little about yourself...)
         %br/
@@ -46,7 +40,7 @@
           = f.label :role
           %i (Select manager if you are a hospital administrator. Doctors will go through a verification process.)
           %br/
-          = f.select :role, options_for_select(User::ROLE), include_blank: true, class: "form-control"
+          = f.select :role, options_for_select(User::ROLE), {}, include_blank: true, class: "form-control"
       .field.form-group
         %br/
         = f.label :image
@@ -113,6 +107,12 @@
         %br/
         = f.label :specialization
         = f.select :specialization, options_for_select(User::SPECIALIZATION), {}, include_blank: true, class: "form-control"
+      .field.form-group
+        %br/
+        = f.label :current_password
+        %i (we need your current password to confirm your changes)
+        %br/
+        = f.password_field :current_password, autocomplete: "off", class: "form-control"
       .actions
         = f.submit "Update", class: "btn btn-md button-hollow-c"
     %h3 Unhappy? Cancel my account
