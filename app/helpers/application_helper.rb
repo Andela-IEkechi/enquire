@@ -31,4 +31,11 @@ module ApplicationHelper
   def has_hospital?
     current_user.role == "manager" && !current_user.hospitals.empty?
   end
+
+  def body_mass_index(user)
+    weight = user.weight
+    height = user.height
+    @bmi = weight/(height*height)
+    return @bmi.round(2)
+  end
 end

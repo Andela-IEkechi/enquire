@@ -10,12 +10,12 @@
             - @question.errors.full_messages.each do |message|
               %li= message
       .field.form-group
-        = f.label :title
-        %br/
-        = f.text_field :caption, class: "form-control"
-      .field.form-group
-        = f.label :content
+        = f.label :ask_a_brief_question
         %br/
         = f.text_area :body, class: "form-control"
+      .field.form-group
+        = f.label :tags_separated_with_comma
+        %br/
+        = f.text_field :all_tags, class: "form-control"
       .actions
         = f.submit "Ask the Doc", class: "btn btn-md button-hollow-c"

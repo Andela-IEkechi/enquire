@@ -18,6 +18,9 @@
         %td Gender
         %td= current_user.gender
       %tr
+        %td Interests
+        %td= current_user.interests
+      %tr
         %td Address
         %td= current_user.address
       %tr
@@ -34,10 +37,13 @@
         %td= current_user.marital_status
       %tr
         %td Weight
-        %td= current_user.weight
+        %td= "#{current_user.weight} Kilograms"
       %tr
         %td Height
-        %td= current_user.height
+        %td= "#{current_user.height} Meters"
+      %tr
+        %td Body Mass Index
+        %td= "#{body_mass_index(current_user)} kg/m2 "
       - if doctor?
         %tr
           %td Specialization

@@ -5,6 +5,9 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
+    if current_user.interests
+      @interest_questions = Question.tagged_with(current_user.interests)
+    end
     @questions = Question.all
     @my_questions = current_user.questions
     @my_follows = current_user.followed_questions
@@ -76,6 +79,6 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:caption, :body, :user_id, :doctor_id)
+      params.require(:question).permit(:caption, :body, :user_id, :doctor_id, :all_tags)
     end
 end

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :doctor_verification_requests
 
   root 'homes#show'
+  get 'tags/:tag', to: 'questions#index', as: "tag"
 
   resources :reviews
   resources :hospitals
