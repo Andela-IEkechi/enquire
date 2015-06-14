@@ -3,7 +3,7 @@
     %h2.page-header
       #{resource_name.to_s.humanize} Profile Settings
     = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-      #error_explanation= devise_error_messages!
+      = devise_error_messages!
       .field.form-group
         %br/
         = f.label :name
@@ -40,7 +40,7 @@
           = f.label :role
           %i (Select manager if you are a hospital administrator. Doctors will go through a verification process.)
           %br/
-          = f.select :role, options_for_select(User::ROLE), {}, include_blank: true, class: "form-control"
+          = f.select :role, options_for_select(User::ROLE), { include_blank: true} , { class: "form-control" }
       .field.form-group
         %br/
         = f.label :image
@@ -99,14 +99,15 @@
             %i.btn.btn-default
               Ft
           = f.text_field :height, class: "form-control"
-      .field.form-group
-        %br/
-        = f.label :year_of_grad
-        = f.select :year_of_grad, relevant_years, {}, include_blank: true, class: "form-control"
-      .field.form-group
-        %br/
-        = f.label :specialization
-        = f.select :specialization, options_for_select(User::SPECIALIZATION), {}, include_blank: true, class: "form-control"
+      - if doctor?
+        .field.form-group
+          %br/
+          = f.label :year_of_grad
+          = f.select :year_of_grad, relevant_years, {}, include_blank: true, class: "form-control"
+        .field.form-group
+          %br/
+          = f.label :specialization
+          = f.select :specialization, options_for_select(User::SPECIALIZATION), {}, include_blank: true, class: "form-control"
       .field.form-group
         %br/
         = f.label :current_password

@@ -13,5 +13,6 @@
       = link_to( image_tag('logo.png', width: "150", class: "logo"), root_path)
     .navbar-text.pull-right
       - unless !user_signed_in?
-        = succeed "." do
-          = link_to "<i class=\"fa fa-2x fa-comment-o\"></i> Ask a Question".html_safe, new_question_path, class: ""
+        - if client?
+          = succeed "." do
+            = link_to "<i class=\"fa fa-2x fa-comment-o\"></i> Ask a Question".html_safe, new_question_path, class: ""

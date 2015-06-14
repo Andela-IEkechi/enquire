@@ -30,7 +30,8 @@ class AnswersController < ApplicationController
       if @answer.save
         format.html { redirect_to :back, notice: 'Answer was successfully created.' }
       else
-        format.html { render :new }
+        format.html { redirect_to :back }
+        # format.html { render :new }
         format.json { render json: @answer.errors, status: :unprocessable_entity }
       end
     end

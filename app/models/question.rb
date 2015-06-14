@@ -4,4 +4,6 @@ class Question < ActiveRecord::Base
   has_many :follows
   has_many :users, through: :follows, class_name: 'User'
 
+  validates_presence_of :caption, :body, :user
+
 end

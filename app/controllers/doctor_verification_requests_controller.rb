@@ -29,7 +29,7 @@ class DoctorVerificationRequestsController < ApplicationController
 
     respond_to do |format|
       if @doctor_verification_request.save
-        NotificationMailer.doctor_verification_email(current_user, @doctor_verification_request.hospital.user).deliver_now
+        NotificationMailer.doctor_verification_email(current_user, @doctor_verification_request.hospital.manager).deliver_now
         format.html { redirect_to dashboard_path, notice: 'Doctor verification request was successfully created.' }
         format.json { render :show, status: :created, location: @doctor_verification_request }
       else
@@ -57,7 +57,7 @@ class DoctorVerificationRequestsController < ApplicationController
   # DELETE /doctor_verification_requests/1.json
   def destroy
     @doctor_verification_request.destroy
-    NotificationMailer.doctor_verified(@doctor_verification_request.user, @doctor_verification_request.hospital.user).deliver_now
+    NotificationMailer.doctor_verified(@doctor_verification_request.user, @doctor_verification_request.hospital.manager).deliver_now
     respond_to do |format|
       format.html { redirect_to :back, notice: 'Doctor verification was successful.' }
       format.json { head :no_content }

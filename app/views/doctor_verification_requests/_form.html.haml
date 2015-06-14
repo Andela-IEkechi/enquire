@@ -1,18 +1,21 @@
-= form_for @doctor_verification_request do |f|
-  - if @doctor_verification_request.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@doctor_verification_request.errors.count, "error")} prohibited this doctor_verification_request from being saved:"
-      %ul
-        - @doctor_verification_request.errors.full_messages.each do |msg|
-          %li= msg
+.container-fluid
+  .form-wrapper
+    = form_for @doctor_verification_request do |f|
+      - if @doctor_verification_request.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@doctor_verification_request.errors.count, "error")} prohibited this doctor_verification_request from being saved:"
+          %ul
+            - @doctor_verification_request.errors.full_messages.each do |msg|
+              %li= msg
 
-  .field.form-group
-    = f.label :hospital
-    = f.collection_select :hospital_id, Hospital.verified.order(:name), :id, :name, include_blank: true, class: "form-control"
-  .field.form-group
-    = f.label :message
-    = f.text_area :message
-  .actions
-    = button_tag type: "submit", class: "button-hollow-c btn-block" do
-      %i.fa.fa-user-plus
-        Submit
+      .field.form-group
+        = f.label :hospital
+        = f.collection_select :hospital_id, Hospital.verified.order(:name), :id, :name, { include_blank: true} , { class: "form-control" }
+
+      .field.form-group
+        = f.label :message
+        = f.text_area :message, class: "form-control"
+      .actions
+        = button_tag type: "submit", class: "button-hollow-c btn-block" do
+          %i.fa.fa-user-plus
+            Submit

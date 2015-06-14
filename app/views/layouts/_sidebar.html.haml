@@ -13,9 +13,9 @@
         %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1", :role => "menu"}
           %li{:role => "presentation"}
             = link_to "My Dashboard", dashboard_path
-          - if has_hospital? || admin?
+          - if has_hospital?
             %li{:role => "presentation"}
-              = link_to "Verify Hospital", hospital_verification_requests_path
+              = link_to "Verify Hospital", new_hospital_verification_request_path
           - if has_hospital? || admin?
             %li{:role => "presentation"}
               = link_to "Doctors List", doctor_lists_path
@@ -24,7 +24,7 @@
               = link_to "Hospitals List", hospital_lists_path
           - if unverified_doctor?
             %li{:role => "presentation"}
-              = link_to "Get Verified", doctor_verification_requests_path
+              = link_to "Get Verified", new_doctor_verification_request_path
   %li
     = link_to :hospitals do
       %i.fa.fa-fw.fa-hospital-o

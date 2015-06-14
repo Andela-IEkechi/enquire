@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_question, only: [:show, :update, :destroy]
   load_and_authorize_resource
 
   # GET /questions
@@ -7,17 +7,14 @@ class QuestionsController < ApplicationController
   def index
     @questions = Question.all
     @my_questions = current_user.questions
-    @my_follows = current_user.follows.map{ |follow| follow.question}
+    @my_follows = current_user.followed_questions
+    @interests = "" #todo how are interests compiled?
   end
 
   # GET /questions/1
   # GET /questions/1.json
   def show
     @answers =  Answer.where(question_id: params[:id]).order('created_at desc')
-
-    puts 'hello'
-    puts params
-    puts 'hello'
   end
 
   # GET /questions/new
@@ -27,6 +24,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
+    @question = current_user.questions.find(params[:id])
   end
 
   # POST /questions

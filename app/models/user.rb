@@ -8,11 +8,12 @@ class User < ActiveRecord::Base
   has_many :likes, through: :hospital_likes, class_name: 'Hospital'
   has_many :follows
   has_one :doctor_verification_request
-  has_many :questions, through: :follows, class_name: 'Question'
+  has_many :followed_questions, through: :follows, source: :question
   has_many :answers
   belongs_to :hospital
 
   validates :date_of_birth, presence: true, on: :update
+  validates :role, presence: true, on: :update
 
   scope :is_doctor, -> { where(role: 'doctor') }
   scope :client, -> { where(role: 'user') }  #todo use is_client and is_manager?

@@ -1,4 +1,4 @@
-#flash, #error_explanation, {
+#flash {
   position: absolute;
   top: 7em;
   left: 0;
@@ -8,14 +8,32 @@
 }
 
 #error_explanation {
-  color: red;
-  position: static;
+  position: fixed;
+  max-width: 450px;
+  top: 7em;
+  z-index: 5000;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
 }
 
-#error_explanation h2 {
-  font-size: 1.2em !important;
-}
-
-#error_explanation ul {
-  font-size: 1.4em !important;
+.field_with_errors {
+  padding: 2px;
+  background-color: #F8E0E6;
 }

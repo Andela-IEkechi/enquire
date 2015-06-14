@@ -5,5 +5,6 @@
     = link_to(('<icon class="fa fa-eye"></icon> Following').html_safe, "#following", {role: "tab", "data-toggle" => "tab"})
   %li
     = link_to(('<icon class="fa fa-puzzle-piece""></icon> Interests').html_safe, "#interests", {role: "tab", "data-toggle" => "tab"})
-  %li
-    = link_to(('<icon class="fa fa-comment"></icon> Mine').html_safe, "#mine", {role: "tab", "data-toggle" => "tab"})
+  - if client?
+    %li
+      = link_to(('<icon class="fa fa-comment"></icon> Mine').html_safe, "#mine", {role: "tab", "data-toggle" => "tab"})

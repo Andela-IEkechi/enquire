@@ -1,18 +1,18 @@
 -#Nav tabs
 %ul.nav.nav-tabs{role: "tablist"}
-  - unless client?
-    %li.active
-      = link_to(('<icon class="fa fa-bell"></icon> Notifications').html_safe, "#notifications", {role: "tab", "data-toggle" => "tab"})
-  %li
+  %li.active
     = link_to(('<icon class="fa fa-pie-chart"></icon> Activities').html_safe, "#activities", {role: "tab", "data-toggle" => "tab"})
+  - unless client?
+    %li
+      = link_to(('<icon class="fa fa-bell"></icon> Notifications').html_safe, "#notifications", {role: "tab", "data-toggle" => "tab"})
   %li
     = link_to(('<icon class="fa fa-user"></icon> Bio').html_safe, "#bio", {role: "tab", "data-toggle" => "tab"})
 
 .tab-content
-  - unless client?
-    #notifications.tab-pane.active.fade.in
-      = render 'notifications'
-  #activities.tab-pane.fade
+  #activities.tab-pane.active.fade.in
     = render 'activities'
+  - unless client?
+    #notifications.tab-pane.fade
+      = render 'notifications'
   #bio.tab-pane.fade
     = render 'bio'
