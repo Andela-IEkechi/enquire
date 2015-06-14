@@ -53,6 +53,9 @@ gem 'chartkick', '~> 1.3.2'
 # for storing sensitive stuffs
 gem "figaro"
 
+#simulates sending and opening of letters in development
+gem "letter_opener", :group => :development
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

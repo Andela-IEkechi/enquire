@@ -11,42 +11,7 @@
         - if hospital.manager == current_user
           = link_to 'Edit', edit_hospital_path(hospital), class: "fa fa-pencil-square-o"
           = link_to 'Remove', hospital, class: "text-danger fa fa-times", method: :delete, data: { confirm: 'Are you sure?' }
-    %li
-      = link_to (hospital), class: "list-group-item"  do
-        = image_tag hospital.image.url(:medium), class: 'img-circle', width: 200
-        %blockquote
-          %strong.name= hospital.name
-          %p= hospital.description
-        - if hospital.manager == current_user
-          = link_to 'Edit', edit_hospital_path(hospital), class: "fa fa-pencil-square-o"
-          = link_to 'Remove', hospital, class: "text-danger fa fa-times", method: :delete, data: { confirm: 'Are you sure?' }
-    %li
-      = link_to (hospital), class: "list-group-item"  do
-        = image_tag hospital.image.url(:medium), class: 'img-circle', width: 200
-        %blockquote
-          %strong.name= hospital.name
-          %p= hospital.description
-        - if hospital.manager == current_user
-          = link_to 'Edit', edit_hospital_path(hospital), class: "fa fa-pencil-square-o"
-          = link_to 'Remove', hospital, class: "text-danger fa fa-times", method: :delete, data: { confirm: 'Are you sure?' }
-    %li
-      = link_to (hospital), class: "list-group-item"  do
-        = image_tag hospital.image.url(:medium), class: 'img-circle', width: 200
-        %blockquote
-          %strong.name= hospital.name
-          %p= hospital.description
-        - if hospital.manager == current_user
-          = link_to 'Edit', edit_hospital_path(hospital), class: "fa fa-pencil-square-o"
-          = link_to 'Remove', hospital, class: "text-danger fa fa-times", method: :delete, data: { confirm: 'Are you sure?' }
-    %li
-      = link_to (hospital), class: "list-group-item"  do
-        = image_tag hospital.image.url(:medium), class: 'img-circle', width: 200
-        %blockquote
-          %strong.name= hospital.name
-          %p= hospital.description
-        - if hospital.manager == current_user
-          = link_to 'Edit', edit_hospital_path(hospital), class: "fa fa-pencil-square-o"
-          = link_to 'Remove', hospital, class: "text-danger fa fa-times", method: :delete, data: { confirm: 'Are you sure?' }
+
 - if hospital_manager?
   .profile-head
     = link_to 'Add New Hospital', new_hospital_path, class: "btn btn-default profile-head"

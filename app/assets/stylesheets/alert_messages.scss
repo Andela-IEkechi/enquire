@@ -1,4 +1,4 @@
-#flash, #error_explanation {
+#flash, #error_explanation, {
   position: absolute;
   top: 7em;
   left: 0;
@@ -10,4 +10,12 @@
 #error_explanation {
   color: red;
   position: static;
+}
+
+#error_explanation h2 {
+  font-size: 1.2em !important;
+}
+
+#error_explanation ul {
+  font-size: 1.4em !important;
 }

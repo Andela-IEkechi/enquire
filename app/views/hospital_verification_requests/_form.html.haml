@@ -9,10 +9,10 @@
 
     .field.form-group
       = f.label :hospital
-      = f.collection_select :hospital_id, Hospital.order(:name), :id, :name, include_blank: true, class: "form-control"
+      = f.collection_select :hospital_id, current_user.hospitals.order(:name), :id, :name, {}, include_blank: true, class: "form-control"
     .field.form-group
       = f.label :message
-      = f.text_area :message
+      = f.text_area :message, class: "form-control"
     .actions
       = button_tag type: "submit", class: "button-hollow-b" do
         %i.fa.fa-user-plus
