@@ -5,8 +5,11 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
+    if current_user.interests
+      @interest_questions = Question.tagged_with(current_user.interests)
+    end
     @questions = Question.all
-    @my_questions = current_user.questions
+    @my_questions = Question.where(user_id: current_user.id)
     @my_follows = current_user.follows.map{ |follow| follow.question}
   end
 
@@ -14,10 +17,6 @@ class QuestionsController < ApplicationController
   # GET /questions/1.json
   def show
     @answers =  Answer.where(question_id: params[:id]).order('created_at desc')
-
-    puts 'hello'
-    puts params
-    puts 'hello'
   end
 
   # GET /questions/new
@@ -78,6 +77,6 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:caption, :body, :user_id, :doctor_id)
+      params.require(:question).permit(:caption, :body, :user_id, :doctor_id, :all_tags)
     end
 end

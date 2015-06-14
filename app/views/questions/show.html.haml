@@ -3,8 +3,8 @@
   Question
 %br/
 %blockquote
-  %strong= @question.caption
   %p= @question.body
+  %p=raw tag_links(@question.all_tags)
   %footer
     %strong
       = image_tag(current_user.image.url(:thumb), class: 'user')

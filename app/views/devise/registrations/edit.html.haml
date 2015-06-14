@@ -40,6 +40,11 @@
         %i (Tell us a little about yourself...)
         %br/
         = f.text_area :bio, class: "form-control"
+      .field.form-group
+        %br/
+        = f.label :interests_separated_by_comma
+        %br/
+        = f.text_field :interests, class: "form-control"
       - if current_user.role.nil?
         .field.form-group
           %br/
@@ -103,7 +108,7 @@
         .input-group
           %span.input-group-btn
             %i.btn.btn-default
-              Ft
+              M
           = f.text_field :height, class: "form-control"
       .field.form-group
         %br/

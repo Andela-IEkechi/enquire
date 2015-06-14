@@ -43,7 +43,6 @@ gem 'omniauth-openid'
 gem 'cancancan', '~> 1.10.1'
 # Use Unicorn as the app server
 # gem 'unicorn'
-
 # Use carrierwave for image uploads
 gem 'carrierwave'
 gem 'mini_magick'

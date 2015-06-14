@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   belongs_to :hospital
 
   validates :date_of_birth, presence: true, on: :update
+  serialize :interests
 
   scope :is_doctor, -> { where(role: 'doctor') }
   scope :client, -> { where(role: 'user') }  #todo use is_client and is_manager?
