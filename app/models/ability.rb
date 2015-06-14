@@ -22,6 +22,7 @@ class Ability
       can :create, DoctorVerificationRequest
       can :manage, [
                    Answer,
+                   Follow,
                    Question
                  ]
     else

@@ -1,6 +1,6 @@
 %ul
   -if current_user.interests
-    - @interest_questions.each do |question|
+    - @interest_questions.try(:each) do |question|
       %li
         %br/
         = link_to (question), class: "list-group-item" do

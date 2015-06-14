@@ -17,6 +17,6 @@ class Question < ActiveRecord::Base
   end
 
   def self.tagged_with(name)
-    Tag.find_by_name!(name.split(',')).questions
+    Tag.find_by_name(name.strip.split(',')).try(:questions)
   end
 end
