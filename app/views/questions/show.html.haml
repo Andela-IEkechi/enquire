@@ -25,7 +25,7 @@
     .list-group-item
       = answer.content
       = answer.user.try(:name)
-      - if client? && !answer.users.include?(current_user)
+      - if client? && !answer.answer_likes.map(&:user).include?(current_user)
         = form_for AnswerLike.new do
           = hidden_field(:answer_like, :answer_id, value: "#{answer.id}")
           %div
