@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
                     "Dentistry (Restorative. Preventive, Dental Child Health and Maxiliofacial)"]
 
   GENDER = ["Male", "Female"]
-  RELIGION = ["Christianity", "Islam", "Chrislam", "The Grail Movement", "The Reformed Ogboni Fraternity", "Non-Religious", "Other"]
+  RELIGION = ["Christianity", "Islam", "Non-Religious", "Other"]
   TRIBE = ["Igbo", "Hausa/Fulani", "Yoruba"]
   MARITAL = ["Single", "Married", "Widowed", "Divorced", "Cohabiting", "Civil Union", "Domestic Partnership", "Unmarried Partners" ]
   ROLE = ["user", "doctor", "manager"]
