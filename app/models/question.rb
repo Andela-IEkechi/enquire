@@ -1,15 +1,14 @@
 class Question < ActiveRecord::Base
   belongs_to :user, -> { where(role: "user") }
-
   has_many :answers, :dependent => :destroy
-  accepts_nested_attributes_for :answers
-
   has_many :follows
   has_many :users, through: :follows, class_name: 'User'
   has_many :taggings
   has_many :tags, through: :taggings
 
   validates_presence_of :body, :user
+
+  accepts_nested_attributes_for :answers
 
   def all_tags=(names)
     self.tags = names.split(",").map do |name|
