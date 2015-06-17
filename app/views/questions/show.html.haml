@@ -24,7 +24,6 @@
   - @answers.each do |answer|
     .list-group-item
       = answer.content
-      = answer.user.try(:name)
       - if client? && !answer.answer_likes.map(&:user).include?(current_user)
         = form_for AnswerLike.new do
           = hidden_field(:answer_like, :answer_id, value: "#{answer.id}")
@@ -37,4 +36,5 @@
 -if doctor?
   .jumbotron
     %h4.section-header Doctor? Your Answer;
-    = render 'answers/form'
+
+    = render 'answer_form'

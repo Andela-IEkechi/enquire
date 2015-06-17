@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   resources :hospital_verification_requests
   resources :doctor_verification_requests
 
-  root 'homes#show'
   get 'tags/:tag', to: 'questions#index', as: "tag"
 
   resources :reviews
@@ -20,7 +19,11 @@ Rails.application.routes.draw do
   resources :doctor_likes
   resources :follows
 
+  post 'answer' => 'questions#answer'
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => :registrations }
+
+  root 'homes#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

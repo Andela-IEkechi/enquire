@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :update, :destroy]
+  before_action :set_question, only: [:show, :update, :destroy, :answer]
   load_and_authorize_resource
 
   # GET /questions
@@ -17,7 +17,10 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
-    @answers =  Answer.where(question_id: params[:id]).order('created_at desc')
+    @answers = @question.answers.order('created_at desc')
+    # binding.pry
+    # @answers =  Answer.where(question_id: params[:id]).order('created_at desc')
+    @answer = current_user.answers.new(question: @question)
   end
 
   # GET /questions/new
@@ -71,6 +74,22 @@ class QuestionsController < ApplicationController
     end
   end
 
+
+  def answer
+    @answers = @question.answers.order('created_at desc')
+    @answer = @question.answers.build(answer_params)
+    @answer.user = current_user
+
+    respond_to do |format|
+      if @answer.save
+        format.html { redirect_to action: :show, id: params[:id], notice: 'Answer was successfully created.' }
+      else
+        format.html { render :show }
+        format.json { render json: @answer.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_question
@@ -80,5 +99,9 @@ class QuestionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
       params.require(:question).permit(:caption, :body, :user_id, :doctor_id, :all_tags)
+    end
+
+    def answer_params
+      params.require(:answer).permit(:question_id, :content, :doctor_id)
     end
 end

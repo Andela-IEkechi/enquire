@@ -1,0 +1,15 @@
+= form_tag action: 'answer', id: @question do
+  - if @answer.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@answer.errors.count, "error")
+        prohibited this answer from being saved:
+      %ul
+        - @answer.errors.full_messages.each do |message|
+          %li= message
+  .field.form-group
+    = text_area 'answer', :content, class: "form-control"
+  .actions
+    = button_tag type: "submit", class: "button-hollow-b" do
+      %i.fa.fa-stethoscope
+        Post Help
