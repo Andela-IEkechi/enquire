@@ -77,12 +77,12 @@ class QuestionsController < ApplicationController
     @answer = @question.answers.build(answer_params)
     @answer.user = current_user
     respond_to do |format|
-      # if @answer.save
-      #   format.html { redirect_to action: :show, id: params[:id], notice: 'Answer was successfully created.' }
-      # else
+      if @answer.save
+        format.html { redirect_to action: :show, id: params[:id], notice: 'Answer was successfully created.' }
+      else
         format.html { render :show }
-      #   format.json { render json: @answer.errors, status: :unprocessable_entity }
-      # end
+        format.json { render json: @answer.errors, status: :unprocessable_entity }
+      end
     end
   end
 
