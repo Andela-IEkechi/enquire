@@ -31,7 +31,7 @@
           - if client? && !answer.answer_likes.map(&:user).include?(current_user)
             = link_to "Appreciate", answer_likes_path(answer_id: answer.id, user_id: current_user.id), method: :post
   %br/
--if doctor?
+-if verified_doctor?
   .jumbotron
     %h4.section-header Doctor? Your Answer;
 

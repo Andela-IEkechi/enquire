@@ -51,19 +51,20 @@
       = (Date.today.year - @profile.year_of_grad.to_i)
       years
 
-    %p.page-header
-      %b Hospital Affiliated With
-    = link_to @profile.hospital.try(:name), hospital_path(@profile.hospital)
+    - if @profile.verified?
+      %p.page-header
+        %b Hospital Affiliated With
+      = link_to @profile.hospital.try(:name), hospital_path(@profile.hospital)
 
-    %p.page-header
-      %b Has Answered
-    = @profile.answers.try(:count)
-    questions
+      %p.page-header
+        %b Has Answered
+      = @profile.answers.try(:count)
+      questions
 
-    %p.page-header
-      %b Answers Have Been Liked
-    = @profile.answers.map(&:answer_likes).count
-    times
+      %p.page-header
+        %b Answers Have Been Liked
+      = @profile.answers.map(&:answer_likes).count
+      times
   %br
   %br
   %button.btn.button-hollow-b
