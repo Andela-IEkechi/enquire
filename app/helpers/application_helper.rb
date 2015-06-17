@@ -35,7 +35,9 @@ module ApplicationHelper
   def body_mass_index(user)
     weight = user.weight
     height = user.height
-    @bmi = weight/(height*height)
-    return @bmi.round(2)
+    if weight && height
+      @bmi = weight/(height*height)
+      return @bmi.round(2)
+    end
   end
 end

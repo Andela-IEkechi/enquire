@@ -2,7 +2,7 @@
 %ul.nav.nav-tabs{role: "tablist"}
   %li.active
     = link_to(('<icon class="fa fa-pie-chart"></icon> Activities').html_safe, "#activities", {role: "tab", "data-toggle" => "tab"})
-  - unless client?
+  - unless client? || doctor?
     %li
       = link_to(('<icon class="fa fa-bell"></icon> Notifications').html_safe, "#notifications", {role: "tab", "data-toggle" => "tab"})
   %li
@@ -11,7 +11,7 @@
 .tab-content
   #activities.tab-pane.active.fade.in
     = render 'activities'
-  - unless client?
+  - unless client? || doctor?
     #notifications.tab-pane.fade
       = render 'notifications'
   #bio.tab-pane.fade
