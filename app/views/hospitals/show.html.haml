@@ -19,23 +19,27 @@
 
 %p.page-header
   %b Recommendations:
+%i.fa.fa-diamond
 = @recommend.count
 %br
-
-= render 'hospital_likes/new'
-
+-unless @recommend.map(&:user).include?(current_user)
+  = render 'hospital_likes/new'
+%br/
 %h4 Reviews
 - @reviews.each do |review|
   .list-group-item
     = review.content
     %br/
-    %strong= review.user.name
+    %strong
+      \-
+      = review.user.name
 %br/
 - if can? :manage, Review
-  %h4 What do you think of this hospital? Add your own review;
-  = render 'reviews/form'
+  -unless @reviews.map(&:user).include?(current_user)
+    %h4 What do you think of this hospital? Add your own review;
+    = render 'reviews/form'
 
 
 %button.btn.button-hollow-b
-  = link_to 'Back', hospitals_path
+  = link_to "<i class=\"fa fa-chevron-left\"></i>  Back".html_safe, hospitals_path
 

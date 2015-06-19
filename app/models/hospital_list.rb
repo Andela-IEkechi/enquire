@@ -10,7 +10,9 @@ class HospitalList < ActiveRecord::Base
   protected
 
   def remove_hospital
-    hospital.verified = false
-    hospital.save
+    ActiveRecord::Base.transaction do
+      hospital.verified = false
+      hospital.save
+    end
   end
 end

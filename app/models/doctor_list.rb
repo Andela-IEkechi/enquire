@@ -9,7 +9,9 @@ class DoctorList < ActiveRecord::Base
   protected
 
   def remove_doctor
-    user.verified = false
-    user.save
+    ActiveRecord::Base.transaction do
+      user.verified = false
+      user.save
+    end
   end
 end

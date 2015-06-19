@@ -22,9 +22,8 @@
           %blockquote
             = image_tag doctor.image, class: 'img-circle', width: 100
             %strong= doctor.name
-            %p.lead= doctor.bio
             %footer
-              %strong= doctor.hospital
+              %strong= doctor.hospital.name
               %p
                 = seen_last(doctor.current_sign_in_at) if doctor.current_sign_in_at
 
@@ -38,7 +37,6 @@
             %blockquote
               = image_tag manager.image, class: 'img-circle', width: 100
               %strong= manager.name
-              %p.lead= manager.bio
               %footer
                 %p
                   = seen_last(manager.current_sign_in_at) if manager.current_sign_in_at

@@ -1,8 +1,6 @@
-- if user_signed_in?
-  - if can? :manage, AnswerLike
-    = form_for AnswerLike.new do |f|
-      = hidden_field(:answer_like, :answer_id, value: "#{answer.id}")
-      = hidden_field(:answer_like, :user_id, value: current_user.id)
-      .row.actions.text-center
-        = f.submit "Like", class: "btn btn-primary btn-resize"
-      %br/
+- if client?
+  = form_for AnswerLike.new do |f|
+    = hidden_field(:answer_like, :answer_id, value: "#{answer.id}")
+    .row.actions.text-center
+      = f.submit "Like", class: "btn btn-primary btn-resize"
+    %br/

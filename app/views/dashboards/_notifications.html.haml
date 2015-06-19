@@ -12,7 +12,7 @@
           = "Requests Verification for"
           %strong= notification.hospital.name
           Hospital.
-          = link_to hospital_verification_request_path(notification.hospital), :method => :delete, :data => { :confirm => 'Are you sure?' } do
+          = link_to hospital_verification_request_path(notification), :method => :delete, :data => { :confirm => 'Are you sure?' } do
             %i.button-hollow-b.fa.fa-check-circle.text-success
               Verify
   - if has_hospital?

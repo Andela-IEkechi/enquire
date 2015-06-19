@@ -1,4 +1,5 @@
 class AnswersController < ApplicationController
+  before_action :set_answer, only: [:update]
   load_and_authorize_resource
 
   # GET /answers
@@ -41,7 +42,7 @@ class AnswersController < ApplicationController
   def update
     respond_to do |format|
       if @answer.update(answer_params)
-        format.html { redirect_to @answer, notice: 'Answer was successfully updated.' }
+        format.html { redirect_to questions_path, notice: 'Answer was successfully updated.' }
         format.json { render :show, status: :ok, location: @answer }
       else
         format.html { render :edit }
@@ -68,6 +69,7 @@ class AnswersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def answer_params
-    params.require(:answer).permit(:question_id, :content, :doctor_id)
+    # binding.pry
+    params.require(:answer).permit(:question_id, :content, :user_id)
   end
 end
