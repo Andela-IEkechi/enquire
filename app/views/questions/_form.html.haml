@@ -14,7 +14,8 @@
         %br/
         = f.text_area :body, class: "form-control"
       .field.form-group
-        = f.label :tags_separated_with_comma
+        = f.label :tags_separated_with_commas
+        %i (what topics this question is related to...eg. Eye, Pregnancy)
         %br/
         = f.text_field :all_tags, class: "form-control"
       .actions

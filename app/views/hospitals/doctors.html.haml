@@ -1,0 +1,10 @@
+%h2.fa.fa-stethoscope
+  Our Doctors (#{@doctors.count})
+%ul
+  - @doctors.each do |doctor|
+    %li.panel.panel-default
+      .panel-heading
+        %strong
+          = link_to doctor.user.name, profile_path(doctor.user)
+        .pull-right
+          = image_tag(doctor.user.image, class: "img-thumbnail user")

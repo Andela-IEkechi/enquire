@@ -1,5 +1,5 @@
 class HospitalsController < ApplicationController
-  before_action :set_hospital, only: [:show, :edit, :update, :destroy]
+  before_action :set_hospital, only: [:show, :edit, :update, :destroy, :our_doctors]
   load_and_authorize_resource
 
   # GET /hospitals
@@ -64,6 +64,10 @@ class HospitalsController < ApplicationController
       format.html { redirect_to hospitals_url, notice: 'Hospital was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def our_doctors
+    @doctors = DoctorList.where(hospital_id: @hospital.id)
   end
 
   private

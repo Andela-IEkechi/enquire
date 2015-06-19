@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :follows
 
   post 'answer' => 'questions#answer'
+  get 'hospitals/:id/doctors' => 'hospitals#our_doctors'
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => :registrations }
 
