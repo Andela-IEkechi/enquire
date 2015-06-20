@@ -48,7 +48,7 @@ class NotificationMailer < ApplicationMailer
   end
 
   def hospital_verification_email manager, hospital
-    @admin = User.admin.first
+    @admin = User.is_admin.first
     @manager = manager
     @hospital = hospital
     @url  = "https://enquire-med.herokuapp.com/"

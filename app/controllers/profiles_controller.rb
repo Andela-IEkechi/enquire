@@ -2,9 +2,9 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show]
 
   def index
-    @clients = User.client
-    @doctors = User.is_doctor
-    @managers = User.manager
+    @clients = User.is_client
+    @doctors = User.is_verified_doctor
+    @managers = User.is_manager
   end
 
   def show
