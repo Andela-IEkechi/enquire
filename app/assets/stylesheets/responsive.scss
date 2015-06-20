@@ -19,9 +19,14 @@
     display: block !important;
   }
 
-  .content_wrapper {
-    margin-left: 220px;
+  .content_wrapper, .home {
+    margin-left: 200px;
     overflow-y: scroll;
+  }
+
+  .about-video iframe {
+    width: 560px;
+    height: 315px;
   }
 }
 
@@ -37,7 +42,7 @@
   .sidebar {
     width: 300px;
   }
-  .content_wrapper {
-    margin-left: 350px;
+  .content_wrapper, .home {
+    margin-left: 300px;
   }
 }

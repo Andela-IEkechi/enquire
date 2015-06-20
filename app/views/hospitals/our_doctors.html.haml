@@ -3,7 +3,7 @@
 %ul
   - @doctors.each do |doctor|
     %li.panel.panel-default
-      .panel-heading
+      .panel-heading.btn-group-justified
         %strong
           = link_to doctor.user.name, profile_path(doctor.user)
         .pull-right

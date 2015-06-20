@@ -1,2 +1,10 @@
-.home
-  %h1.text-center Quality health-care information at your finger tips!
+.home.text-center
+  %h1 Quality health-care information at your finger tips!
+  %br/
+  %p A love letter from Sandwich Video:
+
+  .about-video
+    %iframe{src: "https://www.youtube.com/embed/5TUCT6p673k", frameborder: "0", allowfullscreen: true}
+
+  .btn.btn-lg.button-hollow-a.text-center
+    =link_to "Explore", questions_path
