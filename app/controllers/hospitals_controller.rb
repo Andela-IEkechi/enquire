@@ -1,6 +1,5 @@
 class HospitalsController < ApplicationController
   before_action :set_hospital, only: [:show, :edit, :update, :destroy, :our_doctors]
-  # load_and_authorize_resource
 
   # GET /hospitals
   # GET /hospitals.json
