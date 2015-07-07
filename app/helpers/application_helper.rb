@@ -32,6 +32,10 @@ module ApplicationHelper
     current_user.role == "manager" && !current_user.hospitals.empty?
   end
 
+  def has_unverified_hospital?
+    !current_user.hospitals.where(verified: false).empty?
+  end
+
   def body_mass_index(user)
     weight = user.weight
     height = user.height
