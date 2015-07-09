@@ -15,10 +15,10 @@ class User < ActiveRecord::Base
   validates :date_of_birth, presence: true, on: :update
   validates :role, presence: true, on: :update
 
-  scope :is_doctor, -> { where(role: 'doctor') }
-  scope :client, -> { where(role: 'user') }  #todo use is_client and is_manager?
-  scope :manager, -> { where(role: 'manager') }
-  scope :admin, -> { where(role: 'admin') }
+  scope :is_verified_doctor, -> { where(role: 'doctor', verified: true) }
+  scope :is_client, -> { where(role: 'user') }  #todo use is_client and is_manager?
+  scope :is_manager, -> { where(role: 'manager') }
+  scope :is_admin, -> { where(role: 'admin') }
 
   mount_uploader :image, ImageUploader
   validate :image_size_validation

@@ -28,7 +28,7 @@
 
 %p.page-header
   %b Our Doctors
-= link_to "Meet Our Doctors", "hospitals/#{@hospital.id}/doctors", class: "btn button-hollow-b"
+= link_to "Meet Our Doctors", "#{@hospital.id}/doctors", class: "btn button-hollow-b"
 %br
 
 -unless @recommend.map(&:user).include?(current_user)

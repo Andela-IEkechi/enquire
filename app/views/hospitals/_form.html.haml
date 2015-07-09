@@ -26,6 +26,10 @@
         %br/
         = f.text_area :address, class: "form-control"
       .field.form-group
+        = f.label :phone_number
+        %br/
+        = f.text_field :phone_number, class: "form-control"
+      .field.form-group
         = f.label :classification
         %br/
         = f.select :classification, options_for_select(Hospital::HOSPITAL_TYPE), {}, class: "form-control"

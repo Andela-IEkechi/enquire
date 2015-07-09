@@ -1,6 +1,9 @@
 .list-group
   .list-group-item.active.text-center
     My Bio
+    - if verified_doctor?
+      .img-responsive.verified= image_tag('verified.png')
+
 .table-responsive
   %table.table-striped.table-bordered
     %thead
