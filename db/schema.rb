@@ -210,8 +210,8 @@ ActiveRecord::Schema.define(version: 20150619002803) do
     t.string   "occupation"
     t.string   "religion"
     t.string   "marital_status"
-    t.float    "weight"
-    t.float    "height"
+    t.float    "weight",                 default: 0.0
+    t.float    "height",                 default: 0.0
     t.string   "year_of_grad"
     t.string   "specialization"
     t.string   "interests",              default: ""

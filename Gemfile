@@ -27,10 +27,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'haml'
 gem "haml-rails", "~> 0.9"
+
+# todo remove all these
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'font-awesome-rails'
-# bootswatch for flat nice designs
-gem 'bootswatch-rails'
+gem 'bootswatch-rails' #todo remove bootswatch after materilize has been stabilized
+
 gem 'pry'
 # Use devise for authentication
 gem 'devise'
