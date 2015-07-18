@@ -19,6 +19,6 @@
 //= require jsapi
 //= require chartkick
 //= require jquery_ujs
-//= require turbolinks
-//= require materialize.min
-//= require_tree .
+//= require jquery
+//= require materialize-sprockets
+// = require_tree .

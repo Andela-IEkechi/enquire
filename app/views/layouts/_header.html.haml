@@ -13,31 +13,13 @@
         - if client?
           = succeed "." do
             = link_to "<i class=\"fa fa-2x fa-comment-o\"></i> Ask a Question".html_safe, new_question_path, class: ""
+            <a href="#!" class="brand-logo">Logo</a>
 
-%nav
+%nav.top-nav
   .nav-wrapper
-    = link_to 'Logo', '#', class: 'brand-logo'
-    %ul.right.hide-on-med-and-down
-      %li= link_to 'Sass', '#'
-      %li= link_to 'Components', '#'
+    = link_to( image_tag('cadwings.png', width: "190", class: "brand-logo"), root_path)
+    %a.button-collapse{"data-activates"=>"mobile-demo", href: "#"}
+      %i.mdi-navigation-menu.full.hide-on-large-only
       -#Dropdown Trigger
-      %li
-        %a{class: "dropdown-button", href: "#!", 'data-activates' => "dropdown1"}
-          Dropdown
-          %i.material-icons.right arrow_drop_down
--#%nav
-  .nav-wrapper
-  .container.text-center
-    %button.navbar-toggle.pull-left#button-toggle
-      %span.icon-bar
-      %span.icon-bar
-      %span.icon-bar
-      %span.icon-bar
-      %span.icon-bar
-    .navbar-brand.text-center
-      = link_to( image_tag('cadwings.png', width: "190", class: "logo"), root_path)
-    .navbar-text.pull-right
-      - unless !user_signed_in?
-        - if client?
-          = succeed "." do
-            = link_to "<i class=\"fa fa-2x fa-comment-o\"></i> Ask a Question".html_safe, new_question_path, class: ""
+    #mobile-demo.side-nav
+      = render "layouts/sidebar"

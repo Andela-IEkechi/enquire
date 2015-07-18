@@ -1,20 +1,25 @@
-.navbar {
-  background-color: #64AAE4 !important;
-  height: 6em;
-  margin: auto;
-  padding: auto;
-}
-.navbar a {
-  color: #ffffff!important;
-}
-.navbar a:hover {
-  text-decoration: none;
-  background-color: transparent;
-  color: #000000!important;
-}
-.logo {
-  position: absolute;
-  top: 0;
+//.navbar {
+//  background-color: #64AAE4 !important;
+//  height: 6em;
+//  margin: auto;
+//  padding: auto;
+//}
+//.navbar a {
+//  color: #ffffff!important;
+//}
+//.navbar a:hover {
+//  text-decoration: none;
+//  background-color: transparent;
+//  color: #000000!important;
+//}
+//.logo {
+//  position: absolute;
+//  top: 0;
+//}
+
+.top-nav {
+  height: 7em;
+  box-shadow: none;
 }
 
 .nav-tabs {
