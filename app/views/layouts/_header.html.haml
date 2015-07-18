@@ -14,12 +14,16 @@
           = succeed "." do
             = link_to "<i class=\"fa fa-2x fa-comment-o\"></i> Ask a Question".html_safe, new_question_path, class: ""
             <a href="#!" class="brand-logo">Logo</a>
-
-%nav.top-nav
-  .nav-wrapper
-    = link_to( image_tag('cadwings.png', width: "190", class: "brand-logo"), root_path)
-    %a.button-collapse{"data-activates"=>"mobile-demo", href: "#"}
-      %i.mdi-navigation-menu.full.hide-on-large-only
-      -#Dropdown Trigger
-    #mobile-demo.side-nav
-      = render "layouts/sidebar"
+.navbar-fixed
+  %nav.top-nav
+    .nav-wrapper
+      = link_to( image_tag('cadwings.png', width: "190", class: "brand-logo"), root_path)
+      %a.button-collapse{"data-activates"=>"mobile-demo", href: "#"}
+        %i.mdi-navigation-menu.full.hide-on-large-only
+        -#Dropdown Trigger
+      #mobile-demo.side-nav
+        = render "layouts/sidebar"
+      .right
+        - unless !user_signed_in?
+          - if client?
+            = link_to "<i class=\"mdi-action-announcement\">Ask a Question</i>".html_safe, new_question_path, class: ""

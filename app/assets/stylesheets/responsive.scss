@@ -1,19 +1,4 @@
-/* Medium Devices, Desktops */
-
-/* Custom, iPhone Retina */
-@media only screen and (max-width : 768px) {
-//  .btn { font-size: 0.9em !important; }
-  .sidebar {
-    width: 50%;
-    z-index: 10;
-  }
-
-  .content_wrapper {
-    margin-left: 10px;
-  }
-}
-
-@media only screen and (min-width : 768px) {
+@media only screen and (min-width : 992px) {
   .sidebar {
     width: 200px;
     display: block !important;
