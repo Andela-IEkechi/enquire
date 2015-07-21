@@ -72,6 +72,10 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def search
+    @q = params[:q]
+    @found_questions = Question.contains_text("%#{params[:q]}%")
+  end
 
   def answer
     @answer = @question.answers.build(answer_params)

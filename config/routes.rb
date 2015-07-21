@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
-  resources :articles
+  resources :articles do
+    get :search
+  end
 
-  mount Ckeditor::Engine => '/ckeditor'
+  resources :questions do
+    get :search
+  end
+
   resources :hospital_lists
   resources :doctor_lists
   resources :hospital_verification_requests
@@ -14,7 +19,6 @@ Rails.application.routes.draw do
   resources :hospitals
   resources :answers
   resources :profiles, only: [:show, :index]
-  resources :questions
   resource  :dashboard
   resources :doctors
   resources :hospital_likes
@@ -28,6 +32,8 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => :registrations }
 
   root 'homes#show'
+
+  mount Ckeditor::Engine => '/ckeditor'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
