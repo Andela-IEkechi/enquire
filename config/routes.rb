@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :articles
+
+  mount Ckeditor::Engine => '/ckeditor'
   resources :hospital_lists
   resources :doctor_lists
   resources :hospital_verification_requests

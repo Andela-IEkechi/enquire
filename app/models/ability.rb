@@ -26,6 +26,10 @@ class Ability
                    Question
                  ]
     else
+      can :access, :ckeditor   # needed to access Ckeditor filebrowser
+      # Performed checks for actions:
+      can [:read, :create, :destroy], Ckeditor::Picture
+      can [:read, :create, :destroy], Ckeditor::AttachmentFile
       can :manage, Question do |question|
         user == question.user
       end
