@@ -5,10 +5,8 @@
       .exp
         %p connecting you with health-care
         %p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      .btn
-        =link_to "Sign up", new_user_registration_path
-      .btn
-        =link_to "Sign in", new_user_session_path
+      =link_to "Sign up", new_user_registration_path, class: 'waves-effect waves-light btn home-btn'
+      =link_to "Sign in", new_user_session_path, class: 'waves-effect waves-light btn home-btn sign-in'
 
     .col.m4
       .clickable.play= image_tag("play.gif", size: "300x200", alt: "Play intro to Enquire")
