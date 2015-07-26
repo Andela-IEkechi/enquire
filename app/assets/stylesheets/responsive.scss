@@ -4,7 +4,7 @@
     display: block !important;
   }
 
-  .content_wrapper, .home {
+  .content_wrapper {
     margin-left: 200px;
     overflow-y: scroll;
   }
@@ -22,7 +22,7 @@
   .sidebar {
     width: 300px;
   }
-  .content_wrapper, .home {
+  .content_wrapper {
     margin-left: 300px;
   }
 }
