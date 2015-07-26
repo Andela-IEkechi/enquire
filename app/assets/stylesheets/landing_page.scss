@@ -1,0 +1,84 @@
+.home {
+  position: fixed;
+  z-index: 3;
+  background-image: url('landing_bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 50%;
+  background-color: black;
+  left: 0;
+  right: 0;
+  top: 7em;
+  bottom: 0;
+}
+
+.home-div {
+  background: rgba(0, 0, 0 ,0.6);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
+  padding: 3em;
+  overflow-y: scroll;
+  margin: 0 !important;
+}
+
+.caption {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  font-size: 10vh;
+  color: #58ACFA;
+}
+
+.exp {
+  font-family: 'Roboto', sans-serif;
+  font-size: 3vh;
+  color: #FBF5EF;
+  top: -4.5em;
+  position: relative;
+}
+
+.play:hover {
+  opacity: 0.8;
+}
+
+.about-video {
+  width: 80%;
+  min-height: 50%;
+  margin: 10%;
+  position: relative;
+  height: 0;
+  max-width: 750px;
+  display: none;
+}
+
+.about-video #close {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  z-index: 2;
+  color: skyblue;
+}
+
+.about-video #close:hover {
+  color: red;
+}
+
+/* 16x9 Aspect Ratio */
+.about-video-16x9 {
+  padding-bottom: 56.25%;
+}
+
+/* 4x3 Aspect Ratio */
+.about-video-4x3 {
+  padding-bottom: 75%;
+}
+
+.about-video iframe {
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
