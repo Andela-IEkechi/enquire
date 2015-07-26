@@ -16,7 +16,7 @@
         %p.alert.alert-danger= alert
 
     = yield :charts_js
-    - unless request.path == root_path
+    - unless request.path == new_user_session_path || request.path == new_user_registration_path || request.path == new_user_password_path || request.path == root_path
       = render 'layouts/header'
 
     .container-fluid

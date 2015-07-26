@@ -2,9 +2,9 @@
   .form-signin
     %h2.form-signin-heading Log Into Doctopus
     %br/
-    = link_to user_omniauth_authorize_path(:facebook) do
-      %button.btn-lg.btn-block.button-hollow-a
-        Log In With Facebook
+    .row
+      = link_to "Log In With Facebook", user_omniauth_authorize_path(:facebook),
+      class: 'button-hollow-a facebook'
     %br/
     .or
       %span Or
