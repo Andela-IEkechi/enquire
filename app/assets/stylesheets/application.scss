@@ -14,10 +14,10 @@
  */
 
 @import "font-awesome";
-@import "bootstrap-sprockets";
-@import "bootswatch/paper/variables";
-@import "bootstrap";
-@import "bootswatch/paper/bootswatch";
+//@import "bootstrap-sprockets";
+//@import "bootswatch/paper/variables";
+//@import "bootstrap";
+//@import "bootswatch/paper/bootswatch";
 @import "materialize/components/color";
 $primary-color: color("teal", "darken-1") !default;
 @import 'materialize';
