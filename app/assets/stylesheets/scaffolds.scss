@@ -1,5 +1,5 @@
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-style: italic;
   background-color: #fff;
   color: #333;
@@ -29,4 +29,14 @@ div {
   &.field, &.actions {
     margin-bottom: 10px;
   }
+}
+
+.shared-links {
+  font-weight: lighter;
+  line-height: 25px;
+}
+
+input {
+  background-color: transparent;
+  border: none;
 }
