@@ -30,9 +30,6 @@ class User < ActiveRecord::Base
 
   devise :omniauthable, :omniauth_providers => [:facebook]
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-
   SPECIALIZATION = ["Medicine", "Surgery", "Obstetrics & Gynaecology", "Paediatrics", "Pathology (Morbid Anatomy, Chemical Pathology, Haematology/Immunology and Microbiology)",
                     "Otorhinolaryngology (ENT)", "Radiation Medicine", "Radiotherapy", "Ophthalmology", "Community Medicine", "Anaesthesia", "Psychiatry",
                     "Dentistry (Restorative. Preventive, Dental Child Health and Maxiliofacial)"]
