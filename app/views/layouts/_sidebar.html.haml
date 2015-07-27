@@ -1,33 +1,45 @@
-- if user_signed_in?
-  %li
-    %i.dropdown.clickable
-      %i#dropdownMenu1.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown"}
-        %ul.user-info
-          %li
-            = image_tag(current_user.image, class: 'user')
-          %li
-            %strong
-              = current_user.name
-              %i.fa.fa-chevron-circle-down
-      %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1", :role => "menu"}
-        %li{:role => "presentation"}
-          = link_to "My Dashboard", dashboard_path
-        - if has_hospital?
-          %li{:role => "presentation"}
-            = link_to "Verify Hospital", new_hospital_verification_request_path
-        - if has_hospital? || admin?
-          %li{:role => "presentation"}
-            = link_to "Doctors List", doctor_lists_path
-        - if admin?
-          %li{:role => "presentation"}
-            = link_to "Hospitals List", hospital_lists_path
-        - if unverified_doctor?
-          %li{:role => "presentation"}
-            = link_to "Get Verified", new_doctor_verification_request_path
+-#- if user_signed_in?
+  -#%li.logo
+    %ul.user-info
+      %li
+        = image_tag(current_user.image, class: 'user')
+      %li
+        %strong
+          = current_user.name
+%li.no-padding
+  %ul.collapsible.collapsible-accordion
+    %li.bold
+      %a.collapsible-header.waves-effect.waves-teal Profile
+      .collapsible-body
+        %ul
+          %li= link_to "My Dashboard", dashboard_path
+          - if has_hospital?
+            %li= link_to "Verify Hospital", new_hospital_verification_request_path
+          - if has_hospital? || admin?
+            %li= link_to "Doctors List", doctor_lists_path
+          - if admin?
+            %li= link_to "Hospitals List", hospital_lists_path
+          - if unverified_doctor?
+            %li= link_to "Get Verified", new_doctor_verification_request_path
+      -#%li{:role => "presentation"}
+      -#  = link_to "My Dashboard", dashboard_path
+      -#- if has_hospital?
+      -#  %li{:role => "presentation"}
+      -#    = link_to "Verify Hospital", new_hospital_verification_request_path
+      -#- if has_hospital? || admin?
+      -#  %li{:role => "presentation"}
+      -#    = link_to "Doctors List", doctor_lists_path
+      -#- if admin?
+      -#  %li{:role => "presentation"}
+      -#    = link_to "Hospitals List", hospital_lists_path
+      -#- if unverified_doctor?
+      -#  %li{:role => "presentation"}
+      -#    = link_to "Get Verified", new_doctor_verification_request_path
 %li.bold
   = link_to :hospitals do
     %i.fa.fa-fw.fa-hospital-o
     Hospitals
+-#%li.bold.waves-effect.waves-teal= link_to "Hospitals", hospitals_path
 %li.bold
   = link_to :profiles do
     %i.fa.fa-fw.fa-user-md
@@ -36,17 +48,17 @@
   = link_to :questions do
     %i.fa.fa-fw.fa-question-circle
     Questions
-- if user_signed_in?
-  %li
-    = link_to edit_user_registration_path do
-      %i.fa.fa-fw.fa-cogs
-      Settings
-  %li
-    = link_to destroy_user_session_path, method: :delete do
-      %i.fa.fa-fw.fa-power-off
-      Log Out
-- else
-  %li
-    = link_to new_user_session_path do
-      %i.fa.fa-fw.fa-sign-in
-      Sign In
+-#- if user_signed_in?
+%li
+  = link_to edit_user_registration_path do
+    %i.fa.fa-fw.fa-cogs
+    Settings
+%li
+  = link_to destroy_user_session_path, method: :delete do
+    %i.fa.fa-fw.fa-power-off
+    Log Out
+-#- else
+-#  %li
+-#    = link_to new_user_session_path do
+-#      %i.fa.fa-fw.fa-sign-in
+-#      Sign In
