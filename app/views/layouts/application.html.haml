@@ -4,16 +4,16 @@
     %title CadWings
     = stylesheet_link_tag 'application', media: 'all'#, 'data-turbolinks-track' => true
     = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Quicksand:700', media: 'all'
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application'#, 'data-turbolinks-track' => true
     = javascript_include_tag "jsapi.js", "chartkick"
     = favicon_link_tag 'favicon.png'
     = csrf_meta_tags
   %body
-    #flash.text-center.container
+    #flash.center-align
       - if notice
-        %p.alert.alert-success= notice
+        %p.alert-success= notice
       - if alert
-        %p.alert.alert-danger= alert
+        %p.alert-danger= alert
 
     = yield :charts_js
     - unless request.path == new_user_session_path || request.path == new_user_registration_path || request.path == new_user_password_path || request.path == root_path

@@ -7,7 +7,7 @@
       %span.icon-bar
       %span.icon-bar
     .navbar-brand.text-center
-      = link_to( image_tag('cadwings.png', width: "190", class: "logo"), root_path)
+      = link_to( image_tag('cadwings.png', width: "190", class: "logo"), authenticated_root_path)
     .navbar-text.pull-right
       - unless !user_signed_in?
         - if client?
@@ -17,7 +17,7 @@
 .navbar-fixed
   %nav.top-nav
     .nav-wrapper
-      = link_to( image_tag('cadwings.png', width: "190", class: "brand-logo"), root_path)
+      = link_to( image_tag('cadwings.png', width: "190", class: "brand-logo"), authenticated_root_path)
       %a.button-collapse{"data-activates"=>"mobile-demo", href: "#"}
         %i.mdi-navigation-menu.full.hide-on-large-only
         -#Dropdown Trigger

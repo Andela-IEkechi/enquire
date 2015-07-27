@@ -7,6 +7,16 @@
   margin: 0 5%;
 }
 
+.alert-success {
+  color: green;
+  background-color: green;
+}
+
+.alert-danger {
+  background-color: red;
+  color: #ffffff;
+}
+
 #error_explanation {
   position: fixed;
   max-width: 450px;
