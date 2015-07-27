@@ -21,7 +21,7 @@
       %a.button-collapse{"data-activates"=>"mobile-demo", href: "#"}
         %i.mdi-navigation-menu.full.hide-on-large-only
         -#Dropdown Trigger
-      #mobile-demo.side-nav
+      %ul#mobile-demo.side-nav
         = render "layouts/sidebar"
       .right
         - unless !user_signed_in?

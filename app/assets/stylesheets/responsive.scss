@@ -5,7 +5,7 @@
   }
 
   .content_wrapper {
-    margin-left: 200px;
+    margin-left: 240px;
     overflow-y: scroll;
   }
 }
@@ -18,11 +18,11 @@
 }
 
 /* Large Devices, Wide Screens */
-@media only screen and (min-width : 1200px) {
-  .sidebar {
-    width: 300px;
-  }
-  .content_wrapper {
-    margin-left: 300px;
-  }
-}
+//@media only screen and (min-width : 1200px) {
+//  .side-nav {
+//    width: 300px !important;
+//  }
+//  .content_wrapper {
+//    margin-left: 300px;
+//  }
+//}
