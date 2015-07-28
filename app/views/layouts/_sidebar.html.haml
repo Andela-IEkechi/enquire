@@ -36,27 +36,31 @@
       -#  %li{:role => "presentation"}
       -#    = link_to "Get Verified", new_doctor_verification_request_path
 %li.bold
-  = link_to :hospitals do
-    %i.fa.fa-fw.fa-hospital-o
-    Hospitals
--#%li.bold.waves-effect.waves-teal= link_to "Hospitals", hospitals_path
+  -#= link_to :hospitals do
+  -#  %i.fa.fa-fw.fa-hospital-o
+  -#  Hospitals
+  = link_to "Hospitals", hospitals_path, class: 'waves-effect waves-teal'
 %li.bold
-  = link_to :profiles do
-    %i.fa.fa-fw.fa-user-md
-    Everyone
+  -#= link_to :profiles do
+  -#  %i.fa.fa-fw.fa-user-md
+  -#  Everyone
+  = link_to "Everyone", profiles_path, class: 'waves-effect waves-teal'
 %li.bold
-  = link_to :questions do
-    %i.fa.fa-fw.fa-question-circle
-    Questions
+  -#= link_to :questions do
+  -#  %i.fa.fa-fw.fa-question-circle
+  -#  Questions
+  = link_to "Questions", questions_path, class: 'waves-effect waves-teal'
 -#- if user_signed_in?
 %li
-  = link_to edit_user_registration_path do
-    %i.fa.fa-fw.fa-cogs
-    Settings
+  -#= link_to edit_user_registration_path do
+  -#  %i.fa.fa-fw.fa-cogs
+  -#  Settings
+  = link_to "Settings", edit_user_registration_path, class: 'waves-effect waves-teal'
 %li
-  = link_to destroy_user_session_path, method: :delete do
-    %i.fa.fa-fw.fa-power-off
-    Log Out
+  -#= link_to destroy_user_session_path, method: :delete do
+  -#  %i.fa.fa-fw.fa-power-off
+  -#  Log Out
+  = link_to "Log Out", destroy_user_session_path, method: :delete, class: 'waves-effect waves-teal'
 -#- else
 -#  %li
 -#    = link_to new_user_session_path do
