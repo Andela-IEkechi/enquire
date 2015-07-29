@@ -11,6 +11,8 @@
               %li= message
       .form-head.row
         .col.s9= image_tag @hospital.image.url(:small), class: 'responsive-img'
+        -unless @hospital.image.url
+          .col.s9= image_tag('avatar.png', width: "200", class: "responsive-img")
         .col.s3.file-field.input-field
           .btn
             %span
