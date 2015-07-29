@@ -18,7 +18,7 @@ body li {
 //  margin-right: 10px;
 }
 
-input, textarea, select, a { outline: none !important; }
+//input, textarea, select, a { outline: none !important; }
 
 .form-wrapper {
   margin: 0 auto 15vh;
@@ -44,14 +44,18 @@ input, textarea, select, a { outline: none !important; }
   margin-top: 15vh;
 }
 
-input[type='file'], input[type='file']:focus {
-  width: 100%;
-  outline: none !important;
+.unhappy a {
+  color: #ef9a9a;
 }
 
-input[type='number'] {
-  background-color: #EAF5FF;
-}
+//input[type='file'], input[type='file']:focus {
+//  width: 100%;
+//  outline: none !important;
+//}
+//
+//input[type='number'] {
+//  background-color: #EAF5FF;
+//}
 
 .clickable {
   cursor: pointer; cursor: hand;
