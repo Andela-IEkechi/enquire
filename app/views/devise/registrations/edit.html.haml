@@ -8,15 +8,18 @@
         .col.s9= image_tag @user.image.url(:small), class: 'responsive-img'
         .col.s3.file-field.input-field
           .btn
-            %span Picture
+            %span
+              %i.mdi-image-camera-alt
           = f.file_field :image
       .row.form-body
         .row
           .input-field.col.s12
+            %i.mdi-social-person.prefix
             = f.text_field :name, autofocus: true, class: "validate"
             = f.label :name
         .row
           .input-field.col.s12
+            %i.mdi-communication-quick-contacts-mail.prefix
             = f.email_field :email, class: "validate"
             = f.label :email
         - if devise_mapping.confirmable? && resource.pending_reconfirmation?
@@ -24,25 +27,30 @@
             Currently waiting confirmation for: #{resource.unconfirmed_email}
         .row
           .input-field.col.s12
+            %i.mdi-communication-vpn-key.prefix
             = f.password_field :password, autocomplete: "off", class: "validate"
-            %label{:for => "password"} Password (leave blank if you don't want to change it)
+            %label{:for => "user_password"} Password (leave blank if you don't want to change it)
         .row
           .input-field.col.s12
+            %i.mdi-communication-vpn-key.prefix
             = f.password_field :password_confirmation, autocomplete: "off", class: "validate"
             = f.label :password_confirmation
         .row
           .input-field.col.s12
+            %i.mdi-maps-location-history.prefix
             = f.text_area :bio, class: "validate"
-            %label{:for => "bio"} Bio (Tell us a little about yourself...)
+            %label{:for => "user_bio"} Bio (Tell us a little about yourself...)
         .row
           .input-field.col.s12
+            %i.mdi-file-folder-shared.prefix
             = f.text_field :interests, class: "validate"
-            = f.label :interests_separated_by_comma
+            -#= f.label :interests_separated_by_comma
+            %label{for: 'user_interests'} Interests, separated by comma
         - if current_user.role.nil?
           .row
             .input-field.col.s12
               = f.select :role, options_for_select(User::ROLE), { include_blank: true} , { class: "validate" }
-              %label{:for => "role"} Role (Select manager if you are a hospital administrator. Doctors will go through a verification process.)
+              = f.label :role
         .row
           .input-field.col.s12
             = f.date_select :date_of_birth, :order => [:day, :month, :year],
@@ -54,10 +62,12 @@
             = f.label :gender
         .row
           .input-field.col.s12
+            %i.mdi-action-perm-contact-cal.prefix
             = f.text_area :address, class: "validate"
             = f.label :address
         .row
           .input-field.col.s12
+            %i.mdi-communication-phone.prefix
             = f.number_field :phone_number, class: "validate"
             = f.label :phone_number
         .row
@@ -66,6 +76,7 @@
             = f.label :ethnicity
         .row
           .input-field.col.s12
+            %i.mdi-notification-play-install.prefix
             = f.text_field :occupation, class: "validate"
             = f.label :occupation
         .row
@@ -78,20 +89,16 @@
             = f.label :marital_status
         .row
           .input-field.col.s12
-            .input-group
-              %span.input-group-btn
-                %i.btn.btn-default
-                  Kg
-              = f.text_field :weight, class: "validate"
-              = f.label :weight
+            %i.prefix
+              Kg
+            = f.text_field :weight, class: "validate"
+            = f.label :weight
         .row
           .input-field.col.s12
-            .input-group
-              %span.input-group-btn
-                %i.btn.btn-default
-                  M
-              = f.text_field :height, class: "validate"
-              = f.label :height
+            %i.prefix
+              M
+            = f.text_field :height, class: "validate"
+            = f.label :height
         - if doctor?
           .row
             .input-field.col.s12
@@ -103,11 +110,13 @@
               = f.label :specialization
         .row
           .input-field.col.s12
+            %i.mdi-communication-vpn-key.prefix
             = f.password_field :current_password, autocomplete: "off", class: "form-control"
-            %label{:for => "current_password"} Current password (we need your current password to confirm your changes)
+            -#= f.label :current_password
+            %label{:for => "user_current_password"} Current password (we need your current password to confirm your changes)
         .actions.center-align
           = button_tag type: "submit", class: "waves-effect waves-light btn-large" do
-            %i.mdi-content-send.right
+            %i.mdi-content-send
               Update
 
         .right.unhappy
