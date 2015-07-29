@@ -1,5 +1,5 @@
-= form_for HospitalLike.new do |f|
-  = hidden_field(:hospital_like, :hospital_id, value: params["id"])
-  %div
-    = f.submit "Recommend", class: "btn button-hollow-b"
-  %br/
+.row
+  = form_for HospitalLike.new do |f|
+    = hidden_field(:hospital_like, :hospital_id, value: params["id"])
+    = button_tag type: "submit", class: "waves-effect waves-light btn" do
+      %i.mdi-image-exposure-plus-1
