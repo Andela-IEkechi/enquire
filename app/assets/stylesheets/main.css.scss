@@ -1,4 +1,4 @@
-html, body {
+html, body, .valign-wrapper {
   height: 100%;
 }
 
@@ -14,7 +14,7 @@ body li {
 .content_wrapper {
   overflow-y: scroll;
   bottom: 0 !important;
-  margin-top: 7em;
+  margin-top: 90px;
 //  margin-right: 10px;
 }
 
@@ -24,28 +24,6 @@ body li {
   margin: 0 auto 15vh;
   max-width: 700px;
   background-color: #ffffff;
-}
-
-.form-head {
-  height: 18vh;
-  background-color: #e0e0e0;
-}
-
-.form-head img {
-  margin: 10px 15px;
-}
-
-.form-head .input-field {
-  margin-top: 3rem;
-}
-
-.form-body {
-  padding: 0 60px 30px;
-  margin-top: 15vh;
-}
-
-.unhappy a {
-  color: #ef9a9a;
 }
 
 //input[type='file'], input[type='file']:focus {
