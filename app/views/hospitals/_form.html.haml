@@ -1,5 +1,5 @@
-.container-fluid
-  .form-wrapper
+.form-wrapper
+  .row
     = form_for(@hospital) do |f|
       - if @hospital.errors.any?
         #error_explanation
@@ -9,31 +9,39 @@
           %ul
             - @hospital.errors.full_messages.each do |message|
               %li= message
-      .field.form-group
-        = f.label :name
-        %br/
-        = f.text_field :name, class: "form-control"
-      .field.form-group
-        = f.label :description
-        %br/
-        = f.text_area :description, class: "form-control"
-      .field.form-group
-        = f.label :image
-        %br/
-        = f.file_field :image, class: "button-hollow-b"
-      .field.form-group
-        = f.label :address
-        %br/
-        = f.text_area :address, class: "form-control"
-      .field.form-group
-        = f.label :phone_number
-        %br/
-        = f.text_field :phone_number, class: "form-control"
-      .field.form-group
-        = f.label :classification
-        %br/
-        = f.select :classification, options_for_select(Hospital::HOSPITAL_TYPE), {}, class: "form-control"
-      .actions
-        = button_tag type: "submit", class: "button-hollow-c btn-block" do
-          %i.fa.fa-plus
-            Create Hospital
+      .form-head.row
+        .col.s9= image_tag @hospital.image.url(:small), class: 'responsive-img'
+        .col.s3.file-field.input-field
+          .btn
+            %span
+              %i.mdi-image-camera-alt
+          = f.file_field :image
+      .row.form-body
+        .row
+          .input-field.col.s12
+            %i.mdi-social-person.prefix
+            = f.text_field :name, class: "validate"
+            = f.label :name
+        .row
+          .input-field.col.s12
+            %i.mdi-editor-mode-edit.prefix
+            = f.text_area :description, class: "validate"
+            = f.label :description
+        .row
+          .input-field.col.s12
+            %i.mdi-action-room.prefix
+            = f.text_area :address, class: "validate"
+            = f.label :address
+        .row
+          .input-field.col.s12
+            %i.mdi-communication-phone.prefix
+            = f.text_field :phone_number, class: "validate"
+            = f.label :phone_number
+        .row
+          .input-field.col.s12
+            = f.select :classification, options_for_select(Hospital::HOSPITAL_TYPE), {}, class: "validate"
+            = f.label :classification
+        .actions.center-align
+          = button_tag type: "submit", class: "waves-effect waves-light btn-large" do
+            %i.mdi-content-send
+              Submit
