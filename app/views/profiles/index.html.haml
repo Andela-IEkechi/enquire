@@ -1,42 +1,67 @@
-- if doctor? || hospital_manager? || admin?
-  - if @clients.count > 0
-    %h2.profile-head Clients
-    %ul.everyone
-      - @clients.each do |client|
-        %li
-          = link_to profile_path(client), class: "list-group-item" do
-            %blockquote
-              = image_tag client.image, class: 'img-circle', width: 100
-              %strong= client.name
-              %footer
-                = client.occupation
-                %strong= client.gender
-                %p
-                  = seen_last(client.current_sign_in_at) if client.current_sign_in_at
-- if @doctors.count > 0
-  %h2.profile-head Doctors
-  %ul.everyone
-    - @doctors.each do |doctor|
-      %li
-        = link_to profile_path(doctor), class: "list-group-item" do
-          %blockquote
-            = image_tag doctor.image, class: 'img-circle', width: 100
-            %strong= doctor.name
-            %footer
-              %strong= doctor.hospital.name
-              %p
-                = seen_last(doctor.current_sign_in_at) if doctor.current_sign_in_at
+%h4.center-align Everyone
+.row
+  .col.s12
+    %ul.tabs
+      %li.tab.col.s4.active
+        = link_to(('<i class="mdi-editor-insert-chart"></i> Doctors').html_safe, "#doctors")
+      - if doctor? || hospital_manager? || admin?
+        %li.tab.col.s4
+          = link_to(('<i class="mdi-social-notifications"></i> Clients').html_safe, "#clients")
+      - if hospital_manager? || admin?
+        %li.tab.col.s4
+          = link_to(('<i class="mdi-social-notifications"></i> Managers').html_safe, "#managers")
 
-- if hospital_manager? || admin?
-  - if @managers.count > 0
-    %h2.profile-head Hospital Managers
-    %ul.everyone
-      - @managers.each do |manager|
-        %li
-          = link_to profile_path(manager), class: "list-group-item" do
-            %blockquote
-              = image_tag manager.image, class: 'img-circle', width: 100
-              %strong= manager.name
-              %footer
-                %p
-                  = seen_last(manager.current_sign_in_at) if manager.current_sign_in_at
+  #doctors.col.s12
+    = render 'doctors'
+  - if doctor? || hospital_manager? || admin?
+    #clients.col.s12
+      = render 'clients'
+  - if hospital_manager? || admin?
+    #managers.col.s12
+      = render 'managers'
+
+
+
+
+-#- if doctor? || hospital_manager? || admin?
+-#  - if @clients.count > 0
+-#    %h2.profile-head Clients
+-#    %ul.everyone
+-#      - @clients.each do |client|
+-#        %li
+-#          = link_to profile_path(client), class: "list-group-item" do
+-#            %blockquote
+-#              = image_tag client.image, class: 'img-circle', width: 100
+-#              %strong= client.name
+-#              %footer
+-#                = client.occupation
+-#                %strong= client.gender
+-#                %p
+-#                  = seen_last(client.current_sign_in_at) if client.current_sign_in_at
+-#- if @doctors.count > 0
+-#  %h2.profile-head Doctors
+-#  %ul.everyone
+-#    - @doctors.each do |doctor|
+-#      %li
+-#        = link_to profile_path(doctor), class: "list-group-item" do
+-#          %blockquote
+-#            = image_tag doctor.image, class: 'img-circle', width: 100
+-#            %strong= doctor.name
+-#            %footer
+-#              %strong= doctor.hospital.name
+-#              %p
+-#                = seen_last(doctor.current_sign_in_at) if doctor.current_sign_in_at
+-#
+-#- if hospital_manager? || admin?
+-#  - if @managers.count > 0
+-#    %h2.profile-head Hospital Managers
+-#    %ul.everyone
+-#      - @managers.each do |manager|
+-#        %li
+-#          = link_to profile_path(manager), class: "list-group-item" do
+-#            %blockquote
+-#              = image_tag manager.image, class: 'img-circle', width: 100
+-#              %strong= manager.name
+-#              %footer
+-#                %p
+-#                  = seen_last(manager.current_sign_in_at) if manager.current_sign_in_at

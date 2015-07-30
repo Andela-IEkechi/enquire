@@ -6,6 +6,8 @@
       = devise_error_messages!
       .form-head.row
         .col.s9= image_tag @user.image.url(:small), class: 'responsive-img'
+        -unless @user.image.url
+          .col.s9= image_tag('avatar.png', width: "200", class: "responsive-img")
         .col.s3.file-field.input-field
           .btn
             %span
