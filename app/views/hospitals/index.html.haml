@@ -14,9 +14,9 @@
 
   #all.col.s12
     = render 'all'
-  #mine.col.s12
-    = render 'mine'
-
+  - if hospital_manager?
+    #mine.col.s12
+      = render 'mine'
 
 
 -#    %ul.nav.nav-tabs{role: "tablist"}

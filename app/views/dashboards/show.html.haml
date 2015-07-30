@@ -1,18 +1,42 @@
 -#Nav tabs
-%ul.nav.nav-tabs{role: "tablist"}
-  %li.active
-    = link_to(('<icon class="fa fa-pie-chart"></icon> Activities').html_safe, "#activities", {role: "tab", "data-toggle" => "tab"})
-  - unless client? || doctor?
-    %li
-      = link_to(('<icon class="fa fa-bell"></icon> Notifications').html_safe, "#notifications", {role: "tab", "data-toggle" => "tab"})
-  %li
-    = link_to(('<icon class="fa fa-user"></icon> Bio').html_safe, "#bio", {role: "tab", "data-toggle" => "tab"})
+%h4.center-align Dashboard
 
-.tab-content
-  #activities.tab-pane.active.fade.in
+.row
+  .col.s12
+    %ul.tabs
+      %li.tab.col.s4.active
+        = link_to(('<i class="mdi-editor-insert-chart"></i> Activities').html_safe, "#activities")
+      - if client? || doctor?
+        %li.tab.col.s4.disabled
+          = link_to(('<i class="mdi-social-notifications"></i> Notifications').html_safe, "#notifications")
+      - else
+        %li.tab.col.s4
+          = link_to(('<i class="mdi-social-notifications"></i> Notifications').html_safe, "#notifications")
+      %li.tab.col.s4
+        = link_to(('<i class="mdi-social-person"></i> Bio').html_safe, "#bio")
+
+  #activities.col.s12
     = render 'activities'
   - unless client? || doctor?
     #notifications.tab-pane.fade
       = render 'notifications'
-  #bio.tab-pane.fade
+  #bio.col.s12
     = render 'bio'
+
+-#%ul.nav.nav-tabs{role: "tablist"}
+-#  %li.active
+-#    = link_to(('<icon class="fa fa-pie-chart"></icon> Activities').html_safe, "#activities", {role: "tab", "data-toggle" => "tab"})
+-#  - unless client? || doctor?
+-#    %li
+-#      = link_to(('<icon class="fa fa-bell"></icon> Notifications').html_safe, "#notifications", {role: "tab", "data-toggle" => "tab"})
+-#  %li
+-#    = link_to(('<icon class="fa fa-user"></icon> Bio').html_safe, "#bio", {role: "tab", "data-toggle" => "tab"})
+-#
+-#.tab-content
+-#  #activities.tab-pane.active.fade.in
+-#    = render 'activities'
+-#  - unless client? || doctor?
+-#    #notifications.tab-pane.fade
+-#      = render 'notifications'
+-#  #bio.tab-pane.fade
+-#    = render 'bio'
