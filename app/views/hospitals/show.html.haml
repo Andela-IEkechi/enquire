@@ -1,6 +1,8 @@
 .form-wrapper.profile
   .form-head.row
     = image_tag @hospital.image.url(:small), class: 'responsive-img'
+    -unless @hospital.image.url
+      = image_tag('avatar.png', width: "200", class: "responsive-img")
   .row.form-body
     %p Full name:
     %h4= @hospital.name

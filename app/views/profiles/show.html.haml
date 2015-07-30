@@ -1,71 +1,48 @@
-.profile-show
-  .text-center= image_tag @profile.image, class: 'img-circle', width: 200
+.form-wrapper.profile
+  .form-head.row
+    = image_tag @profile.image.url(:small), class: 'responsive-img'
+    -unless @profile.image.url
+      = image_tag('avatar.png', width: "200", class: "responsive-img")
+  .row.form-body
+    %p Name:
+    %h4= @profile.name
 
-  .text-center
-    %h5.page-header
-      Hi, I'm
-      %strong= @profile.name
+    %p Occupation:
+    %h4= @profile.occupation
 
-    %p.text-left
-      %b= @profile.occupation
-    %br
+    %p Bio:
+    %h4= @profile.bio
 
-    %p= @profile.bio
+    %p Age:
+    %h4= "#{time_ago_in_words(@profile.date_of_birth)} Old"
 
-  %h3
-    %strong PROFILE
+    %p Gender:
+    %h4= @profile.gender
 
-  %p.page-header
-    %b Born
-  =time_ago_in_words(@profile.date_of_birth)
-  ago
-  %p.page-header
-    %b Gender
-  = @profile.gender
+    %p Marital status:
+    %h4= @profile.marital_status
 
-  %p.page-header
-    %b Marital status
-  = @profile.marital_status
+    %p Weight:
+    %h4= "#{@profile.weight} kg"
 
-  %p.page-header
-    %b Weight
-  = @profile.weight
-  .btn.btn-default
-    Kg
+    %p Height:
+    %h4= "#{@profile.height} m"
 
-  %p.page-header
-    %b Height
-  = @profile.height
-  .btn.btn-default
-    Kg
+    - if @profile.role == "doctor"
 
-  - if @profile.role == "doctor"
+      %p Specialization:
+      %h4= @profile.specialization
 
-    %p.page-header
-      %b Specialization
-    = @profile.specialization
+      - if @profile.year_of_grad
+        %p Been a Doctor for:
+        %h4= "#{(Date.today.year - @profile.year_of_grad.to_i)} years"
 
-    %p.page-header
-      %b Has been a Doctor for
-    - if @profile.year_of_grad
-      = (Date.today.year - @profile.year_of_grad.to_i)
-      years
+      - if @profile.verified?
+        %p Hospital Affiliated With:
+        %h5= link_to @profile.hospital.try(:name), hospital_path(@profile.hospital)
 
-    - if @profile.verified?
-      %p.page-header
-        %b Hospital Affiliated With
-      = link_to @profile.hospital.try(:name), hospital_path(@profile.hospital)
+        %p Numbers of Questions answered:
+        %h4= "#{@profile.answers.try(:count)} questions"
 
-      %p.page-header
-        %b Has Answered
-      = @profile.answers.try(:count)
-      questions
-
-      %p.page-header
-        %b Answers Have Been Liked
-      = @profile.answers.map(&:answer_likes).count
-      times
-  %br
-  %br
-  %button.btn.button-hollow-b
-    = link_to "<i class=\"fa fa-chevron-left\"></i>  Back".html_safe, profiles_path
+        %p Numbers of Questions Likes:
+        %h4= "#{@profile.answers.map(&:answer_likes).count} Likes"
