@@ -16,8 +16,8 @@
                 %i.right.mdi-navigation-more-vert
                 = doctor.user.bio
             .card-action
-              = link_to 'View', profile_path(doctor.user)
-              = link_to 'Un-Verify', doctor, :method => :delete, :data => { :confirm => "Are you sure you no longer want this Doctor associated with #{doctor.hospital.name} hospital?" }
+              = link_to 'View', profile_path(doctor.user), class: 'mdi-image-remove-red-eye'
+              = link_to 'Un-Verify', doctor, class: 'mdi-action-delete', :method => :delete, :data => { :confirm => "Are you sure you no longer want this Doctor associated with #{doctor.hospital.name} hospital?" }
           .card-reveal
             %span.card-title.grey-text.text-darken-4
               = doctor.user.name

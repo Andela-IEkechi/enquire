@@ -1,19 +1,37 @@
-%h1.page-header Hospitals
+%h3.center-align Hospitals
 
-%ul.nav.nav-tabs{role: "tablist"}
-  %li.active
-    = link_to(('<icon class="fa fa-globe"></icon> All').html_safe, "#all", {role: "tab", "data-toggle" => "tab"})
+.row
+  .col.s12
+    %ul.tabs
+      %li.tab.col.s6.active
+        = link_to(('<i class="mdi-action-language"></i> All').html_safe, "#all")
+      - if hospital_manager?
+        %li.tab.col.s6
+          = link_to(('<i class="mdi-file-folder-shared"></i> Mine').html_safe, "#mine")
+      - else
+        %li.tab.col.s6.disabled
+          = link_to(('<i class="mdi-file-folder-shared"></i> Mine').html_safe, "#mine")
 
-  - if hospital_manager?
-    %li
-      = link_to(('<icon class="fa fa-filter"></icon> Mine').html_safe, "#mine", {role: "tab", "data-toggle" => "tab"})
-
-.tab-content
-  #all.tab-pane.active.fade.in
+  #all.col.s12
     = render 'all'
-  #mine.tab-pane.fade
+  #mine.col.s12
     = render 'mine'
 
+
+
+-#    %ul.nav.nav-tabs{role: "tablist"}
+-#  %li.active
+-#    = link_to(('<icon class="fa fa-globe"></icon> All').html_safe, "#all", {role: "tab", "data-toggle" => "tab"})
+-#
+-#  - if hospital_manager?
+-#    %li
+-#      = link_to(('<icon class="fa fa-filter"></icon> Mine').html_safe, "#mine", {role: "tab", "data-toggle" => "tab"})
+-#
+-#.tab-content
+-#  #all.tab-pane.active.fade.in
+-#    = render 'all'
+-#  #mine.tab-pane.fade
+-#    = render 'mine'
+-#
 - if hospital_manager?
-  .profile-head
-    = link_to 'Add New Hospital', new_hospital_path, class: "btn btn-default profile-head"
+  = link_to 'Add New Hospital', new_hospital_path, class: "btn mdi-social-plus-one"
