@@ -37,6 +37,10 @@
     = link_to :questions do
       %i.fa.fa-fw.fa-question-circle
       Questions
+  %li
+    = link_to :articles do
+      %i.fa.fa-fw.fa-book
+      Articles
   - if user_signed_in?
     %li
       = link_to edit_user_registration_path do
