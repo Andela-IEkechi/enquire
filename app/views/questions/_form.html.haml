@@ -1,5 +1,5 @@
-.container-fluid
-  .form-wrapper
+.form-wrapper
+  .row.form-body
     = form_for(@question) do |f|
       - if @question.errors.any?
         #error_explanation
@@ -9,14 +9,13 @@
           %ul
             - @question.errors.full_messages.each do |message|
               %li= message
-      .field.form-group
-        = f.label :ask_a_brief_question
-        %br/
-        = f.text_area :body, class: "form-control"
-      .field.form-group
-        = f.label :tags_separated_with_commas
-        %i (what topics this question is related to...eg. Eye, Pregnancy)
-        %br/
-        = f.text_field :all_tags, class: "form-control"
+      .row
+        .input-field.col.s12
+          = f.text_area :body, class: "validate"
+          %label{:for => "question_body"} Ask a brief question
+      .row
+        .input-field.col.s12
+          = f.text_field :all_tags, class: "validate"
+          %label{:for => "question_all_tags"} Tags separated with commas, e.g eyes, pregnancy...
       .actions
-        = f.submit "Ask the Doc", class: "btn btn-md button-hollow-c"
+        = f.submit "Ask the Doc", class: "btn"
