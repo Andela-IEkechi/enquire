@@ -1,11 +1,12 @@
 class AnswersController < ApplicationController
   before_action :set_answer, only: [:update]
+  before_action :set_question, only: [:index]
   load_and_authorize_resource
 
   # GET /answers
   # GET /answers.json
   def index
-    @answers = Answer.all
+    @answers = @question.answers
   end
 
   # GET /answers/1
@@ -62,14 +63,17 @@ class AnswersController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
-  def set_answer
-    @answer = Answer.find(params[:id])
-  end
+    # Use callbacks to share common setup or constraints between actions.
+    def set_answer
+      @answer = Answer.find(params[:id])
+    end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def answer_params
-    # binding.pry
-    params.require(:answer).permit(:question_id, :content, :user_id)
-  end
+    def set_question
+      @question = Question.find(params[:question])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def answer_params
+      params.require(:answer).permit(:question_id, :content, :user_id)
+    end
 end
