@@ -1,0 +1,21 @@
+<% content_for :scripts do %>
+    <script>
+        $('#star').raty({
+            readOnly: true,
+            score: <%= @article.average_rating %>,
+            path: '/assets'
+        });
+
+        $('#user_star').raty({
+            score: <%= @rating.score %>,
+            path: '/assets',
+            click: function(score, evt) {
+                $.ajax({
+                    url: '/ratings/' + <%= @rating.id %>,
+                    type: 'PATCH',
+                    data: { score: score }
+                });
+            }
+        });
+    </script>
+<% end %>

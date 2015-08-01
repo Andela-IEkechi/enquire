@@ -15,8 +15,8 @@
     - @articles.each do |article|
       %tr
         %td= article.user
-        %td= article.title
-        %td= article.content
+        %td= raw article.title
+        %td= raw article.content
         %td= link_to 'Show', article
         %td= link_to 'Edit', edit_article_path(article)
         %td= link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }

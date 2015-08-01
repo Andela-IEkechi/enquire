@@ -4,12 +4,20 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    if params[:q]
+      @articles = Article.contains_text("%#{params[:q]}%").order('created_at DESC')
+    else
+      @articles = Article.all.order('created_at DESC')
+    end
   end
 
   # GET /articles/1
   # GET /articles/1.json
   def show
+    @rating = Rating.where(article_id: @article.id, user_id: current_user.id).first
+    unless @rating
+    @rating = Rating.create(comment_id: @comment.id, score: 0)
+  end
   end
 
   # GET /articles/new
@@ -60,11 +68,6 @@ class ArticlesController < ApplicationController
       format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-
-  def search
-    @q = params[:q]
-    @found_articles = Article.contains_text("%#{params[:q]}%")
   end
 
   private

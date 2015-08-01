@@ -9,9 +9,13 @@ class QuestionsController < ApplicationController
     if current_user.interests
       @interest_questions = Question.tagged_with(current_user.interests)
     end
-    @questions = Question.all
-    @my_questions = current_user.questions
-    @my_follows = current_user.followed_questions
+    if params[:q]
+      @questions = Question.contains_text("%#{params[:q]}%").order('created_at DESC')
+    else
+      @questions = Question.all.order('created_at DESC')
+    end
+    @my_questions = current_user.questions.order('created_at DESC')
+    @my_follows = current_user.followed_questions.order('created_at DESC')
     @interests = "" #todo how are interests compiled?
   end
 
@@ -70,11 +74,6 @@ class QuestionsController < ApplicationController
       format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-
-  def search
-    @q = params[:q]
-    @found_questions = Question.contains_text("%#{params[:q]}%")
   end
 
   def answer

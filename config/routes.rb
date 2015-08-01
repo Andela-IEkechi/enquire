@@ -1,13 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :articles do
-    get :search
-  end
-
-  resources :questions do
-    get :search
-  end
-
+  resources :articles
+  resources :questions
   resources :hospital_lists
   resources :doctor_lists
   resources :hospital_verification_requests
@@ -25,6 +19,7 @@ Rails.application.routes.draw do
   resources :answer_likes
   resources :doctor_likes
   resources :follows
+  resources :ratings, only: :update
 
   post 'answer' => 'questions#answer'
   get 'hospitals/:id/doctors' => 'hospitals#our_doctors'

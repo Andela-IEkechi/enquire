@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150721191742) do
+ActiveRecord::Schema.define(version: 20150801165833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -178,6 +178,17 @@ ActiveRecord::Schema.define(version: 20150721191742) do
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
 
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "article_id"
+    t.integer  "user_id"
+    t.integer  "score",      default: 0, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "ratings", ["article_id"], name: "index_ratings_on_article_id", using: :btree
+  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id", using: :btree
+
   create_table "reviews", force: :cascade do |t|
     t.integer  "hospital_id"
     t.integer  "user_id"
@@ -236,8 +247,8 @@ ActiveRecord::Schema.define(version: 20150721191742) do
     t.string   "occupation"
     t.string   "religion"
     t.string   "marital_status"
-    t.float    "weight"
-    t.float    "height"
+    t.float    "weight",                 default: 0.0
+    t.float    "height",                 default: 0.0
     t.string   "year_of_grad"
     t.string   "specialization"
     t.string   "interests",              default: ""
@@ -268,6 +279,8 @@ ActiveRecord::Schema.define(version: 20150721191742) do
   add_foreign_key "hospitals", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "questions", "users"
+  add_foreign_key "ratings", "articles"
+  add_foreign_key "ratings", "users"
   add_foreign_key "reviews", "hospitals"
   add_foreign_key "reviews", "users"
   add_foreign_key "taggings", "questions"

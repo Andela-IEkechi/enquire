@@ -1,3 +1,4 @@
+= render partial: 'rating'
 %p#notice= notice
 
 %p
@@ -9,6 +10,12 @@
 %p
   %b Content:
   = raw(@article.content)
+%br/
+%p Averate rating
+#star
+
+%p Your rating
+#user_star
 
 = link_to 'Edit', edit_article_path(@article)
 |

@@ -21,5 +21,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require ckeditor/init
+//= require jquery.raty.js
 //= require bootstrap-sprockets
 //= require_tree .
