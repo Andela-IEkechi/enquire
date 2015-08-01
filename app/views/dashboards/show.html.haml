@@ -6,14 +6,14 @@
     %ul.tabs
       %li.tab.col.s4.active
         = link_to(('<i class="mdi-editor-insert-chart"></i> Activities').html_safe, "#activities")
+      %li.tab.col.s4
+        = link_to(('<i class="mdi-social-person"></i> Bio').html_safe, "#bio")
       - if client? || doctor?
         %li.tab.col.s4.disabled
           = link_to(('<i class="mdi-social-notifications"></i> Notifications').html_safe, "#notifications")
       - else
         %li.tab.col.s4
           = link_to(('<i class="mdi-social-notifications"></i> Notifications').html_safe, "#notifications")
-      %li.tab.col.s4
-        = link_to(('<i class="mdi-social-person"></i> Bio').html_safe, "#bio")
 
   #activities.col.s12
     = render 'activities'

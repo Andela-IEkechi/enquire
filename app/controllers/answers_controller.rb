@@ -15,7 +15,8 @@ class AnswersController < ApplicationController
 
   # GET /answers/new
   def new
-    @answer = Answer.new
+    @answer = Answer.new(answer_params)
+    binding.pry
   end
 
   # GET /answers/1/edit
@@ -25,8 +26,7 @@ class AnswersController < ApplicationController
   # POST /answers
   # POST /answers.json
   def create
-    @answer = Answer.new(answer_params)
-
+    @answer = current_user.answers.new(answer_params)
     respond_to do |format|
       if @answer.save
         format.html { redirect_to :back, notice: 'Answer was successfully created.' }

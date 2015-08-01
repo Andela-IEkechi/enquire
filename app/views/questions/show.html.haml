@@ -1,3 +1,18 @@
+-#%i.fa.fa-comments.likes
+-#  = question.answers.count
+-#  Answers
+-#  %i.fa.fa-user-plus.text-success
+-#    = question.follows.count
+-#    Follower(s)
+-#  - unless question.users.include?(current_user)
+-#    .pull-right
+-#      = form_for Follow.new do |f|
+-#        = hidden_field(:follow, :question_id, value: "#{question.id}")
+-#        %div
+-#          = button_tag type: "submit", class: "btn btn-success" do
+-#            %i.fa.fa-comments
+-#              Follow
+
 %h1.page-header Answers from Verified Doctors
 %h3.fa.fa-2x.fa-question-circle
   Question
@@ -39,3 +54,9 @@
     %h4.section-header Doctor? Your Answer;
 
     = render 'answer_form'
+
+= link_to 'Answer', "#answer-modal", class: 'waves-effect waves-light btn modal-trigger'
+.modal#answer-modal
+.modal-content
+  %p a bunch of shit
+.modal-footer

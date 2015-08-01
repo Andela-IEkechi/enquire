@@ -1,11 +1,13 @@
+%h4.center-align Questions
 = render 'header'
 
 .tab-content
-  #all.tab-pane.active.fade.in
+  #all.col.s12
     = render 'all'
-  #following.tab-pane.fade
+  #following.col.s12
     = render 'followed'
-  #interests.tab-pane.fade
+  #interests.col.s12
     = render 'interest'
-  #mine.tab-pane.fade
-    = render 'mine'
+  - if client?
+    #mine.col.s12
+      = render 'mine'
