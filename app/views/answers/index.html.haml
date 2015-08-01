@@ -1,0 +1,14 @@
+- unless @answers.empty?
+  %h4 Answers
+  - @answers.each do |answer|
+    .list-group-item
+      = image_tag(answer.user.image.url(:thumb), class: 'user')
+      = answer.content
+      .pull-right
+        .btn.fa.fa-heart.likes
+          = answer.answer_likes.count
+          - if client? && !answer.answer_likes.map(&:user).include?(current_user)
+            = link_to "Appreciate", answer_likes_path(answer_id: answer.id, user_id: current_user.id), method: :post
+      - if answer.user == current_user
+        = link_to edit_answer_path(answer) do
+          %button.button-hollow-b.fa.fa-pencil-square-o

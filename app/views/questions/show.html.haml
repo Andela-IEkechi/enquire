@@ -13,50 +13,31 @@
 -#            %i.fa.fa-comments
 -#              Follow
 
-%h1.page-header Answers from Verified Doctors
-%h3.fa.fa-2x.fa-question-circle
-  Question
-%br/
-%blockquote
-  %p= @question.body
-  %p=raw tag_links(@question.all_tags)
-  %footer
-    %strong
-      = image_tag(@question.user.image.url(:thumb), class: 'user')
+
+.form-wrapper
+  .form-head
+    %h5.center-align
+      Question, asked by
       = @question.user.name
-    %strong.pull-right.fa.fa-clock-o.likes
-      = @question.created_at.strftime("%d %b %y")
-%br/
-- if @question.user == current_user
-  = link_to edit_question_path(@question) do
-    %button.button-hollow-b.fa.fa-pencil-square-o
-      Edit Question
-= link_to questions_path do
-  %button.button-hollow-b.fa.fa-arrow-circle-left
-    Back to Questions
-- unless @answers.empty?
-  %h4 Answers
-  - @answers.each do |answer|
-    .list-group-item
-      = image_tag(answer.user.image.url(:thumb), class: 'user')
-      = answer.content
-      .pull-right
-        .btn.fa.fa-heart.likes
-          = answer.answer_likes.count
-          - if client? && !answer.answer_likes.map(&:user).include?(current_user)
-            = link_to "Appreciate", answer_likes_path(answer_id: answer.id, user_id: current_user.id), method: :post
-      - if answer.user == current_user
-        = link_to edit_answer_path(answer) do
-          %button.button-hollow-b.fa.fa-pencil-square-o
-  %br/
--if verified_doctor?
-  .jumbotron
-    %h4.section-header Doctor? Your Answer;
+      = time_ago_in_words(@question.created_at)
+      ago
+  .form-body
+    %p= @question.body
+    %p
+      Tags:
+      = raw tag_links(@question.all_tags)
 
-    = render 'answer_form'
+    - if @question.user == current_user
+      = link_to "Edit", edit_question_path(@question), class: "btn mdi-editor-mode-edit"
+    - if @question.answers.count > 0
+      = link_to "Answers", "#", class: 'btn mdi-action-announcement'
+    -#-if verified_doctor?
+    = link_to 'contribute', "#answer-modal", class: 'waves-effect waves-light btn modal-trigger'
 
-= link_to 'Answer', "#answer-modal", class: 'waves-effect waves-light btn modal-trigger'
-.modal#answer-modal
-.modal-content
-  %p a bunch of shit
-.modal-footer
+    .modal#answer-modal
+      .modal-content
+        %i.right.mdi-navigation-close.modal-close
+        = render 'answer_form'
+
+
+= link_to 'Back to Questions', questions_path, class: 'btn mdi-navigation-chevron-left'
