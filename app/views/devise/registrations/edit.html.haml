@@ -40,7 +40,7 @@
         .row
           .input-field.col.s12
             %i.mdi-maps-location-history.prefix
-            = f.text_area :bio, class: "validate"
+            = f.text_area :bio, class: "validate materialize-textarea"
             %label{:for => "user_bio"} Bio (Tell us a little about yourself...)
         .row
           .input-field.col.s12
@@ -65,7 +65,7 @@
         .row
           .input-field.col.s12
             %i.mdi-action-room.prefix
-            = f.text_area :address, class: "validate"
+            = f.text_area :address, class: "validate materialize-textarea"
             = f.label :address
         .row
           .input-field.col.s12

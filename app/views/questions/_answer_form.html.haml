@@ -10,7 +10,7 @@
             %li= message
     .row
       .input-field.col.s12
-        = text_area 'answer', :content, class: "validate"
+        = text_area 'answer', :content, class: "validate materialize-textarea"
         %label{:for => "answer_content"} Answer
     .modal-footer
       = submit_tag 'Post Help', class: "btn-flat modal-action"

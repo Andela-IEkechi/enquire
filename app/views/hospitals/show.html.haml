@@ -26,17 +26,21 @@
         .col.s6= render 'hospital_likes/new'
       .col.s6.hide-on-small-and-down= link_to "Meet Our Doctors", "#{@hospital.id}/doctors", class: "btn"
     .hide-on-med-and-up= link_to "Meet Our Doctors", "#{@hospital.id}/doctors", class: "btn"
+
     .row
-    - unless @reviews.count == 0
-      %h4 Reviews
-      - @reviews.each do |review|
-        .list-group-item
-          = review.content
-          %br/
-          %strong
-            \-
-          = review.user.name
-  - if can? :manage, Review
-    -unless @reviews.map(&:user).include?(current_user)
-      %h4 What do you think of this hospital? Add your own review;
-      = render 'reviews/form'
+      - unless @reviews.count == 0
+        %h5 Reviews
+        - @reviews.each do |review|
+          .card-panel
+            .row
+              .col.s3
+                = image_tag review.user.image.url(:thumb), class: 'responsive-img'
+                -unless review.user.image.url
+                  = image_tag('avatar.png', width: "50", class: "responsive-img")
+                = review.user.name
+              .col.s9
+                = review.content
+    - if can? :manage, Review
+      -unless @reviews.map(&:user).include?(current_user)
+        %h6.center-align What do you think of this hospital? Add your own review;
+        = render 'reviews/form'

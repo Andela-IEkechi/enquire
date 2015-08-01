@@ -4,7 +4,7 @@
       = hidden_field(:answer, :question_id, value: @answer.question_id )
     .row
       .input-field.col.s12
-        = f.text_area :content, class: "form-control"
+        = f.text_area :content, class: "validate materialize-textarea"
         %label{:for => "answer_content"} Answer
     .actions
       = button_tag type: "submit", class: "btn" do
