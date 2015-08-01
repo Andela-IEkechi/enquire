@@ -1,11 +1,11 @@
-= form_for @answer do |f|
-  .field
-    = hidden_field(:answer, :question_id, value: @answer.question_id )
-  .field
-    %br/
-    = f.text_area :content, class: "form-control"
-  .actions
-    %div
-      = button_tag type: "submit", class: "button-hollow-b" do
-        %i.fa.fa-stethoscope
-          Post Help
+.row.form-body
+  = form_for @answer do |f|
+    .field
+      = hidden_field(:answer, :question_id, value: @answer.question_id )
+    .row
+      .input-field.col.s12
+        = f.text_area :content, class: "form-control"
+        %label{:for => "answer_content"} Answer
+    .actions
+      = button_tag type: "submit", class: "btn" do
+        Post Help

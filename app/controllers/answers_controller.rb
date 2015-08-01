@@ -17,7 +17,6 @@ class AnswersController < ApplicationController
   # GET /answers/new
   def new
     @answer = Answer.new(answer_params)
-    binding.pry
   end
 
   # GET /answers/1/edit
