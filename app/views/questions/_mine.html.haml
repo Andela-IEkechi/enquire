@@ -1,17 +1,16 @@
-%ul
+.row
   - @my_questions.each do |question|
-    %li
-      %br/
-      = link_to (question), class: "list-group-item" do
-        %blockquote
-          %p.lead= question.body
-          %p=raw question.all_tags
-          %footer
-            %strong= question.user.name
-    %br/
-    %i.fa.fa-comments.likes
-      = question.answers.count
-      Answers
-    %i.fa.fa-user-plus.text-success
-      = question.follows.count
-      Follower(s)
+    .col.s12.m6
+      .card-panel.question-panel
+        .row
+          .col.s4
+            = image_tag(question.user.image.url(:small), class: "responsive-img activator")
+          .col.s8
+            .question-body
+              = question.body
+            .right.profile= time_ago_in_words(question.created_at)
+        .row
+          = link_to 'View', question, class: 'mdi-image-remove-red-eye btn'
+          .btn.disabled
+            .mdi-action-announcement= question.answers.count
+            .mdi-maps-directions-walk= question.follows.count
