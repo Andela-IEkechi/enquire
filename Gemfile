@@ -49,6 +49,7 @@ gem 'mini_magick'
 gem "fog"
 # charts
 gem 'chartkick', '~> 1.3.2'
+gem 'rails3-jquery-autocomplete', git: 'https://github.com/francisd/rails3-jquery-autocomplete'
 # for storing sensitive stuffs
 gem "figaro"
 # pretty editors with functions

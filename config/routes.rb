@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   resources :doctor_verification_requests
 
   get 'tags/:tag', to: 'questions#index', as: "tag"
+  get 'questions/autocomplete_tag_name'
+  get 'questions/autocomplete_question_body'
+  get 'articles/autocomplete_article_title'
 
   resources :reviews
   resources :hospitals

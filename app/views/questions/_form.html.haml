@@ -17,6 +17,6 @@
         = f.label :tags_separated_with_commas
         %i (what topics this question is related to...eg. Eye, Pregnancy)
         %br/
-        = f.text_field :all_tags, class: "form-control"
+        = f.text_field :all_tags, class: "form-control", autocomplete: questions_autocomplete_tag_name_path
       .actions
         = f.submit "Ask the Doc", class: "btn btn-md button-hollow-c"

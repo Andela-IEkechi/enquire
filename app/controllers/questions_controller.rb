@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  autocomplete :tag, :name
+  autocomplete :question, :body
   before_action :set_question, only: [:show, :update, :destroy, :answer]
   before_action :set_answers, only: [:show, :answer]
   load_and_authorize_resource

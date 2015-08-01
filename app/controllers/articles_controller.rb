@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  autocomplete :article, :title
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   # GET /articles
