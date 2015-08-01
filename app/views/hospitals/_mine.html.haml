@@ -4,6 +4,8 @@
       .card.medium
         .card-image.waves-effect.waves-block.waves-light
           = image_tag hospital.image.url(:small), class: 'responsive-img activator'
+          -unless hospital.image.url
+            = image_tag('avatar.png', width: "200", class: "responsive-img")
           %span.card-title
             = hospital.name
         .card-content
