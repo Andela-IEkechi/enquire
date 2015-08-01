@@ -29,9 +29,9 @@ gem 'haml'
 gem "haml-rails", "~> 0.9"
 
 # todo remove all these
-gem 'bootstrap-sass', '~> 3.3.4'
+# gem 'bootstrap-sass', '~> 3.3.4'
+# gem 'bootswatch-rails' #todo remove bootswatch after materilize has been stabilized
 gem 'font-awesome-rails'
-gem 'bootswatch-rails' #todo remove bootswatch after materilize has been stabilized
 gem 'materialize-sass'
 
 gem 'pry'

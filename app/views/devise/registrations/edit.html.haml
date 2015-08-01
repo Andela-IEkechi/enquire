@@ -46,7 +46,6 @@
           .input-field.col.s12
             %i.mdi-file-folder-shared.prefix
             = f.text_field :interests, class: "validate"
-            -#= f.label :interests_separated_by_comma
             %label{for: 'user_interests'} Interests, separated by comma
         - if current_user.role.nil?
           .row

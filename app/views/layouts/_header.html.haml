@@ -1,30 +1,14 @@
--#.navbar.navbar-default.navbar-fixed-top
-  .container.text-center
-    %button.navbar-toggle.pull-left#button-toggle
-      %span.icon-bar
-      %span.icon-bar
-      %span.icon-bar
-      %span.icon-bar
-      %span.icon-bar
-    .navbar-brand.text-center
-      = link_to( image_tag('cadwings.png', width: "190", class: "logo"), authenticated_root_path)
-    .navbar-text.pull-right
-      - unless !user_signed_in?
-        - if client?
-          = succeed "." do
-            = link_to "<i class=\"fa fa-2x fa-comment-o\"></i> Ask a Question".html_safe, new_question_path, class: ""
-            <a href="#!" class="brand-logo">Logo</a>
 .navbar-fixed
   %nav.top-nav
     .nav-wrapper
       = link_to( image_tag('cadwings.png', width: "190", class: "responsive-img brand-logo"), root_path)
+      .right.valign-wrapper
+        - unless !user_signed_in?
+          - if client?
+            = link_to "Ask a Question", new_question_path, class: "mdi-action-announcement"
       .valign-wrapper
         %a.button-collapse{"data-activates"=>"mobile-demo", href: "#"}
           %i.mdi-navigation-menu.full.hide-on-large-only
-        -#Dropdown Trigger
+      -#Dropdown Trigger
       %ul#mobile-demo.side-nav.fixed
         = render "layouts/sidebar"
-      .right
-        - unless !user_signed_in?
-          - if client?
-            = link_to "<i class=\"mdi-action-announcement\">Ask a Question</i>".html_safe, new_question_path, class: ""

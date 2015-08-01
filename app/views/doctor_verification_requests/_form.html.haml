@@ -1,5 +1,5 @@
-.container-fluid
-  .form-wrapper
+.form-wrapper
+  .row.form-body
     = form_for @doctor_verification_request do |f|
       - if @doctor_verification_request.errors.any?
         #error_explanation
@@ -8,14 +8,16 @@
             - @doctor_verification_request.errors.full_messages.each do |msg|
               %li= msg
 
-      .field.form-group
-        = f.label :hospital
-        = f.collection_select :hospital_id, Hospital.verified.order(:name), :id, :name, { include_blank: true} , { class: "form-control" }
+      .row
+        .input-field.col.s12
+          = f.collection_select :hospital_id, Hospital.verified.order(:name), :id, :name, { include_blank: true} , { class: "form-control" }
+          = f.label :hospital
 
-      .field.form-group
-        = f.label :message
-        = f.text_area :message, class: "form-control materialize-textarea"
+      .row
+        .input-field.col.s12
+          = f.text_area :message, class: "validate materialize-textarea"
+          = f.label :message
       .actions
-        = button_tag type: "submit", class: "button-hollow-c btn-block" do
-          %i.fa.fa-user-plus
+        = button_tag type: "submit", class: "waves-effect waves-light btn" do
+          %i.mdi-content-send
             Submit
