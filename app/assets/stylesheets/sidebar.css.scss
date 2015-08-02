@@ -2,17 +2,27 @@
   padding-top: 2em;
   position: fixed;
   left: 0;
-  top: 6em;
-  bottom: 0;
-  padding-left: 2em;
-  background-color: #f5f5f5;
+//  top: 7em !important;
+//  bottom: 0;
+//  padding-left: 2em;
+//  background-color: #f5f5f5;
+  overflow-y: scroll;
 }
 
-.sidebar li a:hover {
-  color: #ffffff;
-  background-color: #64AAE4 !important;
+.side-nav .collapsible li {
+  padding: 0;
 }
 
-.sidebar_toggle .sidebar {
-  display: none;
+.side-nav {
+  padding-bottom: 150px !important;
 }
+
+.collapsible {
+  height: 64px;
+  line-height: 64px;
+}
+
+//.sidebar li a:hover {
+//  color: #ffffff;
+//  background-color: #64AAE4 !important;
+//}

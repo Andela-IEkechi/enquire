@@ -1,127 +1,125 @@
-.container-fluid
-  .form-wrapper
-    %h2.page-header
-      #{resource_name.to_s.humanize} Profile Settings
+%h2.center-align
+  #{resource_name.to_s.humanize} Profile Settings
+.form-wrapper
+  .row
     = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
       = devise_error_messages!
-      .field.form-group
-        %br/
-        = f.label :name
-        %br/
-        = f.text_field :name, autofocus: true, class: "form-control"
-      .field.form-group
-        %br/
-        = f.label :email
-        %br/
-        = f.email_field :email, autofocus: true, class: "form-control"
-      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-        %div
-          Currently waiting confirmation for: #{resource.unconfirmed_email}
-      .field.form-group
-        %br/
-        = f.label :password
-        %i (leave blank if you don't want to change it)
-        %br/
-        = f.password_field :password, autocomplete: "off", class: "form-control"
-      .field.form-group
-        %br/
-        = f.label :password_confirmation
-        %br/
-        = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
-      .field.form-group
-        %br/
-        = f.label :bio
-        %i (Tell us a little about yourself...)
-        %br/
-        = f.text_area :bio, class: "form-control"
-      .field.form-group
-        %br/
-        = f.label :interests_separated_by_comma
-        %br/
-        = f.text_field :interests, class: "form-control"
-      - if current_user.role.nil?
-        .field.form-group
-          %br/
-          = f.label :role
-          %i (Select manager if you are a hospital administrator. Doctors will go through a verification process.)
-          %br/
-          = f.select :role, options_for_select(User::ROLE), { include_blank: true} , { class: "form-control" }
-      .field.form-group
-        %br/
-        = f.label :image
-        %br/
-        = image_tag @user.image.url(:thumb)
-        %br/
-        %br/
-        = f.file_field :image, class: "button-hollow-b"
-        %br/
-      .field.form-group
-        %br/
-        = f.label :date_of_birth
-        = f.date_select :date_of_birth, :order => [:day, :month, :year],
-        start_year: (Date.today.year - 96), :html=>{:class => "form-control"}
-      .field.form-group
-        %br/
-        = f.label :gender
-        = f.select :gender, options_for_select(User::GENDER), {}, class: "form-control", include_blank: true
-      .field.form-group
-        %br/
-        = f.label :address
-        = f.text_area :address, class: "form-control"
-      .field.form-group
-        %br/
-        = f.label :phone_number
-        = f.number_field :phone_number, class: "form-control"
-      .field.form-group
-        %br/
-        = f.label :ethnicity
-        = f.select :ethnicity, options_for_select(User::TRIBE), {}, include_blank: true, class: "form-control"
-      .field.form-group
-        %br/
-        = f.label :occupation
-        = f.text_field :occupation, class: "form-control"
-      .field.form-group
-        %br/
-        = f.label :religion
-        = f.select :religion, options_for_select(User::RELIGION), {}, include_blank: true, class: "form-control"
-      .field.form-group
-        %br/
-        = f.label :marital_status
-        = f.select :marital_status, options_for_select(User::MARITAL), {}, include_blank: true, class: "form-control"
-      .field.form-group
-        %br/
-        = f.label :weight
-        .input-group
-          %span.input-group-btn
-            %i.btn.btn-default
+      .form-head.row
+        .col.s9= image_tag @user.image.url(:small), class: 'responsive-img'
+        -unless @user.image.url
+          .col.s9= image_tag('avatar.png', width: "200", class: "responsive-img")
+        .col.s3.file-field.input-field
+          .btn
+            %span
+              %i.mdi-image-camera-alt
+          = f.file_field :image
+      .row.form-body
+        .row
+          .input-field.col.s12
+            %i.mdi-social-person.prefix
+            = f.text_field :name, autofocus: true, class: "validate"
+            = f.label :name
+        .row
+          .input-field.col.s12
+            %i.mdi-communication-email.prefix
+            = f.email_field :email, class: "validate"
+            = f.label :email
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          %div
+            Currently waiting confirmation for: #{resource.unconfirmed_email}
+        .row
+          .input-field.col.s12
+            %i.mdi-communication-vpn-key.prefix
+            = f.password_field :password, autocomplete: "off", class: "validate"
+            %label{:for => "user_password"} Password (leave blank if you don't want to change it)
+        .row
+          .input-field.col.s12
+            %i.mdi-communication-vpn-key.prefix
+            = f.password_field :password_confirmation, autocomplete: "off", class: "validate"
+            = f.label :password_confirmation
+        .row
+          .input-field.col.s12
+            %i.mdi-maps-location-history.prefix
+            = f.text_area :bio, class: "validate materialize-textarea"
+            %label{:for => "user_bio"} Bio (Tell us a little about yourself...)
+        .row
+          .input-field.col.s12
+            %i.mdi-file-folder-shared.prefix
+            = f.text_field :interests, class: "validate"
+            %label{for: 'user_interests'} Interests, separated by comma
+        - if current_user.role.nil?
+          .row
+            .input-field.col.s12
+              = f.select :role, options_for_select(User::ROLE), { include_blank: true} , { class: "validate" }
+              = f.label :role
+        .row
+          .input-field.col.s12
+            = f.date_select :date_of_birth, :order => [:day, :month, :year],
+            start_year: (Date.today.year - 96), :html=>{:class => "validate"}
+            = f.label :date_of_birth
+        .row
+          .input-field.col.s12
+            = f.select :gender, options_for_select(User::GENDER), {}, class: "validate", include_blank: true
+            = f.label :gender
+        .row
+          .input-field.col.s12
+            %i.mdi-action-room.prefix
+            = f.text_area :address, class: "validate materialize-textarea"
+            = f.label :address
+        .row
+          .input-field.col.s12
+            %i.mdi-communication-phone.prefix
+            = f.number_field :phone_number, class: "validate"
+            = f.label :phone_number
+        .row
+          .input-field.col.s12
+            = f.select :ethnicity, options_for_select(User::TRIBE), {}, include_blank: true, class: "validate"
+            = f.label :ethnicity
+        .row
+          .input-field.col.s12
+            %i.mdi-notification-play-install.prefix
+            = f.text_field :occupation, class: "validate"
+            = f.label :occupation
+        .row
+          .input-field.col.s12
+            = f.select :religion, options_for_select(User::RELIGION), {}, include_blank: true, class: "validate"
+            = f.label :religion
+        .row
+          .input-field.col.s12
+            = f.select :marital_status, options_for_select(User::MARITAL), {}, include_blank: true, class: "validate"
+            = f.label :marital_status
+        .row
+          .input-field.col.s12
+            %i.prefix
               Kg
-          = f.text_field :weight, class: "form-control"
-      .field.form-group
-        %br/
-        = f.label :height
-        .input-group
-          %span.input-group-btn
-            %i.btn.btn-default
+            = f.text_field :weight, class: "validate"
+            = f.label :weight
+        .row
+          .input-field.col.s12
+            %i.prefix
               M
-          = f.text_field :height, class: "form-control"
-      - if doctor?
-        .field.form-group
-          %br/
-          = f.label :year_of_grad
-          = f.select :year_of_grad, relevant_years, {}, include_blank: true, class: "form-control"
-        .field.form-group
-          %br/
-          = f.label :specialization
-          = f.select :specialization, options_for_select(User::SPECIALIZATION), {}, include_blank: true, class: "form-control"
-      .field.form-group
-        %br/
-        = f.label :current_password
-        %i (we need your current password to confirm your changes)
-        %br/
-        = f.password_field :current_password, autocomplete: "off", class: "form-control"
-      .actions
-        = f.submit "Update", class: "btn btn-md button-hollow-c"
-    %h3 Unhappy? Cancel my account
-    %p
-      #{button_to "Cancel my account", registration_path(resource_name), class: "btn button-hollow-c", data: { confirm: "Are you sure?" }, method: :delete}
-    = link_to "<i class=\"fa fa-chevron-left\"></i>  Back".html_safe, :back
+            = f.text_field :height, class: "validate"
+            = f.label :height
+        - if doctor?
+          .row
+            .input-field.col.s12
+              = f.select :year_of_grad, relevant_years, {}, include_blank: true, class: "validate"
+              = f.label :year_of_grad
+          .row
+            .input-field.col.s12
+              = f.select :specialization, options_for_select(User::SPECIALIZATION), {}, include_blank: true, class: "validate"
+              = f.label :specialization
+        .row
+          .input-field.col.s12
+            %i.mdi-communication-vpn-key.prefix
+            = f.password_field :current_password, autocomplete: "off", class: "form-control"
+            -#= f.label :current_password
+            %label{:for => "user_current_password"} Current password (we need your current password to confirm your changes)
+        .actions.center-align
+          = button_tag type: "submit", class: "waves-effect waves-light btn-large" do
+            %i.mdi-content-send
+              Update
+
+        .right.unhappy
+          Unhappy?
+          = link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete

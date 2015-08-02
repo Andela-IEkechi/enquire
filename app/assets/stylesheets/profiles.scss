@@ -1,24 +1,54 @@
-.everyone li, .hospital-list li {
-  float: left;
-  margin: 20px;
+//.everyone li, .hospital-list li {
+//  float: left;
+//  margin: 20px;
+//}
+//
+//.everyone li a {
+//  width: 200px;
+//  height: 250px;
+//  overflow-y: scroll;
+//}
+//
+//.hospital-list li+a {
+//  width: 300px !important;
+//  height: 350px;
+//  overflow-y: scroll;
+//}
+//
+//.profile-head {
+//  clear: both;
+//}
+//
+//.profile-show {
+//  max-width: 600px;
+//}
+
+.profile {
+  color: #bdbdbd;
 }
 
-.everyone li a {
-  width: 200px;
-  height: 250px;
-  overflow-y: scroll;
+.form-head {
+  height: 18vh;
+  background-color: #e0e0e0;
 }
 
-.hospital-list li+a {
-  width: 300px !important;
-  height: 350px;
-  overflow-y: scroll;
+.form-head img {
+  margin: 10px 15px;
 }
 
-.profile-head {
-  clear: both;
+.form-head .input-field {
+  margin-top: 3rem;
 }
 
-.profile-show {
-  max-width: 600px;
+.form-body {
+  padding: 0 60px 30px;
+  margin-top: 15vh;
+}
+
+.unhappy {
+  font-size: small;
+  margin-top: 30px;
+  a {
+    color: #ef9a9a;
+  }
 }

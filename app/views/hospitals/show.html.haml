@@ -1,54 +1,46 @@
-.text-center
-  = image_tag @hospital.image, class: 'img-circle', width: 300
-  %h1.page-header
-    %strong= @hospital.name
+.form-wrapper.profile
+  .form-head.row
+    = image_tag @hospital.image.url(:small), class: 'responsive-img'
+    -unless @hospital.image.url
+      = image_tag('avatar.png', width: "200", class: "responsive-img")
+  .row.form-body
+    %p Full name:
+    %h4= @hospital.name
+    %i= @hospital.description
 
-  %p.text-left
-    %b= @hospital.classification
-    %br
-  %p= @hospital.description
-  %br
+    %p Classification:
+    %h5= @hospital.classification
 
-%h5
-  %b Details
-  %br
+    %p Address:
+    %h4= @hospital.address
 
-%p.page-header
-  %b Address
-= @hospital.address
+    %p Phone Number:
+    %h4= @hospital.phone_number
 
-%p.page-header
-  %b Phone Number
-= @hospital.phone_number
+    %i.fa.fa-diamond
+    = @recommend.count
+    Recommendations
 
-%p.page-header
-  %b Recommendations:
-%i.fa.fa-diamond
-= @recommend.count
+    .row
+      -unless @recommend.map(&:user).include?(current_user)
+        .col.s6= render 'hospital_likes/new'
+      .col.s6.hide-on-small-and-down= link_to "Meet Our Doctors", "#{@hospital.id}/doctors", class: "btn"
+    .hide-on-med-and-up= link_to "Meet Our Doctors", "#{@hospital.id}/doctors", class: "btn"
 
-%p.page-header
-  %b Our Doctors
-= link_to "Meet Our Doctors", "#{@hospital.id}/doctors", class: "btn button-hollow-b"
-%br
-
--unless @recommend.map(&:user).include?(current_user)
-  = render 'hospital_likes/new'
-%br/
-%h4 Reviews
-- @reviews.each do |review|
-  .list-group-item
-    = review.content
-    %br/
-    %strong
-      \-
-      = review.user.name
-%br/
-- if can? :manage, Review
-  -unless @reviews.map(&:user).include?(current_user)
-    %h4 What do you think of this hospital? Add your own review;
-    = render 'reviews/form'
-
-
-%button.btn.button-hollow-b
-  = link_to "<i class=\"fa fa-chevron-left\"></i>  Back".html_safe, hospitals_path
-
+    .row
+      - unless @reviews.count == 0
+        %h5 Reviews
+        - @reviews.each do |review|
+          .card-panel
+            .row
+              .col.s3
+                = image_tag review.user.image.url(:thumb), class: 'responsive-img'
+                -unless review.user.image.url
+                  = image_tag('avatar.png', width: "50", class: "responsive-img")
+                = review.user.name
+              .col.s9
+                = review.content
+    - if can? :manage, Review
+      -unless @reviews.map(&:user).include?(current_user)
+        %h6.center-align What do you think of this hospital? Add your own review;
+        = render 'reviews/form'

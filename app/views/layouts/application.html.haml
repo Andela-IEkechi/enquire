@@ -2,25 +2,28 @@
 %html
   %head
     %title CadWings
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'application', media: 'all'#, 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Quicksand:700', media: 'all'
+    = javascript_include_tag 'application'#, 'data-turbolinks-track' => true
     = javascript_include_tag "jsapi.js", "chartkick"
     = favicon_link_tag 'favicon.png'
     = csrf_meta_tags
   %body
-    #flash.text-center.container
+    #flash.center-align
+      -#todo could we use either materialize toast, or toastr for displaying alerts?
+
       - if notice
-        %p.alert.alert-success= notice
+        %p.green.accent-2= notice
       - if alert
-        %p.alert.alert-danger= alert
+        %p.red.lighten-2= alert
 
     = yield :charts_js
-    = render 'layouts/header'
+    - unless request.path == new_user_session_path || request.path == new_user_registration_path || request.path == new_user_password_path || request.path == root_path
+      = render 'layouts/header'
 
-    .container-fluid
-      - unless request.path == new_user_session_path || request.path == new_user_registration_path || request.path == new_user_password_path
-        .sidebar_toggle#sidebar
-          .sidebar
-            = render 'layouts/sidebar'
-      .content_wrapper
-        = yield
+    -#.container-fluid
+    - unless request.path == new_user_session_path || request.path == new_user_registration_path || request.path == new_user_password_path || request.path == root_path
+      %ul.sidebar.hide-on-med-and-down.side-nav.fixed
+        = render 'layouts/sidebar'
+    .content_wrapper
+      = yield

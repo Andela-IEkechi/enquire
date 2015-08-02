@@ -1,11 +1,12 @@
 class AnswersController < ApplicationController
   before_action :set_answer, only: [:update]
+  before_action :set_question, only: [:index]
   load_and_authorize_resource
 
   # GET /answers
   # GET /answers.json
   def index
-    @answers = Answer.all
+    @answers = @question.answers
   end
 
   # GET /answers/1
@@ -15,7 +16,7 @@ class AnswersController < ApplicationController
 
   # GET /answers/new
   def new
-    @answer = Answer.new
+    @answer = Answer.new(answer_params)
   end
 
   # GET /answers/1/edit
@@ -25,8 +26,7 @@ class AnswersController < ApplicationController
   # POST /answers
   # POST /answers.json
   def create
-    @answer = Answer.new(answer_params)
-
+    @answer = current_user.answers.new(answer_params)
     respond_to do |format|
       if @answer.save
         format.html { redirect_to :back, notice: 'Answer was successfully created.' }
@@ -62,14 +62,17 @@ class AnswersController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
-  def set_answer
-    @answer = Answer.find(params[:id])
-  end
+    # Use callbacks to share common setup or constraints between actions.
+    def set_answer
+      @answer = Answer.find(params[:id])
+    end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def answer_params
-    # binding.pry
-    params.require(:answer).permit(:question_id, :content, :user_id)
-  end
+    def set_question
+      @question = Question.find(params[:question])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def answer_params
+      params.require(:answer).permit(:question_id, :content, :user_id)
+    end
 end

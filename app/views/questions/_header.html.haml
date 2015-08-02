@@ -1,10 +1,12 @@
-%ul.nav.nav-tabs{role: "tablist"}
-  %li.active{role: "tab", "data-toggle" => "tab"}
-    = link_to(('<icon class="fa fa-users"></icon> All').html_safe, "#all", {role: "tab", "data-toggle" => "tab"})
-  %li
-    = link_to(('<icon class="fa fa-eye"></icon> Following').html_safe, "#following", {role: "tab", "data-toggle" => "tab"})
-  %li
-    = link_to(('<icon class="fa fa-puzzle-piece""></icon> Interests').html_safe, "#interests", {role: "tab", "data-toggle" => "tab"})
-  - if client?
-    %li
-      = link_to(('<icon class="fa fa-comment"></icon> Mine').html_safe, "#mine", {role: "tab", "data-toggle" => "tab"})
+.row
+  .col.s12
+    %ul.tabs
+      %li.tab.col.s3.active
+        = link_to "All", "#all"
+      %li.tab.col.s3
+        = link_to "Following", "#following"
+      %li.tab.col.s3
+        = link_to "Interests", "#interests"
+      - if client?
+        %li.tab.col.s3
+          = link_to "Mine", "#mine"

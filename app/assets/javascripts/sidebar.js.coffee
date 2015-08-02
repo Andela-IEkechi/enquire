@@ -1,6 +1,4 @@
-# Toggle sidebar
+# Toggle sidebar on mobile and medium screens
 $(document).ready ->
-  $(document).on 'click', '#button-toggle', ->
-    $('#sidebar').toggleClass 'sidebar_toggle'
-    return
+  $(".button-collapse").sideNav();
   return

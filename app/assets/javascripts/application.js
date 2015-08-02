@@ -19,8 +19,8 @@
 //= require jsapi
 //= require chartkick
 //= require jquery_ujs
-//= require turbolinks
+// require turbolinks
 //= require ckeditor/init
 //= require jquery.raty.js
-//= require bootstrap-sprockets
-//= require_tree .
+//= require materialize-sprockets
+// = require_tree .

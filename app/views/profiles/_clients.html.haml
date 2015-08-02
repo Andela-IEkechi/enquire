@@ -1,0 +1,26 @@
+- if @clients.count > 0
+  .row
+    - @clients.each do |client|
+      .col.s9.m5.l4
+        .card.medium
+          .card-image.waves-effect.waves-block.waves-light
+            = image_tag client.image.url(:small), class: 'responsive-img activator'
+            -unless client.image.url
+              = image_tag('avatar.png', width: "200", class: "responsive-img")
+            %span.card-title
+              = client.name
+              |
+              = seen_last(client.current_sign_in_at) if client.current_sign_in_at
+          .card-content
+            %span.card-title.activator.grey-text.text-darken-4
+              .truncate
+                %i.right.mdi-navigation-more-vert
+                = client.occupation
+            .card-action
+              = link_to 'View', profile_path(client), class: 'mdi-image-remove-red-eye'
+          .card-reveal
+            %span.card-title.grey-text.text-darken-4
+              = client.name
+              %i.right.mdi-navigation-close
+            %p= client.gender
+            %p= client.bio

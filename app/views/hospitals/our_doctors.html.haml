@@ -1,10 +1,24 @@
-%h2.fa.fa-stethoscope
-  Our Doctors (#{@doctors.count})
-%ul
+%h5.center-align Our Doctors (#{@doctors.count})
+
+.row
   - @doctors.each do |doctor|
-    %li.panel.panel-default
-      .panel-heading.btn-group-justified
-        %strong
-          = link_to doctor.user.name, profile_path(doctor.user)
-        .pull-right
-          = image_tag(doctor.user.image, class: "img-thumbnail user")
+    .col.s9.m5.l4
+      .card.medium
+        .card-image.waves-effect.waves-block.waves-light
+          = image_tag doctor.user.image.url(:small), class: 'responsive-img activator'
+          -unless doctor.user.image.url
+            = image_tag('avatar.png', width: "200", class: "responsive-img")
+          %span.card-title
+            = doctor.user.name
+        .card-content
+          %span.card-title.activator.grey-text.text-darken-4
+            .truncate
+              %i.right.mdi-navigation-more-vert
+              = doctor.user.bio
+          .card-action
+            = link_to 'View', profile_path(doctor.user), class: 'mdi-image-remove-red-eye'
+        .card-reveal
+          %span.card-title.grey-text.text-darken-4
+            = doctor.user.name
+            %i.right.mdi-navigation-close
+          %p= doctor.user.bio

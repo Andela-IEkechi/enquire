@@ -1,10 +1,8 @@
-%h1 Request Hospital Verification
+%h5.center-align Request Hospital Verification
 
 - if has_unverified_hospital?
   = render 'form'
 - else
-  %p.alert.alert-success All your hospitals has been verified, thanks
+  %p.center-align.green.accent-2 All your hospitals has been verified, thanks
 
-%br
-
-= link_to "<i class=\"fa fa-chevron-left\"></i>  Back".html_safe, hospital_verification_requests_path
+= link_to "Back", hospital_verification_requests_path, class: 'btn mdi-hardware-keyboard-arrow-left'

@@ -1,48 +1,30 @@
-/* Medium Devices, Desktops */
-
-/* Custom, iPhone Retina */
-@media only screen and (max-width : 768px) {
-//  .btn { font-size: 0.9em !important; }
-  .sidebar {
-    width: 50%;
-    z-index: 10;
+@media only screen and (min-width : 992px) {
+//  .sidebar {
+//    width: 200px;
+//    display: block !important;
+//  }
+  .side-nav {
+    top: 90px !important;
   }
 
   .content_wrapper {
-    margin-left: 10px;
+    margin-left: 240px;
   }
 }
 
-@media only screen and (min-width : 768px) {
-  .sidebar {
-    width: 200px;
-    display: block !important;
-  }
-
-  .content_wrapper, .home {
-    margin-left: 200px;
-    overflow-y: scroll;
-  }
-
-  .about-video iframe {
-    width: 560px;
-    height: 315px;
-  }
-}
-
-@media only screen and (min-width : 1200px) {
-  .everyone li:nth-child(3n + 1),
-  .hospital-list li:nth-child(3n + 1) {
-    clear: both;
-  }
-}
+//@media only screen and (min-width : 1200px) {
+//  .everyone li:nth-child(3n + 1),
+//  .hospital-list li:nth-child(3n + 1) {
+//    clear: both;
+//  }
+//}
 
 /* Large Devices, Wide Screens */
-@media only screen and (min-width : 1200px) {
-  .sidebar {
-    width: 300px;
-  }
-  .content_wrapper, .home {
-    margin-left: 300px;
-  }
-}
+//@media only screen and (min-width : 1200px) {
+//  .side-nav {
+//    width: 300px !important;
+//  }
+//  .content_wrapper {
+//    margin-left: 300px;
+//  }
+//}

@@ -1,0 +1,40 @@
+- if @doctors.count > 0
+  .row
+    - @doctors.each do |doctor|
+      .col.s9.m5.l4
+        .card.medium
+          .card-image.waves-effect.waves-block.waves-light
+            = image_tag doctor.image.url(:small), class: 'responsive-img activator'
+            -unless doctor.image.url
+              = image_tag('avatar.png', width: "200", class: "responsive-img")
+            %span.card-title
+              = doctor.name
+              |
+              = seen_last(doctor.current_sign_in_at) if doctor.current_sign_in_at
+          .card-content
+            %span.card-title.activator.grey-text.text-darken-4
+              .truncate
+                %i.right.mdi-navigation-more-vert
+                = doctor.bio
+            .card-action
+              = link_to 'View', profile_path(doctor), class: 'mdi-image-remove-red-eye'
+          .card-reveal
+            %span.card-title.grey-text.text-darken-4
+              = doctor.name
+              %i.right.mdi-navigation-close
+            %p= doctor.bio
+
+-#
+-#- if @doctors.count > 0
+-#  %h2.profile-head Doctors
+-#  %ul.everyone
+-#    - @doctors.each do |doctor|
+-#      %li
+-#        = link_to profile_path(doctor), class: "list-group-item" do
+-#          %blockquote
+-#            = image_tag doctor.image, class: 'img-circle', width: 100
+-#            %strong= doctor.name
+-#            %footer
+-#              %strong= doctor.hospital.name
+-#              %p
+-#                = seen_last(doctor.current_sign_in_at) if doctor.current_sign_in_at

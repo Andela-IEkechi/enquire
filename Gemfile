@@ -17,7 +17,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -27,10 +27,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'haml'
 gem "haml-rails", "~> 0.9"
-gem 'bootstrap-sass', '~> 3.3.4'
+
+# todo remove all these
+# gem 'bootstrap-sass', '~> 3.3.4'
+# gem 'bootswatch-rails' #todo remove bootswatch after materilize has been stabilized
 gem 'font-awesome-rails'
-# bootswatch for flat nice designs
-gem 'bootswatch-rails'
+gem 'materialize-sass'
+
 gem 'pry'
 # Use devise for authentication
 gem 'devise'

@@ -1,56 +1,57 @@
-.list-group
-  .list-group-item.active.text-center
-    My Bio
-    - if verified_doctor?
-      .img-responsive.verified= image_tag('verified.png')
+.form-wrapper.profile
+  .form-head.row
+    .col.s9= image_tag current_user.image.url(:small), class: 'responsive-img'
+    .col.s3.file-field.input-field
+      - if verified_doctor?
+        .img-responsive.verified= image_tag('verified.png')
+  .row.form-body
 
-.table-responsive
-  %table.table-striped.table-bordered
-    %thead
-    %tbody
-      %tr
-        %td Name
-        %td= current_user.name
-      %tr
-        %td Email
-        %td= current_user.email
-      %tr
-        %td Birth date
-        %td= current_user.date_of_birth
-      %tr
-        %td Gender
-        %td= current_user.gender
-      %tr
-        %td Interests
-        %td= current_user.interests
-      %tr
-        %td Address
-        %td= current_user.address
-      %tr
-        %td Phone Number
-        %td= current_user.phone_number
-      %tr
-        %td Occupation
-        %td= current_user.occupation
-      %tr
-        %td Religion
-        %td= current_user.religion
-      %tr
-        %td Marital Status
-        %td= current_user.marital_status
-      %tr
-        %td Weight
-        %td= "#{current_user.weight} Kilograms"
-      %tr
-        %td Height
-        %td= "#{current_user.height} Meters"
-      %tr
-        %td Body Mass Index
-        %td= "#{body_mass_index(current_user)} kg/m2 "
-      - if doctor?
+    %table.striped.hoverable.centered
+      %thead
+      %tbody
         %tr
-          %td Specialization
-          %td= current_user.specialization
+          %td Name
+          %td= current_user.name
         %tr
-          %td Graduated
-          %td= current_user.year_of_grad
+          %td Email
+          %td= current_user.email
+        %tr
+          %td Birth date
+          %td= current_user.date_of_birth
+        %tr
+          %td Gender
+          %td= current_user.gender
+        %tr
+          %td Interests
+          %td= current_user.interests
+        %tr
+          %td Address
+          %td= current_user.address
+        %tr
+          %td Phone Number
+          %td= current_user.phone_number
+        %tr
+          %td Occupation
+          %td= current_user.occupation
+        %tr
+          %td Religion
+          %td= current_user.religion
+        %tr
+          %td Marital Status
+          %td= current_user.marital_status
+        %tr
+          %td Weight
+          %td= "#{current_user.weight} Kilograms"
+        %tr
+          %td Height
+          %td= "#{current_user.height} Meters"
+        %tr
+          %td Body Mass Index
+          %td= "#{body_mass_index(current_user)} kg/m2 "
+        - if doctor?
+          %tr
+            %td Specialization
+            %td= current_user.specialization
+          %tr
+            %td Graduated
+            %td= current_user.year_of_grad

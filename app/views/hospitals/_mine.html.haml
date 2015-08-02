@@ -1,11 +1,25 @@
-%ul.hospital-list
+.row
   - @mine_hospitals.each do |hospital|
-    %li
-      = link_to (hospital), class: "list-group-item"  do
-        = image_tag hospital.image.url(:medium), class: 'img-circle', width: 200
-        %blockquote
-          %strong.name= hospital.name
+    .col.s9.m5.l4
+      .card.medium
+        .card-image.waves-effect.waves-block.waves-light
+          = image_tag hospital.image.url(:small), class: 'responsive-img activator'
+          -unless hospital.image.url
+            = image_tag('avatar.png', width: "200", class: "responsive-img")
+          %span.card-title
+            = hospital.name
+        .card-content
+          %span.card-title.activator.grey-text.text-darken-4
+            .truncate
+              %i.right.mdi-navigation-more-vert
+              = hospital.description
+          .card-action
+            = link_to 'View', hospital, class: 'mdi-image-remove-red-eye'
+            - if hospital.manager == current_user
+              = link_to 'Edit', edit_hospital_path(hospital), class: 'mdi-editor-mode-edit'
+              = link_to 'Remove', hospital,class: 'mdi-action-delete', method: :delete, data: { confirm: 'Are you sure?' }
+        .card-reveal
+          %span.card-title.grey-text.text-darken-4
+            = hospital.name
+            %i.right.mdi-navigation-close
           %p= hospital.description
-        - if hospital.manager == current_user
-          = link_to 'Edit', edit_hospital_path(hospital), class: "fa fa-pencil-square-o"
-          = link_to 'Remove', hospital, class: "text-danger fa fa-times", method: :delete, data: { confirm: 'Are you sure?' }

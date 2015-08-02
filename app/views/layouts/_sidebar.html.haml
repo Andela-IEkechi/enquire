@@ -1,57 +1,27 @@
-%ul.nav.nav-stacked
-  - if user_signed_in?
-    %li
-      %i.dropdown.clickable
-        %i#dropdownMenu1.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown"}
-          %ul.user-info
-            %li
-              = image_tag(current_user.image, class: 'user')
-            %li
-              %strong
-                = current_user.name
-                %i.fa.fa-chevron-circle-down
-        %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1", :role => "menu"}
-          %li{:role => "presentation"}
-            = link_to "My Dashboard", dashboard_path
+%li.no-padding
+  %ul.collapsible.collapsible-accordion
+    %li.bold
+      %a.collapsible-header.waves-effect.waves-teal Profile
+      .collapsible-body
+        %ul
+          %li= link_to "My Dashboard", dashboard_path
           - if has_hospital?
-            %li{:role => "presentation"}
-              = link_to "Verify Hospital", new_hospital_verification_request_path
+            %li= link_to "Verify Hospital", new_hospital_verification_request_path
           - if has_hospital? || admin?
-            %li{:role => "presentation"}
-              = link_to "Doctors List", doctor_lists_path
+            %li= link_to "Doctors List", doctor_lists_path
           - if admin?
-            %li{:role => "presentation"}
-              = link_to "Hospitals List", hospital_lists_path
+            %li= link_to "Hospitals List", hospital_lists_path
           - if unverified_doctor?
-            %li{:role => "presentation"}
-              = link_to "Get Verified", new_doctor_verification_request_path
-  %li
-    = link_to :hospitals do
-      %i.fa.fa-fw.fa-hospital-o
-      Hospitals
-  %li
-    = link_to :profiles do
-      %i.fa.fa-fw.fa-user-md
-      Everyone
-  %li
-    = link_to :questions do
-      %i.fa.fa-fw.fa-question-circle
-      Questions
-  %li
-    = link_to :articles do
-      %i.fa.fa-fw.fa-book
-      Articles
-  - if user_signed_in?
-    %li
-      = link_to edit_user_registration_path do
-        %i.fa.fa-fw.fa-cogs
-        Settings
-    %li
-      = link_to destroy_user_session_path, method: :delete do
-        %i.fa.fa-fw.fa-power-off
-        Log Out
-  - else
-    %li
-      = link_to new_user_session_path do
-        %i.fa.fa-fw.fa-sign-in
-        Sign In
+            %li= link_to "Get Verified", new_doctor_verification_request_path
+    %li.bold
+      = link_to "Hospitals", hospitals_path, class: 'waves-effect waves-teal'
+    %li.bold
+      = link_to "Everyone", profiles_path, class: 'waves-effect waves-teal'
+    %li.bold
+      = link_to "Questions", questions_path, class: 'waves-effect waves-teal'
+    %li.bold
+      = link_to "Articles", articles_path, class: 'waves-effect waves-teal'
+    %li.bold
+      = link_to "Settings", edit_user_registration_path, class: 'waves-effect waves-teal'
+    %li.bold
+      = link_to "Log Out", destroy_user_session_path, method: :delete, class: 'waves-effect waves-teal'

@@ -1,16 +1,18 @@
 #flash {
   position: absolute;
-  top: 7em;
+  top: 90px;
   left: 0;
   width: 90%;
   z-index: 5000;
   margin: 0 5%;
+  font-size: 2em;
+  color: #ffffff;
 }
 
 #error_explanation {
   position: fixed;
   max-width: 450px;
-  top: 7em;
+  top: 90px;
   z-index: 5000;
   border: 2px solid red;
   padding: 7px;

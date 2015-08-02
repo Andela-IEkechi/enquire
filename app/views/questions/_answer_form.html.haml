@@ -1,15 +1,16 @@
-= form_tag action: 'answer', id: @question do
-  - if @answer.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@answer.errors.count, "error")
-        prohibited this answer from being saved:
-      %ul
-        - @answer.errors.full_messages.each do |message|
-          %li= message
-  .field.form-group
-    = text_area 'answer', :content, class: "form-control"
-  .actions
-    = button_tag type: "submit", class: "button-hollow-b" do
-      %i.fa.fa-stethoscope
-        Post Help
+.row
+  = form_tag action: 'answer', id: @question do
+    - if @answer.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(@answer.errors.count, "error")
+          prohibited this answer from being saved:
+        %ul
+          - @answer.errors.full_messages.each do |message|
+            %li= message
+    .row
+      .input-field.col.s12
+        = text_area 'answer', :content, class: "validate materialize-textarea"
+        %label{:for => "answer_content"} Answer
+    .modal-footer
+      = submit_tag 'Post Help', class: "btn-flat modal-action"

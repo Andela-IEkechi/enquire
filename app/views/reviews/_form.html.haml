@@ -1,12 +1,12 @@
 - if client?
   = form_for Review.new do |f|
-    .field
-      = hidden_field(:review, :hospital_id, value: params["id"])
-    .field.form-group
-      = f.label :content
-      %br/
-      = f.text_area :content, class: "form-control"
+    .row
+      .input-field.col.s12
+        = hidden_field(:review, :hospital_id, value: params["id"])
+    .row
+      .input-field.col.s12
+        = f.text_area :content, class: "validate materialize-textarea"
+        %label{for: 'review_content'} Your Review
     .actions
-      = button_tag type: "submit", class: "button-hollow-b" do
-        %i.fa.fa-check-circle
-          Post Review
+      = button_tag type: "submit", class: "btn mdi-av-volume-up" do
+        Post Review

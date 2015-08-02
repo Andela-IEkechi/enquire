@@ -1,10 +1,10 @@
-html, body {
+html, body, .valign-wrapper {
   height: 100%;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-size: 2em !important;
-}
+//h1, h2, h3, h4, h5, h6 {
+//  font-size: 2em !important;
+//}
 
 body li {
   margin: auto;
@@ -14,25 +14,26 @@ body li {
 .content_wrapper {
   overflow-y: scroll;
   bottom: 0 !important;
-  margin-top: 6em;
-  margin-right: 10px;
+  margin-top: 90px;
+//  margin-right: 10px;
 }
 
-input, textarea, select, a { outline: none !important; }
+//input, textarea, select, a { outline: none !important; }
 
 .form-wrapper {
-  max-width: 600px;
-  padding-bottom: 30px;
+  margin: 0 auto 15vh;
+  max-width: 700px;
+  background-color: #ffffff;
 }
 
-input[type='file'], input[type='file']:focus {
-  width: 100%;
-  outline: none !important;
-}
-
-input[type='number'] {
-  background-color: #EAF5FF;
-}
+//input[type='file'], input[type='file']:focus {
+//  width: 100%;
+//  outline: none !important;
+//}
+//
+//input[type='number'] {
+//  background-color: #EAF5FF;
+//}
 
 .clickable {
   cursor: pointer; cursor: hand;

@@ -1,27 +1,17 @@
-%ul
+.row
   - @questions.each do |question|
-    %li
-      %br/
-      = link_to (question), class: "list-group-item" do
-        %blockquote
-          %p.lead= question.body
-          %p=raw question.all_tags
-          %footer
-            %strong
-              = image_tag(question.user.image.url(:thumb), class: 'user')
-              = question.user.name
-    %br/
-    %i.fa.fa-comments.likes
-      = question.answers.count
-      Answers
-    %i.fa.fa-user-plus.text-success
-      = question.follows.count
-      Follower(s)
-    - unless question.users.include?(current_user)
-      .pull-right
-        = form_for Follow.new do |f|
-          = hidden_field(:follow, :question_id, value: "#{question.id}")
-          %div
-            = button_tag type: "submit", class: "btn btn-success" do
-              %i.fa.fa-comments
-                Follow
+    .col.s12.m6
+      .card-panel.question-panel
+        .row
+          .col.s4
+            = image_tag(question.user.image.url(:small), class: "responsive-img activator")
+          .col.s8
+            .question-body
+              = question.body
+            .right.profile= time_ago_in_words(question.created_at)
+        .row
+          = link_to 'View', question, class: 'mdi-image-remove-red-eye btn'
+          -if verified_doctor?
+            = link_to 'Answer', new_answer_path(answer: {question_id: question.id}), class: 'waves-effect waves-light btn mdi-action-announcement'
+          - unless question.users.include?(current_user)
+            .right= link_to 'Follow', follows_path(:follow => {question_id: question.id}), method: :post, class: 'mdi-maps-directions-walk'

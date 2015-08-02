@@ -1,6 +1,6 @@
 class Article < ActiveRecord::Base
   belongs_to :user
-  has_many :ratings
+  has_many :ratings, dependent: :destroy
 
   scope :contains_text, -> (text) { where("title like ? OR content like ?", "%#{text}%", "%#{text}%")}
 

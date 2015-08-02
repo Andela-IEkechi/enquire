@@ -1,17 +1,25 @@
-%h5.text-center Doctors List
+%h4.center-align Doctors List
 - @doctor_lists.each do |doctor|
   -if hospital_manager? && doctor.hospital.manager == current_user
-    %li.panel.panel-default
-      .panel-heading
-        %br/
-        .btn-group
-          .btn-group-justified
-            = link_to image_tag(doctor.user.image, class: "img-thumbnail user"), profile_path(doctor.user)
-            %strong= link_to doctor.user.name, profile_path(doctor.user)
-            |
-            %i= time_ago_in_words(doctor.user.current_sign_in_at)
-            |
-            %button.button-hollow-c
-              = link_to doctor, :method => :delete, :data => { :confirm => "Are you sure you no longer want this Doctor associated with #{doctor.hospital.name} hospital?" } do
-                %i.text-danger.fa.fa-user-times
-                UnVerify
+    .row
+      .col.s9.m5.l4
+        .card.medium
+          .card-image.waves-effect.waves-block.waves-light
+            = image_tag(doctor.user.image.url(:small), class: "responsive-img activator")
+            %span.card-title
+              = doctor.user.name
+              |
+              %i= "#{time_ago_in_words(doctor.user.current_sign_in_at)} ago"
+          .card-content
+            %span.card-title.activator.grey-text.text-darken-4
+              .truncate
+                %i.right.mdi-navigation-more-vert
+                = doctor.user.bio
+            .card-action
+              = link_to 'View', profile_path(doctor.user), class: 'mdi-image-remove-red-eye'
+              = link_to 'Un-Verify', doctor, class: 'mdi-action-delete', :method => :delete, :data => { :confirm => "Are you sure you no longer want this Doctor associated with #{doctor.hospital.name} hospital?" }
+          .card-reveal
+            %span.card-title.grey-text.text-darken-4
+              = doctor.user.name
+              %i.right.mdi-navigation-close
+            %p= doctor.user.bio

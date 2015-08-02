@@ -1,0 +1,13 @@
+.answers-wrapper
+  - unless @answers.empty?
+    %h5.center-align Answers
+    - @answers.each do |answer|
+      .card-panel
+        = answer.content
+        = image_tag(answer.user.image.url(:thumb), class: 'responsive-img')
+        .right
+          .mdi-action-favorite= answer.answer_likes.count
+          - if client? && !answer.answer_likes.map(&:user).include?(current_user)
+            = link_to "Like", answer_likes_path(answer_id: answer.id, user_id: current_user.id), method: :post, class: 'btn'
+        - if answer.user == current_user
+          = link_to 'Edit', edit_answer_path(answer), class: 'btn mdi-editor-mode-edit'
