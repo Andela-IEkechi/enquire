@@ -1,26 +1,47 @@
 = render 'search'
-%h1 Listing articles
+%h4.center-align Listing Articles
 
-%table
-  %thead
-    %tr
-      %th User
-      %th Title
-      %th Content
-      %th
-      %th
-      %th
 
-  %tbody
-    - @articles.each do |article|
-      %tr
-        %td= article.user
-        %td= raw article.title
-        %td= raw article.content
-        %td= link_to 'Show', article
-        %td= link_to 'Edit', edit_article_path(article)
-        %td= link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }
+.row
+  - @articles.each do |article|
+    .col.s12.m6
+      .card-panel.question-panel
+        .row
+          .col.s4
+            %h6= raw article.title
+            = image_tag(article.user.image.url(:small), class: "responsive-img activator")
+            - unless article.user.image.url
+              = image_tag('avatar.png', width: "50", class: "responsive-img")
+          .col.s8
+            .question-body
+              = raw article.content
+            .right.profile= time_ago_in_words(article.created_at)
+        .row
+          = link_to 'View', article, class: 'mdi-image-remove-red-eye btn'
+- if verified_doctor?
+  = link_to 'New Article', new_article_path, class: 'btn'
 
-%br
 
-= link_to 'New Article', new_article_path
+-#%table
+-#  %thead
+-#    %tr
+-#      %th User
+-#      %th Title
+-#      %th Content
+-#      %th
+-#      %th
+-#      %th
+-#
+-#  %tbody
+-#    - @articles.each do |article|
+-#      %tr
+-#        %td= article.user
+-#        %td= raw article.title
+-#        %td= raw article.content
+-#        %td= link_to 'Show', article
+-#        %td= link_to 'Edit', edit_article_path(article)
+-#        %td= link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }
+-#
+-#%br
+-#
+

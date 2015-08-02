@@ -17,8 +17,8 @@ class ArticlesController < ApplicationController
   def show
     @rating = Rating.where(article_id: @article.id, user_id: current_user.id).first
     unless @rating
-    @rating = Rating.create(comment_id: @comment.id, score: 0)
-  end
+      @rating = Rating.create(article_id: @article.id, score: 0)
+    end
   end
 
   # GET /articles/new
