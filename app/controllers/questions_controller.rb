@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  autocomplete :tag, :name
+  autocomplete :question, :body
   before_action :set_question, only: [:show, :update, :destroy, :answer]
   before_action :set_answers, only: [:show, :answer]
   load_and_authorize_resource
@@ -9,9 +11,13 @@ class QuestionsController < ApplicationController
     if current_user.interests
       @interest_questions = Question.tagged_with(current_user.interests)
     end
-    @questions = Question.all
-    @my_questions = current_user.questions
-    @my_follows = current_user.followed_questions
+    if params[:q]
+      @questions = Question.contains_text("%#{params[:q]}%").order('created_at DESC')
+    else
+      @questions = Question.all.order('created_at DESC')
+    end
+    @my_questions = current_user.questions.order('created_at DESC')
+    @my_follows = current_user.followed_questions.order('created_at DESC')
     @interests = "" #todo how are interests compiled?
   end
 
@@ -71,7 +77,6 @@ class QuestionsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
 
   def answer
     @answer = @question.answers.build(answer_params)

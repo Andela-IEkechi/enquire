@@ -23,11 +23,19 @@ class Ability
       can :manage, [
                    Answer,
                    Follow,
-                   Question
+                   Question,
+                   Article
                  ]
     else
+      can :access, :ckeditor   # needed to access Ckeditor filebrowser
+      # Performed checks for actions:
+      can [:read, :create, :destroy], Ckeditor::Picture
+      can [:read, :create, :destroy], Ckeditor::AttachmentFile
       can :manage, Question do |question|
         user == question.user
+      end
+      can :manage, Article do |article|
+        user == article.user
       end
       can :manage, Hospital do |hospital|
         user.role == 'manager' && user == hospital.manager

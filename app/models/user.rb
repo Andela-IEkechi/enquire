@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_many :followed_questions, through: :follows, source: :question
   has_many :answers
   belongs_to :hospital
+  has_many :ratings
+  has_many :articles
 
   validates :date_of_birth, presence: true, on: :update
   validates :role, presence: true, on: :update
@@ -29,9 +31,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   devise :omniauthable, :omniauth_providers => [:facebook]
-
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
 
   SPECIALIZATION = ["Medicine", "Surgery", "Obstetrics & Gynaecology", "Paediatrics", "Pathology (Morbid Anatomy, Chemical Pathology, Haematology/Immunology and Microbiology)",
                     "Otorhinolaryngology (ENT)", "Radiation Medicine", "Radiotherapy", "Ophthalmology", "Community Medicine", "Anaesthesia", "Psychiatry",

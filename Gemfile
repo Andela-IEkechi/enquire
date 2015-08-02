@@ -52,11 +52,11 @@ gem 'mini_magick'
 gem "fog"
 # charts
 gem 'chartkick', '~> 1.3.2'
+gem 'rails3-jquery-autocomplete', git: 'https://github.com/francisd/rails3-jquery-autocomplete'
 # for storing sensitive stuffs
 gem "figaro"
-
-#simulates sending and opening of letters in development
-gem "letter_opener", :group => :development
+# pretty editors with functions
+gem 'ckeditor', github: 'galetahub/ckeditor'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -64,7 +64,8 @@ gem "letter_opener", :group => :development
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
+  #simulates sending and opening of letters in development
+  gem "letter_opener"
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 

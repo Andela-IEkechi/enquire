@@ -1,23 +1,28 @@
 Rails.application.routes.draw do
 
+  resources :articles
+  resources :questions
   resources :hospital_lists
   resources :doctor_lists
   resources :hospital_verification_requests
   resources :doctor_verification_requests
 
   get 'tags/:tag', to: 'questions#index', as: "tag"
+  get 'questions/autocomplete_tag_name'
+  get 'questions/autocomplete_question_body'
+  get 'articles/autocomplete_article_title'
 
   resources :reviews
   resources :hospitals
   resources :answers
   resources :profiles, only: [:show, :index]
-  resources :questions
   resource  :dashboard
   resources :doctors
   resources :hospital_likes
   resources :answer_likes
   resources :doctor_likes
   resources :follows
+  resources :ratings, only: :update
 
   post 'answer' => 'questions#answer'
   get 'hospitals/:id/doctors' => 'hospitals#our_doctors'
@@ -25,6 +30,8 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => :registrations }
 
   root 'homes#show'
+
+  mount Ckeditor::Engine => '/ckeditor'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

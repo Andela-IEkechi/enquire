@@ -10,6 +10,8 @@ class Question < ActiveRecord::Base
 
   accepts_nested_attributes_for :answers
 
+  scope :contains_text, -> (text) { where("body like ?", "%#{text}%")}
+
   def all_tags=(names)
     self.tags = names.split(",").map do |name|
       Tag.where(name: name.strip).first_or_create!
