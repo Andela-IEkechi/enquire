@@ -19,7 +19,6 @@
 //= require jsapi
 //= require chartkick
 //= require jquery_ujs
-// require turbolinks
 //= require ckeditor/init
 //= require jquery.raty.js
 //= require materialize-sprockets

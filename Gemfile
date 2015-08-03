@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
-
-
+ruby '2.1.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
@@ -28,11 +27,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'haml'
 gem "haml-rails", "~> 0.9"
 
-# todo remove all these
-# gem 'bootstrap-sass', '~> 3.3.4'
-# gem 'bootswatch-rails' #todo remove bootswatch after materilize has been stabilized
+# todo remove font-awesome-rails
 gem 'font-awesome-rails'
-gem 'materialize-sass'
+gem 'materialize-sass'#, github: 'mkhairi/materialize-sass'
 
 gem 'pry'
 # Use devise for authentication
@@ -57,7 +54,7 @@ gem 'rails3-jquery-autocomplete', git: 'https://github.com/francisd/rails3-jquer
 gem "figaro"
 # pretty editors with functions
 gem 'ckeditor', github: 'galetahub/ckeditor'
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
