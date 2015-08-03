@@ -57,6 +57,7 @@ gem 'rails3-jquery-autocomplete', git: 'https://github.com/francisd/rails3-jquer
 gem "figaro"
 # pretty editors with functions
 gem 'ckeditor', github: 'galetahub/ckeditor'
+gem 'rails_12factor'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -75,6 +76,5 @@ group :development, :test do
   # Use rspec for testing
   # gem 'rspec'
   gem 'rspec-rails', '~> 3.2.1'
-  gem 'rails_12factor'
 end
 
