@@ -1,0 +1,95 @@
+/* line 4, /Users/Sunday/workspace/enquire/app/assets/stylesheets/homes.scss */
+.button-hollow-a {
+  outline: none;
+  color: #ffffff !important;
+  background-color: #3b5998;
+  border: 1px solid #3b5998;
+  padding: .5em 1.5em;
+  border-radius: 5px;
+}
+/* line 11, /Users/Sunday/workspace/enquire/app/assets/stylesheets/homes.scss */
+.button-hollow-a:hover {
+  border: 1px solid #64AAE4;
+  background: transparent;
+  color: #64AAE4 !important;
+}
+/* line 15, /Users/Sunday/workspace/enquire/app/assets/stylesheets/homes.scss */
+.button-hollow-a:hover a {
+  text-decoration: none;
+}
+
+/* line 21, /Users/Sunday/workspace/enquire/app/assets/stylesheets/homes.scss */
+.button-hollow-b {
+  outline: none;
+  background: transparent;
+  border: 1px solid #64AAE4;
+  padding: .5em 1.5em;
+  border-radius: 0.5em;
+  color: #64AAE4;
+}
+/* line 28, /Users/Sunday/workspace/enquire/app/assets/stylesheets/homes.scss */
+.button-hollow-b:hover {
+  border: 1px solid #670000;
+  color: #670000;
+}
+/* line 31, /Users/Sunday/workspace/enquire/app/assets/stylesheets/homes.scss */
+.button-hollow-b:hover a {
+  color: #670000 !important;
+}
+
+/* line 36, /Users/Sunday/workspace/enquire/app/assets/stylesheets/homes.scss */
+.button-hollow-c {
+  outline: none;
+  background: transparent;
+  border: 1px solid #64AAE4;
+  padding: .5em 1.5em;
+  border-radius: 1.5em;
+  color: #64AAE4;
+  height: 3em;
+}
+/* line 44, /Users/Sunday/workspace/enquire/app/assets/stylesheets/homes.scss */
+.button-hollow-c:hover {
+  border: 1px solid #670000;
+  color: #670000;
+}
+/* line 47, /Users/Sunday/workspace/enquire/app/assets/stylesheets/homes.scss */
+.button-hollow-c:hover a {
+  color: #670000 !important;
+}
+
+/* line 52, /Users/Sunday/workspace/enquire/app/assets/stylesheets/homes.scss */
+.likes {
+  color: #670000;
+}
+
+/* line 56, /Users/Sunday/workspace/enquire/app/assets/stylesheets/homes.scss */
+.or {
+  text-align: center;
+  position: relative;
+}
+/* line 60, /Users/Sunday/workspace/enquire/app/assets/stylesheets/homes.scss */
+.or span {
+  display: inline-block;
+}
+/* line 63, /Users/Sunday/workspace/enquire/app/assets/stylesheets/homes.scss */
+.or span:before,
+.or span:after {
+  border-top: 1px solid black;
+  display: block;
+  height: 1px;
+  content: " ";
+  width: 40%;
+  position: absolute;
+  left: 0;
+  top: 1.2em;
+}
+/* line 74, /Users/Sunday/workspace/enquire/app/assets/stylesheets/homes.scss */
+.or span:after {
+  right: 0;
+  left: auto;
+}
+
+/* line 83, /Users/Sunday/workspace/enquire/app/assets/stylesheets/homes.scss */
+.user-info li {
+  display: inline-block;
+}

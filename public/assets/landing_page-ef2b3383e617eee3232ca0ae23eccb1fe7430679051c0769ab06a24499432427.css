@@ -1,0 +1,121 @@
+/* line 1, /Users/Sunday/workspace/enquire/app/assets/stylesheets/landing_page.scss */
+.home {
+  position: fixed;
+  z-index: 3;
+  background-image: url("landing_bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 50%;
+  background-color: black;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+/* line 15, /Users/Sunday/workspace/enquire/app/assets/stylesheets/landing_page.scss */
+.home-div {
+  background: rgba(0, 0, 0, 0.6);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
+  padding: 3em;
+  overflow-y: scroll;
+  margin: 0 !important;
+}
+
+/* line 27, /Users/Sunday/workspace/enquire/app/assets/stylesheets/landing_page.scss */
+.caption {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+  font-size: 10vh;
+  color: #58ACFA;
+}
+
+/* line 34, /Users/Sunday/workspace/enquire/app/assets/stylesheets/landing_page.scss */
+.exp {
+  font-size: 3vh;
+  color: #FBF5EF;
+  top: -4.5em;
+  position: relative;
+}
+
+/* line 41, /Users/Sunday/workspace/enquire/app/assets/stylesheets/landing_page.scss */
+.exp p:first-child {
+  margin-left: 20px;
+  font-family: 'Roboto Mono';
+}
+
+/* line 46, /Users/Sunday/workspace/enquire/app/assets/stylesheets/landing_page.scss */
+.play {
+  margin-top: 20px;
+}
+
+/* line 50, /Users/Sunday/workspace/enquire/app/assets/stylesheets/landing_page.scss */
+.play:hover {
+  opacity: 0.8;
+}
+
+/* line 54, /Users/Sunday/workspace/enquire/app/assets/stylesheets/landing_page.scss */
+.about-video {
+  width: 80%;
+  min-height: 50%;
+  margin: 10%;
+  position: relative;
+  height: 0;
+  max-width: 750px;
+  display: none;
+}
+
+/* line 64, /Users/Sunday/workspace/enquire/app/assets/stylesheets/landing_page.scss */
+.about-video #close {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  z-index: 2;
+  color: skyblue;
+}
+
+/* line 72, /Users/Sunday/workspace/enquire/app/assets/stylesheets/landing_page.scss */
+.about-video #close:hover {
+  color: red;
+}
+
+/* 16x9 Aspect Ratio */
+/* line 77, /Users/Sunday/workspace/enquire/app/assets/stylesheets/landing_page.scss */
+.about-video-16x9 {
+  padding-bottom: 56.25%;
+}
+
+/* 4x3 Aspect Ratio */
+/* line 82, /Users/Sunday/workspace/enquire/app/assets/stylesheets/landing_page.scss */
+.about-video-4x3 {
+  padding-bottom: 75%;
+}
+
+/* line 86, /Users/Sunday/workspace/enquire/app/assets/stylesheets/landing_page.scss */
+.about-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 94, /Users/Sunday/workspace/enquire/app/assets/stylesheets/landing_page.scss */
+.home-btn {
+  padding: 20px 40px !important;
+  padding-bottom: 55px !important;
+  margin-right: 5%;
+  line-height: 80px;
+  font-family: "Roboto", sans-serif;
+  font-size: large !important;
+  border-radius: 10px !important;
+}
+
+/* line 104, /Users/Sunday/workspace/enquire/app/assets/stylesheets/landing_page.scss */
+.sign-in {
+  background-color: #58ACFA !important;
+}

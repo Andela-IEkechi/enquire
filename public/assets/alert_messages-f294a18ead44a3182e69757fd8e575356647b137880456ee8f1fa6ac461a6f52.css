@@ -1,0 +1,46 @@
+/* line 1, /Users/Sunday/workspace/enquire/app/assets/stylesheets/alert_messages.scss */
+#flash {
+  position: absolute;
+  top: 90px;
+  left: 0;
+  width: 90%;
+  z-index: 5000;
+  margin: 0 5%;
+  font-size: 2em;
+  color: #ffffff;
+}
+
+/* line 12, /Users/Sunday/workspace/enquire/app/assets/stylesheets/alert_messages.scss */
+#error_explanation {
+  position: fixed;
+  max-width: 450px;
+  top: 90px;
+  z-index: 5000;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 22, /Users/Sunday/workspace/enquire/app/assets/stylesheets/alert_messages.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 32, /Users/Sunday/workspace/enquire/app/assets/stylesheets/alert_messages.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+/* line 38, /Users/Sunday/workspace/enquire/app/assets/stylesheets/alert_messages.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: #F8E0E6;
+}
