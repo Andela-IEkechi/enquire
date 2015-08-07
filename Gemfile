@@ -27,7 +27,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'haml'
 gem "haml-rails", "~> 0.9"
 
-# todo remove font-awesome-rails
 gem 'font-awesome-rails'
 gem 'materialize-sass'#, github: 'mkhairi/materialize-sass'
 

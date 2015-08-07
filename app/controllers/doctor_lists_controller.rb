@@ -1,10 +1,11 @@
 class DoctorListsController < ApplicationController
   before_action :set_doctor_list, only: [:show, :edit, :update, :destroy]
+  # before_action :set_hospital, only: [:index]
 
   # GET /doctor_lists
   # GET /doctor_lists.json
   def index
-    @doctor_lists = DoctorList.all
+    @doctor_lists = DoctorList.find_by(id: current_user.hospitals.map(&:id)) || []
   end
 
   # GET /doctor_lists/1
@@ -67,6 +68,11 @@ class DoctorListsController < ApplicationController
     def set_doctor_list
       @doctor_list = DoctorList.find(params[:id])
     end
+
+    # def set_hospital
+    #   binding.pry
+    #   @hospital = Hospital.find(params[:hospital])
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def doctor_list_params

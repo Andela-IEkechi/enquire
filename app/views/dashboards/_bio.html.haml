@@ -1,6 +1,8 @@
 .form-wrapper.profile
   .form-head.row
     .col.s9= image_tag current_user.image.url(:small), class: 'responsive-img'
+    -unless current_user.image.url
+      .col.s9= image_tag('avatar.png', width: "200", class: "responsive-img")
     .col.s3.file-field.input-field
       - if verified_doctor?
         .img-responsive.verified= image_tag('verified.png')

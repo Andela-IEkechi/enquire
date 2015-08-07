@@ -10,8 +10,7 @@ class DoctorList < ActiveRecord::Base
 
   def remove_doctor
     ActiveRecord::Base.transaction do
-      user.verified = false
-      user.save
+      self.user.update_attributes(verified: false)
     end
   end
 end

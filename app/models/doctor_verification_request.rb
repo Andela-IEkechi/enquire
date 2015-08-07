@@ -16,9 +16,7 @@ class DoctorVerificationRequest < ActiveRecord::Base
 
     def update_doctor
       ActiveRecord::Base.transaction do
-        user.verified = true
-        user.hospital = hospital
-        user.save
+        self.user.update_attributes(verified: true, hospital: self.hospital)
         DoctorList.create!(user_id: user.id, hospital_id: hospital.id)
       end
     end
