@@ -17,7 +17,7 @@ class DoctorVerificationRequest < ActiveRecord::Base
     def update_doctor
       logger.info('got here '*10)
       ActiveRecord::Base.transaction do
-        if self.user.update_attributes(verified: true, hospital: self.hospital)
+        if self.user.update_attribute(:verified, true) and self.user.update_attribute(:hospital, self.hospital)
           logger.info("UPDATED"*30)
         else
           logger.info("FAILED"*20)
