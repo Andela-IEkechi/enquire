@@ -27,6 +27,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'haml'
 gem "haml-rails", "~> 0.9"
 
+# toastr for displaying alerts
+gem 'toastr-rails'
+
 gem 'font-awesome-rails'
 gem 'materialize-sass'#, github: 'mkhairi/materialize-sass'
 
