@@ -9,13 +9,12 @@
     = favicon_link_tag 'favicon.png'
     = csrf_meta_tags
   %body
-    #flash.center-align
-      -#todo could we use either materialize toast, or toastr for displaying alerts?
-
-      - if notice
-        %p.green.accent-2= notice
-      - if alert
-        %p.red.lighten-2= alert
+    - unless flash.empty?
+      - flash.each do |f|
+        - type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'success')
+        = javascript_tag do
+          console.log("#{type}")
+          toastr["#{type}"]("#{f[1]}")
 
     = yield :charts_js
     - unless request.path == new_user_session_path || request.path == new_user_registration_path || request.path == new_user_password_path || request.path == root_path

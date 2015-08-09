@@ -10,12 +10,8 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//
-// SO FUCKED!!! JQUERY BELOW BOOTSTRAP, AND HAVE TO REMOVE
-// THE REQUIRE TREE LINE TO MAKE THE SHIT WORK
-// SO FUCKED!!!
-//
 //= require jquery
+//= require toastr
 //= require jsapi
 //= require chartkick
 //= require jquery_ujs

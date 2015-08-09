@@ -6,7 +6,7 @@ class DoctorVerificationRequest < ActiveRecord::Base
   validates :user_id, uniqueness: { message: "You already have a verification request open!" }
   validate :eligible?
 
-  after_commit :update_doctor, on: :destroy
+  before_destroy :update_doctor
 
   protected
 
@@ -15,8 +15,13 @@ class DoctorVerificationRequest < ActiveRecord::Base
     end
 
     def update_doctor
+      logger.info('got here '*10)
       ActiveRecord::Base.transaction do
-        self.user.update_attributes(verified: true, hospital: self.hospital)
+        if self.user.update_attribute(:verified, true) and self.user.update_attribute(:hospital, self.hospital)
+          logger.info("UPDATED"*30)
+        else
+          logger.info("FAILED"*20)
+        end
         DoctorList.create!(user_id: user.id, hospital_id: hospital.id)
       end
     end
