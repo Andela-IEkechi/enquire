@@ -16,9 +16,10 @@ class User < ActiveRecord::Base
 
   validates :date_of_birth, presence: true, on: :update
   validates :role, presence: true, on: :update
+  validates :name, presence: true
 
   scope :is_verified_doctor, -> { where(role: 'doctor', verified: true) }
-  scope :is_client, -> { where(role: 'user') }  #todo use is_client and is_manager?
+  scope :is_client, -> { where(role: 'user') }
   scope :is_manager, -> { where(role: 'manager') }
   scope :is_admin, -> { where(role: 'admin') }
 
