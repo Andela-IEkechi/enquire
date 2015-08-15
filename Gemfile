@@ -73,7 +73,10 @@ group :development, :test do
   gem 'spring'
 
   # Use rspec for testing
-  # gem 'rspec'
   gem 'rspec-rails', '~> 3.2.1'
+end
+
+group :test do
+  gem 'database_cleaner', '~> 1.4.1'
 end
 
