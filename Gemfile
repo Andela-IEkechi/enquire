@@ -74,6 +74,9 @@ group :development, :test do
 
   # Use rspec for testing
   gem 'rspec-rails', '~> 3.2.1'
+
+  # factorygirl for testings
+  gem 'factory_girl_rails'
 end
 
 group :test do
