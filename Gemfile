@@ -77,6 +77,7 @@ group :development, :test do
 
   # factorygirl for testings
   gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 group :test do
