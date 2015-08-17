@@ -8,7 +8,7 @@ class AnswerLike < ActiveRecord::Base
   validate :is_a_client
 
   def is_a_client
-    errors.add(:user, "must be a verified doctor") unless self.user && self.user.role == "user"
+    errors.add(:user, "must be a regular client") unless self.user && self.user.role == "user"
   end
 
 end
