@@ -14,5 +14,22 @@ FactoryGirl.define do
     marital_status 'Single'
     weight 65
     height 1.72
+
+    trait :client do
+      role 'user'
+    end
+
+    trait :doctor do
+      role 'doctor'
+    end
+
+    trait :verified_doctor do
+      role 'doctor'
+      verified true
+    end
+
+    trait :manager do
+      role 'manager'
+    end
   end
 end
