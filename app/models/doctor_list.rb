@@ -6,7 +6,7 @@ class DoctorList < ActiveRecord::Base
   validates :user, uniqueness: { message: "You have already been verified by a Hospital!" }
   validate :doctor_is_verified, :hospital_is_verified
 
-  after_commit :remove_doctor, on: :destroy
+  after_destroy :un_verify_doctor
 
   def doctor_is_verified
     errors.add(:user, "must be a verified doctor") unless self.user && self.user.role == "doctor" && self.user.verified == true
@@ -18,9 +18,7 @@ class DoctorList < ActiveRecord::Base
 
   protected
 
-  def remove_doctor
-    ActiveRecord::Base.transaction do
-      self.user.update_attributes(verified: false)
-    end
+  def un_verify_doctor
+    self.user.update_attributes(verified: false)
   end
 end

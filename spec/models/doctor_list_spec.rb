@@ -48,6 +48,12 @@ RSpec.describe DoctorList, type: :model do
       expect(doctor_list_duplicate.errors[:user]).to be_present
     end
   end
+
+  it "un-verifies doctor on destroy" do
+    doctor_list = FactoryGirl.create(:doctor_list)
+    expect(doctor_list.user.verified).to be true
+    expect{ doctor_list.destroy }.to change{ doctor_list.user.verified }.to false
+  end
 end
 
 

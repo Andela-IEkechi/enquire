@@ -28,6 +28,11 @@ FactoryGirl.define do
       verified true
     end
 
+    trait :un_verified_doctor do
+      role 'doctor'
+      verified false
+    end
+
     trait :manager do
       role 'manager'
     end
