@@ -8,6 +8,7 @@ RSpec.describe AnswerLike, :type => :model do
       @like = AnswerLike.new
       @like.save
     end
+
     it "validates presence of answer" do
       expect(@like.errors[:answer]).to be_present
     end

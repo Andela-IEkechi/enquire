@@ -3,7 +3,7 @@ class HospitalVerificationRequest < ActiveRecord::Base
   belongs_to :hospital
 
   validates :message, :user, :hospital, presence: true
-  validates :hospital_id, uniqueness: { message: "This hospital already has a verification request open!" }
+  validates :hospital_id, uniqueness: { message: "already has a verification request open!" }
   validate :eligible?
 
   after_commit :update_hospital, on: :destroy

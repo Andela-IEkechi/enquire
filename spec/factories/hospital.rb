@@ -5,6 +5,7 @@ FactoryGirl.define do
     classification { Faker::Lorem.sentence(2) }
     description { Faker::Lorem.sentence }
     phone_number { Faker::PhoneNumber.cell_phone }
+    manager { create(:user, :manager)}
     image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'accesories', 'avatar.png')) }
 
     trait :verified do
