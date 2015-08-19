@@ -1,7 +1,7 @@
 class Hospital < ActiveRecord::Base
   has_many :hospital_likes
   has_many :users, through: :hospital_likes, class_name: 'User'
-  mount_uploader :image, ImageUploader #can or can't we test this?
+  mount_uploader :image, ImageUploader #todo can or can't we test this?
   has_many :doctors, class_name: "DoctorList"
   belongs_to :manager, -> { where(role: "manager") }, class_name: "User", foreign_key: 'user_id'
 

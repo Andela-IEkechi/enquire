@@ -1,18 +1,16 @@
 class HospitalList < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user #todo :manager, -> { where(role: "manager") }, class_name: "User", foreign_key: 'user_id'
   belongs_to :hospital
 
-  validates :hospital_id, uniqueness: { message: "You have already been verified!" }
+  validates :hospital, uniqueness: { message: "You have already been verified!" }
+  validates :user, :hospital, presence: true
 
 
-  after_commit :remove_hospital, on: :destroy
+  after_destroy :unverify_hospital
 
   protected
 
-  def remove_hospital
-    ActiveRecord::Base.transaction do
-      hospital.verified = false
-      hospital.save
-    end
+  def unverify_hospital
+    self.hospital.update_attribute(:verified, false)
   end
 end
