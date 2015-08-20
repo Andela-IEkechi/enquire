@@ -6,5 +6,4 @@ RSpec.describe User, :type => :model do
     user = FactoryGirl.build(:user)
     expect(user).to be_valid
   end
-  pending "add some examples to (or delete) #{__FILE__}"
 end
