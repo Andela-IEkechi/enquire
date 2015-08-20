@@ -16,7 +16,7 @@ class AnswersController < ApplicationController
 
   # GET /answers/new
   def new
-    @answer = Answer.new(answer_params)
+    @answer = Answer.new
   end
 
   # GET /answers/1/edit

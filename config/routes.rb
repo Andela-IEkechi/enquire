@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :reviews
   resources :hospitals
-  resources :answers
+  resources :answers, except: :show
   resources :profiles, only: [:show, :index]
   resource  :dashboard
   resources :doctors
