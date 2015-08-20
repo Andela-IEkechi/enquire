@@ -52,7 +52,7 @@ RSpec.describe Rating, type: :model do
     it "should only update the rating score for user trying to rate same article again" do
       rating = FactoryGirl.create(:rating)
       rating_2 = FactoryGirl.build(:rating, user: rating.user, article: rating.article)
-      expect{ rating_2.save }.to change{ Rating.first.score }.to 4 # this should be rating_2.score
+      expect{ rating_2.save }.to change{ Rating.first.score }.to rating_2.score
     end
 
     it "should return true for user rating article for first time" do
