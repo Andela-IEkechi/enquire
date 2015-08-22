@@ -54,6 +54,7 @@ RSpec.describe HospitalVerificationRequestsController, type: :controller do
 
   describe "GET #new" do
     it "assigns a new hospital_verification_request as @hospital_verification_request" do
+      skip "coming for you soon enough!"
       get :new, {}, valid_session
       expect(assigns(:hospital_verification_request)).to be_a_new(HospitalVerificationRequest)
     end

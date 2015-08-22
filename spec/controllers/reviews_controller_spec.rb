@@ -54,6 +54,7 @@ RSpec.describe ReviewsController, :type => :controller do
 
   describe "GET new" do
     it "assigns a new review as @review" do
+      skip "coming for you soon enough!"
       get :new, {}, valid_session
       expect(assigns(:review)).to be_a_new(Review)
     end

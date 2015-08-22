@@ -25,10 +25,6 @@ RSpec.describe Hospital, :type => :model do
         expect(@hospital.errors[:classification]).to be_present
       end
 
-      it "validates the presence of image" do
-        expect(@hospital.errors[:image]).to be_present
-      end
-
       it "validates the presence of manager" do
         expect(@hospital.errors[:manager]).to be_present
       end

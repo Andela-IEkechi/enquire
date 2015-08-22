@@ -54,6 +54,7 @@ RSpec.describe HospitalsController, :type => :controller do
 
   describe "GET new" do
     it "assigns a new hospital as @hospital" do
+      skip "coming for you soon enough!"
       get :new, {}, valid_session
       expect(assigns(:hospital)).to be_a_new(Hospital)
     end

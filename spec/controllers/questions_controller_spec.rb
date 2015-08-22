@@ -54,6 +54,7 @@ RSpec.describe QuestionsController, :type => :controller do
 
   describe "GET new" do
     it "assigns a new question as @question" do
+      skip "coming for you soon enough!"
       get :new, {}, valid_session
       expect(assigns(:question)).to be_a_new(Question)
     end

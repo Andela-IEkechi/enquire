@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :hospital_lists
   resources :doctor_lists
   resources :hospital_verification_requests
-  resources :doctor_verification_requests
+  resources :doctor_verification_requests, except: [:edit, :update]
 
   get 'tags/:tag', to: 'questions#index', as: "tag"
   get 'questions/autocomplete_tag_name'

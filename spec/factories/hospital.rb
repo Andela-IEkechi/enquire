@@ -6,7 +6,7 @@ FactoryGirl.define do
     description { Faker::Lorem.sentence }
     phone_number { Faker::PhoneNumber.cell_phone }
     manager { create(:user, :manager)}
-    image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'accesories', 'avatar.png')) }
+    # image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'accesories', 'avatar.png')) }
 
     trait :verified do
       verified true
