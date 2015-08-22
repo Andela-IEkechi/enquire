@@ -86,7 +86,7 @@ RSpec.describe ArticlesController, type: :controller do
     context "with valid params" do
       it "creates a new Article" do
         expect {
-          post :create, {:article => @valid_attributes}
+          post :create, :article => @valid_attributes
         }.to change(Article, :count).by(1)
       end
 

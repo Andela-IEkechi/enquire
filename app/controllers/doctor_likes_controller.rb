@@ -17,6 +17,8 @@ class DoctorLikesController < ApplicationController
     redirect_to :back
   end
 
+  private
+
   def set_like_doctor
     @like_doctor = DoctorLike.find(params[:id])
   end
