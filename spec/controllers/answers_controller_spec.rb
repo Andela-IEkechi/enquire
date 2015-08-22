@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe AnswersController, :type => :controller do
 
   before do
-    @client = FactoryGirl.create(:user, :doctor)
-    sign_in @client
+    @doc = FactoryGirl.create(:user, :verified_doctor)
+    sign_in @doc
   end
 
   describe "GET index" do
@@ -37,12 +37,8 @@ RSpec.describe AnswersController, :type => :controller do
       expect(response).to have_http_status(:success)
     end
 
-    it "assign answer as a new record" do
-      expect(assigns(:answer)).to be_new_record
-    end
-
-    it "assign answer as a new answer" do
-      expect(assigns(:answer).kind_of?(Answer)).to be_truthy
+    it "assign answer as a new answer record" do
+      expect(assigns(:answer)).to be_a_new(Answer)
     end
   end
 
@@ -68,12 +64,12 @@ RSpec.describe AnswersController, :type => :controller do
       put :update, :id => @answer, :answer => @new_attr
     end
 
-    it "returns http success" do
-      expect(response).to have_http_status(:success)
-    end
-
     it "assign answer" do
       expect(assigns(:answer)).to eq @answer
+    end
+
+    it "should redirects to the answers question" do
+      expect(response).to redirect_to(@answer.question)
     end
 
     it "should update record with params answer" do
@@ -88,16 +84,16 @@ RSpec.describe AnswersController, :type => :controller do
       delete :destroy, :id => @answer
     end
 
-    it "returns http success" do
-      expect(response).to have_http_status(:success)
-    end
-
     it "assign answer" do
       expect(assigns(:answer)).to eq @answer
     end
 
     it "should destroy record with params answer" do
       expect(Answer.count).to eq @count - 1
+    end
+
+    it "redirects to the question" do
+      expect(response).to redirect_to(@answer.question)
     end
   end
 end
