@@ -178,12 +178,14 @@ RSpec.describe HospitalsController, :type => :controller do
 
   describe "GET #our_doctors" do
     before do
-      skip "need to get the correct route right first"
+      sign_out @manager
+      @client = FactoryGirl.create(:user, :client)
+      sign_in @client
       @hospital = Hospital.create! @verified_valid_attributes
+      FactoryGirl.create_list(:doctor_list, 2)
       @doctor_list = FactoryGirl.create_list(:doctor_list, 2, hospital: @hospital)
       @doctors = @doctor_list.map(&:user)
-      pp @doctors
-      get "/hospitals/#{@hospital.id}/doctors"
+      get :our_doctors, id: @hospital.to_param
     end
 
     it "should assign all doctors registered under specified hospital as @doctors" do

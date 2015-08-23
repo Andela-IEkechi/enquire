@@ -1,4 +1,4 @@
-class RatingsController < ApplicationController
+class RatingsController < ApplicationController # todo we should be able to do without this whole controller
 
   def update
     @rating = Rating.find(params[:id])

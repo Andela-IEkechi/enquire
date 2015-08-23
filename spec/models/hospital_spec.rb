@@ -91,4 +91,14 @@ RSpec.describe Hospital, :type => :model do
       end
     end
   end
+
+  describe "#doctors" do
+    it "returns a list of doctors for the specified hospital" do
+      hospital = FactoryGirl.create(:hospital, :verified)
+      list = FactoryGirl.create_list(:doctor_list, 2, hospital: hospital)
+      doctors = list.map(&:user)
+
+      expect(hospital.doctors).to eq doctors
+    end
+  end
 end

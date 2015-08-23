@@ -73,7 +73,8 @@ class HospitalsController < ApplicationController
 
   def our_doctors
     authorize! :read, :all
-    @doctors = DoctorList.where(hospital_id: @hospital.id)
+    # @doctors = DoctorList.where(hospital_id: @hospital.id)
+    @doctors = @hospital.doctors
   end
 
   private

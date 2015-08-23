@@ -15,6 +15,11 @@ class Hospital < ActiveRecord::Base
                    "Fertility", "Eye Clinic", "Dental Clinic" ,
                    "Nursing Homes", "Rehabs",  "Ambulance care center"]
 
+  def doctors
+    list = DoctorList.where(hospital: self)
+    list.map(&:user)
+  end
+
   private
 
   def user_is_manager
