@@ -1,5 +1,5 @@
 class DoctorList < ActiveRecord::Base
-  belongs_to :user, -> { where(role: "doctor", verified: true) }
+  belongs_to :user, -> { where(role: "doctor", verified: true) } #todo what about DoctorList.doctors for example?
   belongs_to :hospital
 
   validates_presence_of :user, :hospital
