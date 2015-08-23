@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe DoctorVerificationRequestsController, type: :controller do
 
-
   before do
     @hospital = FactoryGirl.create(:hospital, :verified)
     @doc = FactoryGirl.create(:user, :un_verified_doctor)
@@ -18,7 +17,7 @@ RSpec.describe DoctorVerificationRequestsController, type: :controller do
       get :index
     end
 
-    it "assigns all doctor_verification_requests for the signed in manager hospital as @doctor_verification_requests" do
+    it "assigns all doctor_verification_requests as @doctor_verification_requests" do
       expect(assigns(:doctor_verification_requests)).to eq([@doctor_verification_request])
     end
 
@@ -70,7 +69,7 @@ RSpec.describe DoctorVerificationRequestsController, type: :controller do
         expect(assigns(:doctor_verification_request)).to be_persisted
       end
 
-      it "redirects to the created doctor_verification_request" do
+      it "redirects to the dashboard" do
         post :create, {:doctor_verification_request => @valid_attributes}
         expect(response).to redirect_to(dashboard_path)
       end
@@ -101,7 +100,7 @@ RSpec.describe DoctorVerificationRequestsController, type: :controller do
       }.to change(DoctorVerificationRequest, :count).by(-1)
     end
 
-    it "redirects to the doctor_verification_requests list" do
+    it "redirects to the previous page" do
       doctor_verification_request = DoctorVerificationRequest.create! @valid_attributes
       delete :destroy, {:id => doctor_verification_request.to_param}
       expect(response).to redirect_to('where_i_came_from')

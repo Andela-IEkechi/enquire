@@ -24,8 +24,7 @@ class HospitalVerificationRequestsController < ApplicationController
   # POST /hospital_verification_requests
   # POST /hospital_verification_requests.json
   def create
-    @hospital_verification_request = HospitalVerificationRequest.new(hospital_verification_request_params)
-    @hospital_verification_request.user = current_user
+    @hospital_verification_request = current_user.hospital_verification_requests.new(hospital_verification_request_params)
 
     respond_to do |format|
       if @hospital_verification_request.save
@@ -72,6 +71,6 @@ class HospitalVerificationRequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hospital_verification_request_params
-      params.require(:hospital_verification_request).permit(:user_id, :hospital_id, :message)
+      params.require(:hospital_verification_request).permit(:hospital_id, :message)
     end
 end
