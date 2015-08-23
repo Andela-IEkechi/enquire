@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :questions
   resources :hospital_lists
   resources :doctor_lists
-  resources :hospital_verification_requests
+  resources :hospital_verification_requests, except: [:edit, :update]
   resources :doctor_verification_requests, except: [:edit, :update]
 
   get 'tags/:tag', to: 'questions#index', as: "tag"
@@ -18,9 +18,9 @@ Rails.application.routes.draw do
   resources :profiles, only: [:show, :index]
   resource  :dashboard, only: :show
   resources :doctors
-  resources :hospital_likes
-  resources :answer_likes
-  resources :doctor_likes
+  resources :hospital_likes, only: [:new, :create, :destroy]
+  resources :answer_likes, only: [:new, :create, :destroy]
+  resources :doctor_likes, only: [:new, :create, :destroy]
   resources :follows, only: [:new, :create, :destroy]
   resources :ratings, only: :update
 
