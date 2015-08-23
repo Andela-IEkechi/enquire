@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   resources :hospital_likes
   resources :answer_likes
   resources :doctor_likes
-  resources :follows
+  resources :follows, only: [:new, :create, :destroy]
   resources :ratings, only: :update
 
   post 'answer' => 'questions#answer'
