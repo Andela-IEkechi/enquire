@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
   # GET /questions.json
   def index
     if current_user.interests
-      @interest_questions = Question.tagged_with(current_user.interests)
+      @interest_questions = Question.tagged_with(current_user.interests) #todo how are interests compiled?
     end
     if params[:q]
       @questions = Question.contains_text("%#{params[:q]}%").order('created_at DESC')
@@ -40,8 +40,7 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    @question = Question.new(question_params)
-    @question.user = current_user
+    @question = current_user.questions.new(question_params)
 
     respond_to do |format|
       if @question.save
@@ -83,7 +82,7 @@ class QuestionsController < ApplicationController
     @answer.user = current_user
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to action: :show, id: params[:id], notice: 'Answer was successfully created.' }
+        format.html { redirect_to @question, notice: 'Answer was successfully created.' }
       else
         format.html { render :show }
         format.json { render json: @answer.errors, status: :unprocessable_entity }
