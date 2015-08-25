@@ -25,17 +25,17 @@ class AnswersController < ApplicationController
 
   # POST /answers
   # POST /answers.json
-  def create
-    @answer = current_user.answers.new(answer_params)
-    respond_to do |format|
-      if @answer.save
-        format.html { redirect_to :back, notice: 'Answer was successfully created.' }
-      else
-        format.html { render :new }
-        format.json { render json: @answer.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  # def create
+  #   @answer = current_user.answers.new(answer_params)
+  #   respond_to do |format|
+  #     if @answer.save
+  #       format.html { redirect_to :back, notice: 'Answer was successfully created.' }
+  #     else
+  #       format.html { render :new }
+  #       format.json { render json: @answer.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # PATCH/PUT /answers/1
   # PATCH/PUT /answers/1.json

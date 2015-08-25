@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :reviews
   resources :hospitals
-  resources :answers, except: :show
+  resources :answers, except: [:show, :create]
   resources :profiles, only: [:show, :index] #todo do we really need show????
   resource  :dashboard, only: :show
   resources :doctors

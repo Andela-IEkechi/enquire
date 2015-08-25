@@ -77,10 +77,6 @@ RSpec.describe AnswersController, :type => :controller do
     end
   end
 
-  describe "POST create" do
-    skip "I think I forgot to write stuff for the create method"
-  end
-
   describe "DELETE destroy" do
     before :each do
       @answer = FactoryGirl.create(:answer)
