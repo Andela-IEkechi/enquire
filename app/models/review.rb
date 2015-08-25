@@ -1,6 +1,6 @@
 class Review < ActiveRecord::Base
   belongs_to :hospital, -> { where(verified: true) }
-  belongs_to :user, -> { where(role: "user") }
+  belongs_to :user, -> { where(role: "user") } #todo what about reviewer?
 
   validates :hospital, :user, :content, presence: true
   validate :hospital_is_verified, :user_is_a_client
