@@ -1,4 +1,4 @@
-When /^(?:|I )fill in the following:$/ do |fields|
+When /^(?:|I|he|she) fill in the following:$/ do |fields|
   fields.rows_hash.each do |name, value|
     step %{I fill in "#{name}" with "#{value}"}
   end

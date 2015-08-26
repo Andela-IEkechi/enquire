@@ -16,6 +16,7 @@ Feature: Sign up
     And I should see "Password doesn't match confirmation"
     And I should not be registered
 
+  @javascript
   Scenario: Password match confirmation
     Given I am on the signup page
     When I fill in the following:
