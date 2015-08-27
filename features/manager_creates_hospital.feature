@@ -14,8 +14,9 @@ Feature: Manager creates Hospital
     And he should be on the home page
 
   @javascript
-  Scenario: A Manager tries to create an hospital (with valid params)
-    Given "Jack" is a registered "manager" with email "the_manager@example.com" and password "secretpass"
+  Scenario: A Manager tries to create an hospital (with valid params), and then request for verification
+    Given There is an admin for Cadwings
+    And "Jack" is a registered "manager" with email "the_manager@example.com" and password "secretpass"
     And "Jack" is logged in with password "secretpass"
     And I wait for 1 seconds
     When he go to the add new hospital page
@@ -27,6 +28,17 @@ Feature: Manager creates Hospital
       | Phone number | 33445566                                                                   |
     And he press "Submit"
     Then he should see "Hospital was successfully created."
+    And he waits for 5 seconds
+    When I follow "menu-collapsible"
+    Then he should see "Profile"
+    When he follows "Profile"
+    Then he should see "Verify Hospital"
+    When he follows "Verify Hospital"
+    Then he should see "Request Hospital Verification"
+    When he fill in "Message" with "Verify me, Dear Cadwings Admin"
+    And he press "Submit"
+    Then he should see "Hospital verification request was successfully created."
+    And he should be on the dashboard page
 
   @javascript
   Scenario: A Manager tries to create an hospital (with invalid params)
