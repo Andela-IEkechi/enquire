@@ -6,10 +6,10 @@ Feature: Sign in
   @javascript
   Scenario: Wrong password
     Given "Jack" is a registered "user" with email "manisiva19@gmail.com" and password "Secretkey"
-    And he is on the login page
+    And he is on the user sign in page
     When he fill in the following:
       | Email                 | example@gmail.com |
-      | Password              | Secretkey            |
+      | Password              | Secretkey         |
     And I press "Log in"
     Then the Login form should be shown again
     And I should see "Invalid email or password."
@@ -17,7 +17,7 @@ Feature: Sign in
   @javascript
   Scenario: Right password and email
     Given "Jack" is a registered "user" with email "manisiva19@gmail.com" and password "Secretkey"
-    And he is on the login page
+    And he is on the user sign in page
     When he fill in the following:
       | Email                 | manisiva19@gmail.com |
       | Password              | Secretkey            |

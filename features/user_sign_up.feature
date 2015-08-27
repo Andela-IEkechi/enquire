@@ -5,7 +5,7 @@ Feature: Sign up
 
   @javascript
   Scenario: Password doesn't match confirmation
-    Given I am on the signup page
+    Given I am on the registration page
     When I fill in the following:
       | Name                  | Wilson Manuewaolu    |
       | Email                 | manisiva19@gmail.com |
@@ -18,7 +18,7 @@ Feature: Sign up
 
   @javascript
   Scenario: Password match confirmation
-    Given I am on the signup page
+    Given I am on the registration page
     When I fill in the following:
       | Name                  | Wilson Manuewaolu    |
       | Email                 | manisiva19@gmail.com |
