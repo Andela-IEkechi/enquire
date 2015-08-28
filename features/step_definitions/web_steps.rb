@@ -12,11 +12,11 @@ When /^(?:|I|he|she) select "([^"]*)" from "([^"]*)"$/ do |value, field|
   select(value, from: field)
 end
 
-When /^(?:|I|he|she) press "([^"]*)"$/ do |button|
+When /^(?:|I|he|she|"([^"]*)") press "([^"]*)"$/ do |name, button|
   click_button(button)
 end
 
-When /^(?:|I|he|she) (?:|follow|follows) "([^"]*)"$/ do |link|
+When /^(?:|I|he|she|"([^"]*)") (?:|follow|follows) "([^"]*)"$/ do |name, link|
   click_link(link)
 end
 

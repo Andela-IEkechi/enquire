@@ -1,4 +1,4 @@
-Feature: Manager creates Hospital
+Feature: Manager manages Hospital
   As an already registered manager
   I need to login and create an hospital
   So that I can request for verification and I will be able to edit the hospital info too
@@ -29,7 +29,7 @@ Feature: Manager creates Hospital
     And he press "Submit"
     Then he should see "Hospital was successfully created."
     And he waits for 5 seconds
-    When I follow "menu-collapsible"
+    When he follows "menu-collapsible"
     Then he should see "Profile"
     When he follows "Profile"
     Then he should see "Verify Hospital"
