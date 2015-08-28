@@ -53,7 +53,7 @@ Feature: Manager manages Hospital
   @javascript
   Scenario: A Manager edits his already created hospital, and then deletes it
     Given "Jack" is a registered "manager" with email "the_manager@example.com" and password "secretpass"
-    And "Jack" has a verified hospital
+    And "Jack" has a verified hospital named "Inetia"
     And "Jack" is logged in with password "secretpass"
     And he wait for 1 seconds
     When he goes to the hospitals page

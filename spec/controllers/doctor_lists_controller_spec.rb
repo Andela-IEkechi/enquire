@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe DoctorListsController, type: :controller do
  skip "its like the doctor-list should be a join fuck, used somewhere else? investigate!"
+  #todo "unfortunately, it is not :("
   # before do
   #   @doc = FactoryGirl.create(:user, :verified_doctor)
   #   @valid_attributes = FactoryGirl.attributes_for(:article, writer: @doc)

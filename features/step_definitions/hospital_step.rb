@@ -3,9 +3,9 @@ Given /^(?:There|"([^"]*)") is an admin for Cadwings$/ do |name|
   FactoryGirl.create(:user, :admin, name: name, email: "admintest@cadwings.com", password: "Secretkey")
 end
 
-Given /^"([^"]*)" has a verified hospital$/ do |name|
-  manager = User.find_by(name: name)
-  FactoryGirl.create(:hospital, :verified, manager: manager)
+Given /^"([^"]*)" has a verified hospital named "([^"]*)"$/ do |manager_name, hospital_name|
+  manager = User.find_by(name: manager_name)
+  FactoryGirl.create(:hospital, :verified, manager: manager, name: hospital_name)
 end
 
 Given /^there is an hospital verification request from "([^"]*)" for "([^"]*)" hospital$/ do |manager_name, hospital_name|

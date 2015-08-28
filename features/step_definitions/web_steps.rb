@@ -61,6 +61,11 @@ When /^(?:|I|he|she) (?:|wait|waits) for (\d+) seconds?$/ do |n|
   sleep(n.to_i)
 end
 
+Then /^(?:|I|he|she) should see the image "(.+)"$/ do |image|
+  page.should have_xpath("//img[@src=\"/public/images/#{image}\"]")
+end
+
+
 # Then /^the "([^"]*)" field(?: within (.*))? should contain "([^"]*)"$/ do |field, parent, value|
 #   with_scope(parent) do
 #     value = Regexp.escape(value) # because email addresses contain pluses (+)
