@@ -21,3 +21,8 @@ Feature: Client asks question
     When she fill in "question_all_tags" with "bitch life"
     And she press "Ask the Doc"
     Then she should see "Question was successfully created."
+    When she waits for 5 seconds
+    And she follow "Edit"
+    And she fill in "question_body" with "What is the best way to make my man like my dish more? :)"
+    And she press "Ask the Doc"
+    Then she should see "Question was successfully updated."
