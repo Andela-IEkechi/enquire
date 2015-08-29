@@ -11,20 +11,20 @@ RSpec.describe DoctorListsController, type: :routing do
       expect(:get => "/doctor_lists/new").to route_to("doctor_lists#new")
     end
 
-    it "routes to #show" do
-      expect(:get => "/doctor_lists/1").to route_to("doctor_lists#show", :id => "1")
+    it "does not routes to #show" do
+      expect(:get => "/doctor_lists/1").not_to be_routable
     end
 
-    it "routes to #edit" do
-      expect(:get => "/doctor_lists/1/edit").to route_to("doctor_lists#edit", :id => "1")
+    it "does not routes to #edit" do
+      expect(:get => "/doctor_lists/1/edit").not_to be_routable
     end
 
     it "routes to #create" do
       expect(:post => "/doctor_lists").to route_to("doctor_lists#create")
     end
 
-    it "routes to #update" do
-      expect(:put => "/doctor_lists/1").to route_to("doctor_lists#update", :id => "1")
+    it "does not routes to #update" do
+      expect(:put => "/doctor_lists/1").not_to be_routable
     end
 
     it "routes to #destroy" do

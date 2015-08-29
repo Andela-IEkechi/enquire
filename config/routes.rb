@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :articles
   resources :questions
   resources :hospital_lists #todo are these joins or not?
-  resources :doctor_lists #todo are these joins or not?
+  resources :doctor_lists, except: [:edit, :update, :show]
   resources :hospital_verification_requests, except: [:edit, :update]
   resources :doctor_verification_requests, except: [:edit, :update]
 
