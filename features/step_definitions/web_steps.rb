@@ -40,7 +40,7 @@ Then /^(?:I|they|she|he) should not see "([^"]*)"$/ do |text|
   end
 end
 
-Then /^(?:|I|he) should be on ([^']+)$/ do |page_name|
+Then /^(?:|I|he|she) should be on ([^']+)$/ do |page_name|
   current_path = URI.parse(current_url).path
   if current_path.respond_to? :should
     current_path.should == path_to(page_name)
