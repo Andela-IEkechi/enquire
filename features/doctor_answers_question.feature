@@ -24,3 +24,10 @@ Feature: Doctor signs in and answers a Question
     And he fill in "Answer" with "What the heck yo talking bout nigg?"
     And he press "Post Help"
     Then he should see "Answer was successfully posted."
+    When he goes to the questions page
+    And he follow "View"
+    Then he should see "CONTRIBUTE"
+    When he follow "Contribute"
+    And he fill in "Answer" with "What the heck yo talking bout nigg?"
+    And he press "Post Help"
+    Then he should see "Answer was successfully posted."
