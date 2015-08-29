@@ -61,8 +61,12 @@ When /^(?:|I|he|she) (?:|wait|waits) for (\d+) seconds?$/ do |n|
   sleep(n.to_i)
 end
 
-Then /^(?:|I|he|she) should see the image "(.+)"$/ do |image|
-  page.should have_xpath("//img[@src=\"/public/images/#{image}\"]")
+# Then /^(?:|I|he|she) should see the image "(.+)"$/ do |image|
+#   page.should have_xpath("//img[@src=\"/public/images/#{image}\"]")
+# end
+
+Then /^(?:|I|he|she) reloads the page$/ do
+  visit page.driver.browser.current_url
 end
 
 
