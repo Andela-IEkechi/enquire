@@ -30,7 +30,8 @@ RSpec.describe AnswersController, :type => :controller do
 
   describe "GET new" do
     before do
-      get :new
+      question = FactoryGirl.create(:question)
+      get :new, question: question
     end
 
     it "returns http success" do
@@ -54,6 +55,49 @@ RSpec.describe AnswersController, :type => :controller do
 
     it "assign question" do
       expect(assigns(:answer)).to eq @answer
+    end
+  end
+
+  describe "POST #create" do
+    context "with valid params" do
+      before do
+        @request.env['HTTP_REFERER'] = 'where_i_came_from'
+        @valid_attributes = FactoryGirl.attributes_for(:answer)
+        @valid_attributes[:question_id] = @valid_attributes[:question]
+      end
+
+      it "creates a new Answer" do
+        expect {
+          post :create, {:answer => @valid_attributes}
+        }.to change(Answer, :count).by(1)
+      end
+
+      it "assigns a newly created answer as @answer" do
+        post :create, {:answer => @valid_attributes}
+        expect(assigns(:answer)).to be_a(Answer)
+        expect(assigns(:answer)).to be_persisted
+      end
+
+      it "redirects to the refering page" do
+        post :create, {:answer => @valid_attributes}
+        expect(response).to redirect_to 'where_i_came_from'
+      end
+    end
+
+    context "with invalid params" do
+      before do
+        @invalid_attributes = FactoryGirl.attributes_for(:answer, content: nil)
+      end
+
+      it "assigns a newly created but unsaved answer as @answer" do
+        post :create, {:answer => @invalid_attributes}
+        expect(assigns(:answer)).to be_a_new(Answer)
+      end
+
+      it "re-renders the 'new' template" do
+        post :create, {:answer => @invalid_attributes}
+        expect(response).to render_template("new")
+      end
     end
   end
 

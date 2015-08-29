@@ -1,5 +1,13 @@
 .row.form-body
   = form_for @answer do |f|
+    - if @answer.errors.any?
+      #error_explanation
+        %h2
+          = pluralize(@answer.errors.count, "error")
+          prohibited this question from being saved:
+        %ul
+          - @answer.errors.full_messages.each do |message|
+            %li= message
     .field
       = hidden_field(:answer, :question_id, value: @answer.question_id )
     .row

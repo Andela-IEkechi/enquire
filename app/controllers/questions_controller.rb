@@ -82,7 +82,7 @@ class QuestionsController < ApplicationController
     @answer.user = current_user
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to @question, notice: 'Answer was successfully created.' }
+        format.html { redirect_to @question, notice: 'Answer was successfully posted.' }
       else
         format.html { render :show }
         format.json { render json: @answer.errors, status: :unprocessable_entity }

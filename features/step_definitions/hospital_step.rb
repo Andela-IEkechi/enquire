@@ -13,3 +13,8 @@ Given /^there is an hospital verification request from "([^"]*)" for "([^"]*)" h
   hospital = Hospital.find_by(name: hospital_name) || FactoryGirl.create(:hospital, verified: false, name: hospital_name, manager: manager)
   FactoryGirl.create(:hospital_verification_request, user: manager, hospital: hospital)
 end
+
+Given /^(.+) is a verified doctor$/ do |doc_name|
+  doctor = User.find_by(name: doc_name)
+  doctor.update_column(:verified, true)
+end
