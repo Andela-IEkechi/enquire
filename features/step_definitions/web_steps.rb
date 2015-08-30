@@ -40,6 +40,14 @@ Then /^(?:I|they|she|he) should not see "([^"]*)"$/ do |text|
   end
 end
 
+Then /^the page should have a "([^"]*)"$/ do |css|
+  page.has_css?(css)
+end
+
+Then /^the page should not have a "([^"]*)"$/ do |css|
+  page.has_no_css?(css)
+end
+
 Then /^(?:|I|he|she) should be on ([^']+)$/ do |page_name|
   current_path = URI.parse(current_url).path
   if current_path.respond_to? :should
