@@ -6,7 +6,7 @@ Feature: User views answers to a question
   @javascript
   Scenario: Client checks various answers to question
     Given "Janet" is a registered "user" with email "janet@example.com" and password "mysecretpass"
-    And there is a question already asked by a client
+    And there is 1 question already asked by clients
     And she is on the user sign in page
     And she fill in the following:
       | Email     | janet@example.com |

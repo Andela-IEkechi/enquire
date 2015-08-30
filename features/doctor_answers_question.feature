@@ -5,7 +5,7 @@ Feature: Doctor signs in and answers a Question
 
   @javascript
   Scenario: Doctor signs in to answer a question
-    Given there is a question already asked by a client
+    Given there is 1 question already asked by clients
     And "Jack" is a registered "doctor" with email "jacksiva19@gmail.com" and password "Secretkey"
     And Jack is a verified doctor
     When he is on the user sign in page

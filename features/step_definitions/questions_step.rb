@@ -1,5 +1,7 @@
-Given /^there is a question already asked by a client$/ do
-  FactoryGirl.create(:question)
+Given /^there (?:is|are) (\d+) (?:question|questions) already asked by clients$/ do |n|
+  n.to_i.times.each do
+    FactoryGirl.create(:question)
+  end
 end
 
 Given /^all questions now have a few answers each$/ do
