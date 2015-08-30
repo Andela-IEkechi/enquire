@@ -18,3 +18,13 @@ Given /^(.+) is a verified doctor$/ do |doc_name|
   doctor = User.find_by(name: doc_name)
   doctor.update_column(:verified, true)
 end
+
+Given /^there is a verified hospital named "([^"]*)"$/ do |hospital_name|
+  FactoryGirl.create(:hospital, :verified, name: hospital_name)
+end
+
+Given /^"([^"]*)" hospital has a verified doctor named "([^"]*)"$/ do |hospital_name, doc_name|
+  hospital = Hospital.find_by(name: hospital_name)
+  doc = FactoryGirl.create(:user, :verified_doctor, name: doc_name, hospital: hospital)
+  FactoryGirl.create(:doctor_list, hospital: hospital, user: doc)
+end
