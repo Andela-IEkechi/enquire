@@ -29,7 +29,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to :back, notice: 'Review was successfully created.' }
+        format.html { redirect_to :back, notice: 'Your Review has been successfully posted.' }
       else
         format.html { render :new }
       end

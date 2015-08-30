@@ -6,7 +6,6 @@ Feature: User recommends an hospital
   @javascript
   Scenario: User recommends an hospital
     Given there is a verified hospital named "MechoMedics"
-#    And "MechoMedics" hospital has a verified doctor named "Carson"
     And "Janet" is a registered "user" with email "janet@example.com" and password "mysecretpass"
     And she is on the user sign in page
     And she fill in the following:
