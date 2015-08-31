@@ -17,8 +17,6 @@ module NavigationHelpers
         new_user_session_path
       when /the user sign out page/
         destroy_user_session_path
-      when /my own profile page/
-        user_profile_path(@current_user)
       when /the registration page/
         new_user_registration_path
       when /the add new hospital page/

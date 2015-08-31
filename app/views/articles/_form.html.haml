@@ -1,19 +1,25 @@
-= form_for @article do |f|
-  - if @article.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@article.errors.count, "error")} prohibited this article from being saved:"
-      %ul
-        - @article.errors.full_messages.each do |msg|
-          %li= msg
+.form-wrapper
+  .row
+    = form_for @article do |f|
+      - if @article.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@article.errors.count, "error")} prohibited this article from being saved:"
+          %ul
+            - @article.errors.full_messages.each do |msg|
+              %li= msg
 
-  .field
-    = f.label :title
-    = f.text_area :title
-  .field
-    = f.label :content
-    = f.cktext_area :content, ckeditor: {filebrowserImageBrowseUrl: '/ckeditor/pictures', filebrowserImageUploadUrl: '/ckeditor/pictures',
-      height: '800',
-      autoParagraph: true,
-      toolbar: "Pure"}
-  .actions
-    = f.submit 'Save'
+      .row
+        .input-field.col.s12
+          = f.text_area :title, class: "validate materialize-textarea"
+          = f.label :title
+      .row
+        .input-field.col.s12
+          = f.cktext_area :content, id: "review_content", ckeditor: {filebrowserImageBrowseUrl: '/ckeditor/pictures',
+            height: '300',
+            autoParagraph: true,
+            toolbar: "Pure"}
+
+      .actions.center-align
+        = button_tag type: "submit", class: "waves-effect waves-light btn-large" do
+          %i.mdi-content-send
+            Save
