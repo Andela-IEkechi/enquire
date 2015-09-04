@@ -20,7 +20,8 @@ Given /^(.+) is a verified doctor$/ do |doc_name|
 end
 
 Given /^there is a verified hospital named "([^"]*)"$/ do |hospital_name|
-  FactoryGirl.create(:hospital, :verified, name: hospital_name)
+  hospital = FactoryGirl.create(:hospital, :verified, name: hospital_name)
+  FactoryGirl.create(:hospital_list, hospital: hospital)
 end
 
 Given /^"([^"]*)" hospital has a verified doctor named "([^"]*)"$/ do |hospital_name, doc_name|

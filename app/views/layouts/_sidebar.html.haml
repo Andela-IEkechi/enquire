@@ -7,7 +7,7 @@
           %li= link_to "My Dashboard", dashboard_path
           - if has_hospital?
             %li= link_to "Verify Hospital", new_hospital_verification_request_path
-          - if has_hospital? || admin?
+          - if has_hospital?
             %li= link_to "Doctors List", doctor_lists_path
           - if admin?
             %li= link_to "Hospitals List", hospital_lists_path
