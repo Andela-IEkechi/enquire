@@ -1,4 +1,4 @@
-Feature: Admin manages managers/hospitals
+Feature: Hospital verification happy path
   As an admin on the Cadwings platform
   I should be able to sign in, and see my notifications
   So that I can accept/rejects hospital verifications requests and un-verify hospitals, as the needs may arise
@@ -43,10 +43,8 @@ Feature: Admin manages managers/hospitals
     When he waits for 5 seconds
     And he follows "menu-collapsible"
     When he follows "Profile"
-    And he follows "Verify Hospital"
-    Then he should see "All your hospitals has been verified, thanks"
-    When he follow "menu-collapsible"
-    Then he should see "Hospitals"
+    Then he should not see "Verify Hospital"
+    And he should see "Hospitals"
     When he follows "Hospitals"
     Then he should see "ALL MINE"
     When he follows "Mine"

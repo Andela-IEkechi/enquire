@@ -20,7 +20,7 @@ When /^(?:|I|he|she|"([^"]*)") (?:|follow|follows) "([^"]*)"$/ do |name, link|
   click_link(link)
 end
 
-Given /^(?:|I|they|he|she) (?:am|are|is|go|goes) (?:on|to) (.+)$/ do |page_name|
+Given /^(?:|I|they|he|she|(.+)) (?:am|are|is|go|goes) (?:on|to) (.+)$/ do |name, page_name|
   visit path_to(page_name)
 end
 
