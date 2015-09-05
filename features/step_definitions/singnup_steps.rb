@@ -19,7 +19,7 @@ Then(/^the Login form should be shown again$/) do
 end
 
 Then(/^I should not be registered$/) do
-  assert_nil User.find_by_email("manisiva19@gmail.com")
+  User.find_by_email("manisiva19@gmail.com").should be_nil
 end
 
 Then(/^I should be successfully registered$/) do

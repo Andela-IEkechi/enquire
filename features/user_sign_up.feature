@@ -13,7 +13,7 @@ Feature: Sign up
       | Password confirmation | Password1            |
     And I press "Sign Up"
     Then the Sign up form should be shown again
-    And I should see "Password doesn't match confirmation"
+    And I should see "Password confirmation doesn't match Password"
     And I should not be registered
 
   @javascript
