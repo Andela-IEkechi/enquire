@@ -5,9 +5,10 @@ Feature: Doctor signs in and answers a Question
 
   @javascript
   Scenario: Doctor signs in to answer a question
-    Given there is 1 question already asked by clients
+    Given there is a verified hospital named "Cadhoose"
+    And there is 1 question already asked by clients
     And "Jack" is a registered "doctor" with email "jacksiva19@gmail.com" and password "Secretkey"
-    And Jack is a verified doctor
+    And Jack is a verified doctor associated with Cadhoose
     When he is on the user sign in page
     And he fill in the following:
       | Email                 | jacksiva19@gmail.com |

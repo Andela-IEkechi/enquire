@@ -24,9 +24,10 @@ Given /^there is an hospital verification request from "([^"]*)" for "([^"]*)" h
   FactoryGirl.create(:hospital_verification_request, user: manager, hospital: hospital)
 end
 
-Given /^(.+) is a verified doctor$/ do |doc_name|
+Given /^(.+) is a verified doctor associated with (.+)$/ do |doc_name, hospital_name|
+  hospital = Hospital.find_by(name: hospital_name)
   doctor = User.find_by(name: doc_name)
-  doctor.update_column(:verified, true)
+  doctor.update_attributes(verified: true, hospital: hospital)
 end
 
 Given /^there is a verified hospital named "([^"]*)"$/ do |hospital_name|

@@ -5,8 +5,9 @@ Feature: Doc creates and edits an article
 
   @javascript
   Scenario: Doc creates and edits an article
-    Given "Jack" is a registered "doctor" with email "jacksiva19@gmail.com" and password "Secretkey"
-    And Jack is a verified doctor
+    Given there is a verified hospital named "Cadhoose"
+    And "Jack" is a registered "doctor" with email "jacksiva19@gmail.com" and password "Secretkey"
+    And Jack is a verified doctor associated with Cadhoose
     When he is on the user sign in page
     And he fill in the following:
       | Email                 | jacksiva19@gmail.com |

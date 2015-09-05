@@ -6,7 +6,7 @@ Feature: Manager roles around
   @javascript
   Scenario: Manager roles around
     Given "Will" is a registered "manager" with email "willsiva19@gmail.com" and password "Secretkey"
-    And "Will" has an verified hospital named "John Hopkins"
+    And "Will" has a verified hospital named "John Hopkins"
     And "John Hopkins" hospital has a verified doctor named "Jack"
     When Will is on the user sign in page
     And he fill in the following:
