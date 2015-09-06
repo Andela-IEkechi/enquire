@@ -30,6 +30,7 @@ Feature: Manager gets one more doctor in his hospital
     When he waits for 5 seconds
     And he follow "menu-collapsible"
     And he follow "Log Out"
+    And he waits for 1 seconds
     Then he should see "Signed out successfully"
     When he waits for 5 seconds
     And "Will" follow "Sign in"

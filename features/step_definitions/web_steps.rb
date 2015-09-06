@@ -70,23 +70,10 @@ When /^(?:|I|he|she) (?:|wait|waits) for (\d+) seconds?$/ do |n|
 end
 
 Then /^(?:|I|he|she) should see the image "(.+)"$/ do |image|
-  page.should have_xpath("//img[@src=\"/public/images/#{image}\"]")
+  page.should have_xpath("//img['#{image}'=substring(@src,
+          string-length(@src) - string-length('#{image}') + 1)]")
 end
 
 Then /^(?:|I|he|she) reloads the page$/ do
   visit page.driver.browser.current_url
 end
-
-
-# Then /^the "([^"]*)" field(?: within (.*))? should contain "([^"]*)"$/ do |field, parent, value|
-#   with_scope(parent) do
-#     value = Regexp.escape(value) # because email addresses contain pluses (+)
-#     field = find_field(field)
-#     field_value = (field.tag_name == 'textarea') ? field.text : field.value
-#     if field_value.respond_to? :should
-#       field_value.should =~ /#{value}/
-#     else
-#       assert_match(/#{value}/, field_value)
-#     end
-#   end
-# end
