@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :articles
   resources :questions
   resources :hospital_lists #todo are these joins or not?
-  resources :doctor_lists #todo are these joins or not?
+  resources :doctor_lists, except: [:edit, :update, :show]
   resources :hospital_verification_requests, except: [:edit, :update]
   resources :doctor_verification_requests, except: [:edit, :update]
 
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :reviews
   resources :hospitals
-  resources :answers, except: [:show, :create]
+  resources :answers, except: [:show]
   resources :profiles, only: [:show, :index] #todo do we really need show????
   resource  :dashboard, only: :show
   resources :doctors

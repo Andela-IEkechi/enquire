@@ -7,7 +7,7 @@
           - if client?
             = link_to "Ask a Question", new_question_path, class: "mdi-action-announcement"
       .valign-wrapper
-        %a.button-collapse{"data-activates"=>"mobile-demo", href: "#"}
+        %a.button-collapse{"data-activates"=>"mobile-demo", id: "menu-collapsible", href: "#"}
           %i.mdi-navigation-menu.full.hide-on-large-only
       -#Dropdown Trigger
       %ul#mobile-demo.side-nav.fixed

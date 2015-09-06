@@ -12,6 +12,6 @@
         .row
           = link_to 'View', question, class: 'mdi-image-remove-red-eye btn'
           -if verified_doctor?
-            = link_to 'Answer', new_answer_path(answer: {question_id: question.id}), class: 'waves-effect waves-light btn mdi-action-announcement'
+            = link_to 'Answer', new_answer_path(question: question), class: 'waves-effect waves-light btn mdi-action-announcement'
           - unless question.users.include?(current_user)
             .right= link_to 'Follow', follows_path(:follow => {question_id: question.id}), method: :post, class: 'mdi-maps-directions-walk'

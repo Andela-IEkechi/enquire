@@ -5,7 +5,7 @@ class DoctorListsController < ApplicationController
   # GET /doctor_lists
   # GET /doctor_lists.json
   def index
-    @doctor_lists = DoctorList.find_by(id: current_user.hospitals.map(&:id)) || []
+    @doctor_lists = DoctorList.where(hospital_id: current_user.hospitals.map(&:id))
   end
 
   # GET /doctor_lists/1

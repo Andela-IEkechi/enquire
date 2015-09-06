@@ -1,5 +1,5 @@
 class Article < ActiveRecord::Base
-  belongs_to :writer, -> { where(role: "doctor", verified: true) }, class_name: "User", foreign_key: 'user_id'
+  belongs_to :writer, -> { where(role: "doctor") }, class_name: "User", foreign_key: 'user_id'
   has_many :ratings, dependent: :destroy
 
   scope :contains_text, -> (text) { where("title like ? OR content like ?", "%#{text}%", "%#{text}%")}

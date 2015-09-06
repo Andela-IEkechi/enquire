@@ -10,7 +10,7 @@
       = link_to hospital_verification_request_path(notification), :method => :delete, :data => { :confirm => 'Are you sure?' } do
         %button.btn.mdi-action-done Verify
 - if has_hospital?
-  - @doctor_notifications.each do |notification|
+  - @manager_notifications.each do |notification|
     .card-panel
       %i.mdi-alert-error
       %b

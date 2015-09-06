@@ -39,7 +39,7 @@
 
       - if @profile.verified?
         %p Hospital Affiliated With:
-        %h5= link_to @profile.hospital.try(:name), hospital_path(@profile.hospital)
+        %h5= link_to @profile.hospital.name, hospital_path(@profile.hospital)
 
         %p Numbers of Questions answered:
         %h4= "#{@profile.answers.try(:count)} questions"

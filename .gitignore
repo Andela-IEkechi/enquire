@@ -33,7 +33,7 @@
 # Ignore all logfiles and tempfiles.
 /tmp
 **/log/*.log
-.idea/
+.idea/*
 # Ignore application configuration
 /config/application.yml
 .DS_Store
