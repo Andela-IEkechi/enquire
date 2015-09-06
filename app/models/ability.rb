@@ -23,9 +23,10 @@ class Ability
       can :manage, [
                    Answer,
                    Follow,
-                   Question,
+                   # Question,
                    Article
                  ]
+      can :read, Question
     else
       can :access, :ckeditor   # needed to access Ckeditor filebrowser
       # Performed checks for actions:
