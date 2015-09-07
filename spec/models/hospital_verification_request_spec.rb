@@ -43,11 +43,10 @@ RSpec.describe HospitalVerificationRequest, type: :model do
       end
 
       it "should not allow creation of request for client" do
-        # client = FactoryGirl.create(:user, :client)
-        # request = FactoryGirl.build(:hospital_verification_request, user: client)
-        # request.save
-        # expect(request.errors[:user]).to be_present
-        skip "confirm this before implementation"
+        client = FactoryGirl.create(:user, :client)
+        request = FactoryGirl.build(:hospital_verification_request, user: client)
+        request.save
+        expect(request.errors[:user]).to be_present
       end
     end
 

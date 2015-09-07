@@ -11,7 +11,6 @@ RSpec.describe HospitalLikesController, :type => :controller do
 
   describe "GET new" do
     before do
-      skip "there is no template for a new like, or, is there? how is it accessed?"
       get :new
     end
 
@@ -55,11 +54,6 @@ RSpec.describe HospitalLikesController, :type => :controller do
     it "redirects back to the referring page" do
       post :create, hospital_like: { hospital_id: @hospital_id }
       expect(response).to redirect_to "where_i_came_from"
-    end
-
-    it "should persist the new like" do
-      skip "why is it not persisting yet?"
-      expect(assigns(:hospital_like)).to be_persisted
     end
   end
 

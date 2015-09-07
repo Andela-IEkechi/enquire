@@ -4,6 +4,7 @@ class DoctorLikesController < ApplicationController
 
   def new
     @like_doctor = DoctorLike.new
+    render :json => "new like for the doc"
   end
 
   def create

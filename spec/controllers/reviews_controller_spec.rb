@@ -13,7 +13,6 @@ RSpec.describe ReviewsController, :type => :controller do
 
   describe "GET index" do
     before do
-      skip "MissingTemplate: Missing template reviews/index"
       @review = Review.create! @valid_attributes
       get :index
     end
@@ -29,7 +28,6 @@ RSpec.describe ReviewsController, :type => :controller do
 
   describe "GET show" do
     before do
-      skip "MissingTemplate: Missing template reviews/index"
       @review = Review.create! @valid_attributes
       get :show, {:id => @review.to_param}
     end

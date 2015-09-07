@@ -4,15 +4,15 @@ class HospitalVerificationRequest < ActiveRecord::Base
 
   validates :message, :user, :hospital, presence: true
   validates :hospital, uniqueness: { message: "already has a verification request open!" }
-  validate :hospital_eligible?# :user_eligible?
+  validate :hospital_eligible?, :user_eligible?
 
   after_destroy :verify_hospital
 
   protected
 
-    # def user_eligible?
-    #   errors[:base] << "must be a manager" unless self.user.role == 'manager'
-    # end
+    def user_eligible?
+      errors.add(:user, "must be a manager") unless self.user and self.user.role == 'manager'
+    end
 
     def hospital_eligible?
       errors.add(:hospital, "is already verified") unless self.hospital and self.hospital.verified == false

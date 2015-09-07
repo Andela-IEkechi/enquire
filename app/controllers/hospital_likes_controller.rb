@@ -4,6 +4,7 @@ class HospitalLikesController < ApplicationController
 
   def new
     @recommend = HospitalLike.new
+    render :json => "a new like for the hospital"
   end
 
   def create

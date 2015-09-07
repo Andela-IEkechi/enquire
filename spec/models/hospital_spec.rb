@@ -51,10 +51,6 @@ RSpec.describe Hospital, :type => :model do
         @hospital.save
         expect(@hospital.errors[:manager]).not_to be_present
       end
-
-      it "validates that image is not larger than 5mb" do
-        skip "add some examples to this for testing the image size on a hospital instance"
-      end
     end
 
     it "saves a valid hospital" do
