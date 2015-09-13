@@ -21,3 +21,8 @@ end
 
 Capybara.javascript_driver = :chrome
 
+# Ensure that the window opens a mobile view for testing.
+Before '@javascript' do
+  window = Capybara.current_session.driver.browser.manage.window
+  window.resize_to(600, 768) # width, height
+end
