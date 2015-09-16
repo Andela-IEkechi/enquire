@@ -33,59 +33,51 @@ RSpec.describe User, :type => :model do
       end
 
       it "should not be able to manage Questions" do
-        expect(@ability).not_to be_able_to(:create, Question.new)
-        expect(@ability).not_to be_able_to(:read, Question.new)
-        expect(@ability).not_to be_able_to(:update, Question.new)
-        expect(@ability).not_to be_able_to(:destroy, Question.new)
+        %i[create read update destroy].each do |role|
+          expect(@ability).not_to be_able_to(role, Question.new)
+        end
       end
 
       it "should not be able to manage Answer" do
-        expect(@ability).not_to be_able_to(:create, Answer.new)
-        expect(@ability).not_to be_able_to(:read, Answer.new)
-        expect(@ability).not_to be_able_to(:update, Answer.new)
-        expect(@ability).not_to be_able_to(:destroy, Answer.new)
+        %i[create read update destroy].each do |role|
+          expect(@ability).not_to be_able_to(role, Answer.new)
+        end
       end
 
       it "should not be able to manage AnswerLikes" do
-        expect(@ability).not_to be_able_to(:create, AnswerLike.new)
-        expect(@ability).not_to be_able_to(:read, AnswerLike.new)
-        expect(@ability).not_to be_able_to(:update, AnswerLike.new)
-        expect(@ability).not_to be_able_to(:destroy, AnswerLike.new)
+        %i[create read update destroy].each do |role|
+          expect(@ability).not_to be_able_to(role, AnswerLike.new)
+        end
       end
 
       it "should not be able to manage DoctorLikes" do
-        expect(@ability).not_to be_able_to(:create, DoctorLike.new)
-        expect(@ability).not_to be_able_to(:read, DoctorLike.new)
-        expect(@ability).not_to be_able_to(:update, DoctorLike.new)
-        expect(@ability).not_to be_able_to(:destroy, DoctorLike.new)
+        %i[create read update destroy].each do |role|
+          expect(@ability).not_to be_able_to(role, DoctorLike.new)
+        end
       end
 
       it "should not be able to manage HospitalLike" do
-        expect(@ability).not_to be_able_to(:create, HospitalLike.new)
-        expect(@ability).not_to be_able_to(:read, HospitalLike.new)
-        expect(@ability).not_to be_able_to(:update, HospitalLike.new)
-        expect(@ability).not_to be_able_to(:destroy, HospitalLike.new)
+        %i[create read update destroy].each do |role|
+          expect(@ability).not_to be_able_to(role, HospitalLike.new)
+        end
       end
 
       it "should not be able to manage Follow" do
-        expect(@ability).not_to be_able_to(:create, Follow.new)
-        expect(@ability).not_to be_able_to(:read, Follow.new)
-        expect(@ability).not_to be_able_to(:update, Follow.new)
-        expect(@ability).not_to be_able_to(:destroy, Follow.new)
+        %i[create read update destroy].each do |role|
+          expect(@ability).not_to be_able_to(role, Follow.new)
+        end
       end
 
       it "should not be able to manage Review" do
-        expect(@ability).not_to be_able_to(:create, Review.new)
-        expect(@ability).not_to be_able_to(:read, Review.new)
-        expect(@ability).not_to be_able_to(:update, Review.new)
-        expect(@ability).not_to be_able_to(:destroy, Review.new)
+        %i[create read update destroy].each do |role|
+          expect(@ability).not_to be_able_to(role, Review.new)
+        end
       end
 
       it "should not be able to manage Article" do
-        expect(@ability).not_to be_able_to(:create, Article.new)
-        expect(@ability).not_to be_able_to(:read, Article.new)
-        expect(@ability).not_to be_able_to(:update, Article.new)
-        expect(@ability).not_to be_able_to(:destroy, Article.new)
+        %i[create read update destroy].each do |role|
+          expect(@ability).not_to be_able_to(role, Article.new)
+        end
       end
 
     end
