@@ -6,7 +6,7 @@ class Hospital < ActiveRecord::Base
   belongs_to :manager, -> { where(role: "manager") }, class_name: "User", foreign_key: 'user_id'
   # has_many :registered_doctors, -> { where(role: "doctor") }, class_name: "User", foreign_key: 'user_id'
 
-  validates :image, presence: true
+  # validates :image, presence: true
   validate :image_size_validation
   has_one :hospital_verification_request
 

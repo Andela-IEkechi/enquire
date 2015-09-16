@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  before_destroy :detach_associated
+
   has_many :questions
   has_many :answer_likes
   has_many :doctor_likes
@@ -69,6 +71,12 @@ class User < ActiveRecord::Base
 
   def image_size_validation
     errors[:image] << "should be less than 500KB" if image.size > 0.5.megabytes
+  end
+
+  def detach_associated
+    self.questions.update_all(:user_id => nil)
+    self.answers.update_all(:user_id => nil)
+    self.hospitals.update_all(:user_id => nil)
   end
 
 end
