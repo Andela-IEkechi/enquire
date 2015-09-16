@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
   before_action :set_answer, only: [:update]
-  before_action :set_question, only: [:index]
+  before_action :set_question, only: [:index, :new]
   load_and_authorize_resource
 
   # GET /answers
@@ -16,7 +16,7 @@ class AnswersController < ApplicationController
 
   # GET /answers/new
   def new
-    @answer = Answer.new(answer_params)
+    @answer = @question.answers.new
   end
 
   # GET /answers/1/edit
@@ -29,7 +29,7 @@ class AnswersController < ApplicationController
     @answer = current_user.answers.new(answer_params)
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to :back, notice: 'Answer was successfully created.' }
+        format.html { redirect_to :back, notice: 'Answer was successfully posted.' }
       else
         format.html { render :new }
         format.json { render json: @answer.errors, status: :unprocessable_entity }
@@ -42,7 +42,7 @@ class AnswersController < ApplicationController
   def update
     respond_to do |format|
       if @answer.update(answer_params)
-        format.html { redirect_to questions_path, notice: 'Answer was successfully updated.' }
+        format.html { redirect_to @answer.question, notice: 'Answer was successfully updated.' }
         format.json { render :show, status: :ok, location: @answer }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class AnswersController < ApplicationController
   def destroy
     @answer.destroy
     respond_to do |format|
-      format.html { redirect_to answers_url, notice: 'Answer was successfully destroyed.' }
+      format.html { redirect_to @answer.question, notice: 'Answer was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -73,6 +73,6 @@ class AnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      params.require(:answer).permit(:question_id, :content, :user_id)
+      params.require(:answer).permit(:question_id, :content)
     end
 end

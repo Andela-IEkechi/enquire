@@ -3,13 +3,14 @@ class QuestionsController < ApplicationController
   autocomplete :question, :body
   before_action :set_question, only: [:show, :update, :destroy, :answer]
   before_action :set_answers, only: [:show, :answer]
-  load_and_authorize_resource
+  # load_and_authorize_resource
 
   # GET /questions
   # GET /questions.json
   def index
+    authorize! :read, Question
     if current_user.interests
-      @interest_questions = Question.tagged_with(current_user.interests)
+      @interest_questions = Question.tagged_with(current_user.interests) #todo how are interests compiled?
     end
     if params[:q]
       @questions = Question.contains_text("%#{params[:q]}%").order('created_at DESC')
@@ -24,24 +25,27 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.json
   def show
+    authorize! :read, Question
     @answer = @question.answers.new
   end
 
   # GET /questions/new
   def new
+    authorize! :create, Question
     @question = Question.new
   end
 
   # GET /questions/1/edit
   def edit
+    authorize! :update, Question
     @question = current_user.questions.find(params[:id])
   end
 
   # POST /questions
   # POST /questions.json
   def create
-    @question = Question.new(question_params)
-    @question.user = current_user
+    authorize! :create, Question
+    @question = current_user.questions.new(question_params)
 
     respond_to do |format|
       if @question.save
@@ -57,6 +61,7 @@ class QuestionsController < ApplicationController
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
   def update
+    authorize! :update, Question
     respond_to do |format|
       if @question.update(question_params)
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
@@ -71,6 +76,7 @@ class QuestionsController < ApplicationController
   # DELETE /questions/1
   # DELETE /questions/1.json
   def destroy
+    authorize! :destroy, Question
     @question.destroy
     respond_to do |format|
       format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
@@ -79,11 +85,12 @@ class QuestionsController < ApplicationController
   end
 
   def answer
+    authorize! :create, Answer
     @answer = @question.answers.build(answer_params)
     @answer.user = current_user
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to action: :show, id: params[:id], notice: 'Answer was successfully created.' }
+        format.html { redirect_to @question, notice: 'Answer was successfully posted.' }
       else
         format.html { render :show }
         format.json { render json: @answer.errors, status: :unprocessable_entity }

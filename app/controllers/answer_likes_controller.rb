@@ -18,6 +18,8 @@ class AnswerLikesController < ApplicationController
     redirect_to :back
   end
 
+  private
+
   def set_appreciate
     @appreciate = AnswerLike.find(params[:id])
   end

@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :likes, through: :hospital_likes, class_name: 'Hospital'
   has_many :follows
   has_one :doctor_verification_request
+  has_many :hospital_verification_requests #todo one, or many?
   has_many :followed_questions, through: :follows, source: :question
   has_many :answers
   belongs_to :hospital

@@ -1,28 +1,27 @@
 class DoctorVerificationRequest < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :hospital
+  belongs_to :user, -> { where(role: 'doctor') }
+  belongs_to :hospital, -> { where(verified: true) }
 
   validates :message, :user, :hospital, presence: true
-  validates :user_id, uniqueness: { message: "You already have a verification request open!" }
-  validate :eligible?
+  validates :user, uniqueness: { message: "You already have a verification request open!" }
+  validate :user_eligible?, :hospital_eligible?
 
   before_destroy :update_doctor
 
   protected
 
-    def eligible?
-      errors[:base] << "Not a doctor, or Already verified" unless self.user.role == 'doctor' and self.user.verified == false
-    end
+  def user_eligible?
+    errors.add(:user, "Not a doctor, or Already verified") unless self.user && self.user.role == 'doctor' and self.user.verified == false
+  end
 
-    def update_doctor
-      logger.info('got here '*10)
-      ActiveRecord::Base.transaction do
-        if self.user.update_attribute(:verified, true) and self.user.update_attribute(:hospital, self.hospital)
-          logger.info("UPDATED"*30)
-        else
-          logger.info("FAILED"*20)
-        end
-        DoctorList.create!(user_id: user.id, hospital_id: hospital.id)
-      end
+  def hospital_eligible?
+    errors.add(:hospital, "must be verified") unless self.hospital and self.hospital.verified == true
+  end
+
+  def update_doctor
+    ActiveRecord::Base.transaction do
+      self.user.update_attributes(verified: true, hospital: self.hospital)
+      DoctorList.create!(user_id: user.id, hospital_id: hospital.id)
     end
+  end
 end

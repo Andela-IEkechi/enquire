@@ -57,7 +57,7 @@ class HospitalListsController < ApplicationController
     @hospital_list.destroy
     NotificationMailer.hospital_removed(@hospital_list.user, @hospital_list.hospital).deliver_now
     respond_to do |format|
-      format.html { redirect_to hospital_lists_url, notice: 'Hospital list was successfully destroyed.' }
+      format.html { redirect_to hospital_lists_url, notice: 'Hospital has been unverified.' }
       format.json { head :no_content }
     end
   end

@@ -1,5 +1,5 @@
 class Question < ActiveRecord::Base
-  belongs_to :user, -> { where(role: "user") }
+  belongs_to :user, -> { where(role: "user") } #belongs to owner? or a better name?
   has_many :answers, :dependent => :destroy
   has_many :follows
   has_many :users, through: :follows, class_name: 'User'
@@ -7,6 +7,7 @@ class Question < ActiveRecord::Base
   has_many :tags, through: :taggings
 
   validates_presence_of :body, :user
+  validate :asked_by_a_client?
 
   accepts_nested_attributes_for :answers
 
@@ -24,5 +25,9 @@ class Question < ActiveRecord::Base
 
   def self.tagged_with(name)
     Tag.find_by_name(name.strip.split(',')).try(:questions)
+  end
+
+  def asked_by_a_client?
+    errors.add(:user, "must be a client to ask questions") unless self.user and self.user.role == 'user'
   end
 end

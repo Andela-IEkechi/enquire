@@ -15,10 +15,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
-    @rating = Rating.where(article_id: @article.id, user_id: current_user.id).first
-    unless @rating
-      @rating = Rating.create(article_id: @article.id, score: 0)
-    end
+    @rating = @article.user_rating(current_user)
   end
 
   # GET /articles/new
@@ -33,12 +30,11 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    @article = Article.new(article_params)
-    @article.user = current_user
+    @article = current_user.articles.new(article_params)
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.html { redirect_to @article, notice: 'Article successfully posted.' }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new }

@@ -12,7 +12,7 @@ class FollowsController < ApplicationController
       if @follow.save
         format.html { redirect_to :back, notice: 'You have successfully followed the Question.' }
       else
-        format.html { render :new }
+        format.html { redirect_to :back }
         format.json { render json: @answer.errors, status: :unprocessable_entity }
       end
     end

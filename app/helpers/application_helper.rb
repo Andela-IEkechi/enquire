@@ -33,7 +33,7 @@ module ApplicationHelper
   end
 
   def has_unverified_hospital?
-    !current_user.hospitals.where(verified: false).empty?
+    current_user.role == "manager" && !current_user.hospitals.where(verified: false).empty?
   end
 
   def body_mass_index(user)

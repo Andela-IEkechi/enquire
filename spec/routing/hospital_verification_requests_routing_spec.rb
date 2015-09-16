@@ -15,16 +15,16 @@ RSpec.describe HospitalVerificationRequestsController, type: :routing do
       expect(:get => "/hospital_verification_requests/1").to route_to("hospital_verification_requests#show", :id => "1")
     end
 
-    it "routes to #edit" do
-      expect(:get => "/hospital_verification_requests/1/edit").to route_to("hospital_verification_requests#edit", :id => "1")
+    it "does not routes to #edit" do
+      expect(:get => "/hospital_verification_requests/1/edit").not_to be_routable
     end
 
     it "routes to #create" do
       expect(:post => "/hospital_verification_requests").to route_to("hospital_verification_requests#create")
     end
 
-    it "routes to #update" do
-      expect(:put => "/hospital_verification_requests/1").to route_to("hospital_verification_requests#update", :id => "1")
+    it "does not routes to #update" do
+      expect(:put => "/hospital_verification_requests/1").not_to be_routable
     end
 
     it "routes to #destroy" do

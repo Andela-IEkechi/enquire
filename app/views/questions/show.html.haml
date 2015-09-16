@@ -16,7 +16,7 @@
     - if @question.answers.count > 0
       = link_to "Answers", answers_path(question: @question), class: 'btn mdi-action-announcement'
     -if verified_doctor?
-      = link_to 'contribute', "#answer-modal", class: 'waves-effect waves-light btn modal-trigger'
+      = link_to "Contribute", "#answer-modal", class: 'waves-effect waves-light btn modal-trigger'
 
     .modal#answer-modal
       .modal-content

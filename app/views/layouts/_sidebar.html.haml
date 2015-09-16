@@ -1,13 +1,13 @@
 %li.no-padding
   %ul.collapsible.collapsible-accordion
     %li.bold
-      %a.collapsible-header.waves-effect.waves-teal Profile
+      %a.collapsible-header.waves-effect.waves-teal{href: "#"} Profile
       .collapsible-body
         %ul
           %li= link_to "My Dashboard", dashboard_path
-          - if has_hospital?
+          - if has_unverified_hospital?
             %li= link_to "Verify Hospital", new_hospital_verification_request_path
-          - if has_hospital? || admin?
+          - if has_hospital?
             %li= link_to "Doctors List", doctor_lists_path
           - if admin?
             %li= link_to "Hospitals List", hospital_lists_path
@@ -17,8 +17,9 @@
       = link_to "Hospitals", hospitals_path, class: 'waves-effect waves-teal'
     %li.bold
       = link_to "Everyone", profiles_path, class: 'waves-effect waves-teal'
-    %li.bold
-      = link_to "Questions", questions_path, class: 'waves-effect waves-teal'
+    - unless hospital_manager?
+      %li.bold
+        = link_to "Questions", questions_path, class: 'waves-effect waves-teal'
     %li.bold
       = link_to "Articles", articles_path, class: 'waves-effect waves-teal'
     %li.bold

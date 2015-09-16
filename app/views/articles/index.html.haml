@@ -9,8 +9,8 @@
         .row
           .col.s4
             %h6= raw article.title
-            = image_tag(article.user.image.url(:small), class: "responsive-img activator")
-            - unless article.user.image.url
+            = image_tag(article.writer.image.url(:small), class: "responsive-img activator")
+            - unless article.writer.image.url
               = image_tag('avatar.png', width: "50", class: "responsive-img")
           .col.s8
             .question-body
@@ -20,28 +20,4 @@
           = link_to 'View', article, class: 'mdi-image-remove-red-eye btn'
 - if verified_doctor?
   = link_to 'New Article', new_article_path, class: 'btn'
-
-
--#%table
--#  %thead
--#    %tr
--#      %th User
--#      %th Title
--#      %th Content
--#      %th
--#      %th
--#      %th
--#
--#  %tbody
--#    - @articles.each do |article|
--#      %tr
--#        %td= article.user
--#        %td= raw article.title
--#        %td= raw article.content
--#        %td= link_to 'Show', article
--#        %td= link_to 'Edit', edit_article_path(article)
--#        %td= link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }
--#
--#%br
--#
 

@@ -4,11 +4,11 @@ class HospitalLikesController < ApplicationController
 
   def new
     @recommend = HospitalLike.new
+    render :json => "a new like for the hospital"
   end
 
   def create
-    @recommend = HospitalLike.new(hospital_like_params)
-    @recommend.user = current_user
+    @recommend = current_user.hospital_likes.new(hospital_like_params)
     @recommend.save
     redirect_to :back
   end
@@ -18,11 +18,13 @@ class HospitalLikesController < ApplicationController
     redirect_to :back
   end
 
+  private
+
   def set_recommend
     @recommend = HospitalLike.find(params[:id])
   end
 
   def hospital_like_params
-    params.require(:hospital_like).permit(:hospital_id, :user_id)
+    params.require(:hospital_like).permit(:hospital_id)
   end
 end

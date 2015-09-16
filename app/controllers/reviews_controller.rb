@@ -6,11 +6,13 @@ class ReviewsController < ApplicationController
   # GET /reviews.json
   def index
     @reviews = Review.all
+    render :json => @reviews
   end
 
   # GET /reviews/1
   # GET /reviews/1.json
   def show
+    render :json => @review
   end
 
   # GET /reviews/new
@@ -25,12 +27,11 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    @review = Review.new(review_params)
-    @review.user = current_user
+    @review = current_user.reviews.new(review_params)
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to :back, notice: 'Review was successfully created.' }
+        format.html { redirect_to :back, notice: 'Your Review has been successfully posted.' }
       else
         format.html { render :new }
       end
@@ -69,6 +70,6 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:hospital_id, :user_id, :content)
+      params.require(:review).permit(:hospital_id, :content)
     end
 end

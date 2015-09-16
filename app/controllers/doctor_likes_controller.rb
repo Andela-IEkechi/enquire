@@ -4,10 +4,11 @@ class DoctorLikesController < ApplicationController
 
   def new
     @like_doctor = DoctorLike.new
+    render :json => "new like for the doc"
   end
 
   def create
-    @like_doctor = DoctorLike.new(doctor_like_params)
+    @like_doctor = current_user.doctor_likes.new(doctor_like_params)
     @like_doctor.save
     redirect_to :back
   end
@@ -17,11 +18,13 @@ class DoctorLikesController < ApplicationController
     redirect_to :back
   end
 
+  private
+
   def set_like_doctor
     @like_doctor = DoctorLike.find(params[:id])
   end
 
   def doctor_like_params
-    params.require(:doctor_like).permit(:doctor_id, :user_id)
+    params.require(:doctor_like).permit(:doctor_id)
   end
 end
